@@ -101,8 +101,6 @@
     <None Include="Resources\maximize-white.png" />
     <None Include="Resources\minus-white.png" />
     <None Include="Resources\password.png" />
-    <None Include="Resources\password1.png" />
-    <None Include="Resources\password2.png" />
     <Content Include="Resources\sena-logo.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
