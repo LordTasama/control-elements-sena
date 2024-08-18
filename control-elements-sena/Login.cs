@@ -42,19 +42,6 @@ namespace control_elements_sena
             MouseDown = false;
         }
 
-
-        private void btnMaximizeWindow_Click(object sender, MouseEventArgs e)
-        {
-            if (this.WindowState == FormWindowState.Maximized)
-            {
-                this.WindowState = FormWindowState.Normal;
-            }
-            else
-            {
-                this.WindowState = FormWindowState.Maximized;
-            }
-        }
-
         private void btnMinimizeWindow_Click(object sender, MouseEventArgs e)
         {
             this.WindowState = FormWindowState.Minimized;
@@ -64,5 +51,41 @@ namespace control_elements_sena
         {
             this.Close();
         }
+
+        private void Login_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txtPassword_TextChanged(object sender, EventArgs e)
+        {
+            if(txtPassword.Text == "")
+            {
+                btnShowPassword.Visible = false;
+            }
+            else
+            {
+                btnShowPassword.Visible = true;
+            }
+        }
+
+        private void btnShowPassword_Click(object sender, EventArgs e)
+        {
+            if (txtPassword.PasswordChar == '*')
+            {
+                txtPassword.PasswordChar = '\0';
+            }
+            else {
+                txtPassword.PasswordChar = '*';
+            }
+        
+        }
+
+        private void btnLogin_Click(object sender, EventArgs e)
+        {
+
+        }
+
+       
     }
 }
