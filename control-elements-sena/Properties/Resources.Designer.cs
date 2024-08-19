@@ -63,6 +63,16 @@ namespace control_elements_sena.Properties {
         /// <summary>
         ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap add_user {
+            get {
+                object obj = ResourceManager.GetObject("add_user", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap alerta {
             get {
                 object obj = ResourceManager.GetObject("alerta", resourceCulture);
@@ -143,6 +153,16 @@ namespace control_elements_sena.Properties {
         /// <summary>
         ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap close_white_big {
+            get {
+                object obj = ResourceManager.GetObject("close-white-big", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap configuraciones {
             get {
                 object obj = ResourceManager.GetObject("configuraciones", resourceCulture);
@@ -166,6 +186,16 @@ namespace control_elements_sena.Properties {
         internal static System.Drawing.Bitmap dispositivos {
             get {
                 object obj = ResourceManager.GetObject("dispositivos", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap edit_user {
+            get {
+                object obj = ResourceManager.GetObject("edit_user", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -213,6 +243,16 @@ namespace control_elements_sena.Properties {
         /// <summary>
         ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap menos_linea_recta_horizontal {
+            get {
+                object obj = ResourceManager.GetObject("menos-linea-recta-horizontal", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap minus {
             get {
                 object obj = ResourceManager.GetObject("minus", resourceCulture);
@@ -236,6 +276,16 @@ namespace control_elements_sena.Properties {
         internal static System.Drawing.Bitmap ojo {
             get {
                 object obj = ResourceManager.GetObject("ojo", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap options {
+            get {
+                object obj = ResourceManager.GetObject("options", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -276,6 +326,16 @@ namespace control_elements_sena.Properties {
         internal static System.Drawing.Bitmap sena_logo {
             get {
                 object obj = ResourceManager.GetObject("sena-logo", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap status_user {
+            get {
+                object obj = ResourceManager.GetObject("status_user", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
