@@ -36,6 +36,7 @@
             this.toolTipTables = new System.Windows.Forms.ToolTip(this.components);
             this.btnTables = new System.Windows.Forms.Button();
             this.toolTipUsers = new System.Windows.Forms.ToolTip(this.components);
+            this.pictureReload = new System.Windows.Forms.PictureBox();
             this.btnUsers = new System.Windows.Forms.Button();
             this.toolTipRecords = new System.Windows.Forms.ToolTip(this.components);
             this.btnRecords = new System.Windows.Forms.Button();
@@ -55,17 +56,29 @@
             this.picLogoSena = new System.Windows.Forms.PictureBox();
             this.lblCentro = new System.Windows.Forms.Label();
             this.pSectionsContainer = new System.Windows.Forms.Panel();
+            this.btnEntrances = new System.Windows.Forms.Button();
             this.btnSidebarControl = new System.Windows.Forms.Button();
             this.pictureBox3 = new System.Windows.Forms.PictureBox();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.pDesktopContainer = new System.Windows.Forms.Panel();
             this.pContainer = new System.Windows.Forms.Panel();
+            this.pFooter = new System.Windows.Forms.Panel();
+            this.pictureDate = new System.Windows.Forms.PictureBox();
+            this.lblDate = new System.Windows.Forms.Label();
+            this.lblName = new System.Windows.Forms.Label();
+            this.pictureAvatar = new System.Windows.Forms.PictureBox();
             this.pControlBox = new System.Windows.Forms.Panel();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.lblTime = new System.Windows.Forms.Label();
             this.lblPage = new System.Windows.Forms.Label();
             this.btnCloseForm = new System.Windows.Forms.Button();
             this.btnMaximizeWindow = new System.Windows.Forms.Button();
             this.btnMinimizeWindow = new System.Windows.Forms.Button();
             this.btnCloseWindow = new System.Windows.Forms.Button();
+            this.timeToday = new System.Windows.Forms.Timer(this.components);
+            this.toolTipEntrances = new System.Windows.Forms.ToolTip(this.components);
+            this.toolTipReload = new System.Windows.Forms.ToolTip(this.components);
+            ((System.ComponentModel.ISupportInitialize)(this.pictureReload)).BeginInit();
             this.dropMenuContainer.SuspendLayout();
             this.pSidebar.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.picLogoSena)).BeginInit();
@@ -73,7 +86,11 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.pDesktopContainer.SuspendLayout();
+            this.pFooter.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureDate)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureAvatar)).BeginInit();
             this.pControlBox.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // lblTitle
@@ -84,12 +101,12 @@
             this.lblTitle.Font = new System.Drawing.Font("Segoe UI Semibold", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblTitle.ForeColor = System.Drawing.Color.White;
             this.lblTitle.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.lblTitle.Location = new System.Drawing.Point(810, 6);
+            this.lblTitle.Location = new System.Drawing.Point(799, 6);
             this.lblTitle.Margin = new System.Windows.Forms.Padding(3, 15, 3, 15);
             this.lblTitle.Name = "lblTitle";
-            this.lblTitle.Size = new System.Drawing.Size(123, 20);
+            this.lblTitle.Size = new System.Drawing.Size(137, 20);
             this.lblTitle.TabIndex = 7;
-            this.lblTitle.Text = "Panel de Control";
+            this.lblTitle.Text = " - Panel de Control";
             // 
             // menuTransition
             // 
@@ -141,6 +158,21 @@
             this.toolTipUsers.InitialDelay = 0;
             this.toolTipUsers.IsBalloon = true;
             this.toolTipUsers.ReshowDelay = 0;
+            // 
+            // pictureReload
+            // 
+            this.pictureReload.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.pictureReload.BackgroundImage = global::control_elements_sena.Properties.Resources.reload;
+            this.pictureReload.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.pictureReload.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.pictureReload.Location = new System.Drawing.Point(688, 4);
+            this.pictureReload.Name = "pictureReload";
+            this.pictureReload.Size = new System.Drawing.Size(24, 24);
+            this.pictureReload.TabIndex = 35;
+            this.pictureReload.TabStop = false;
+            this.toolTipReload.SetToolTip(this.pictureReload, "Recarga la página actual");
+            this.pictureReload.Visible = false;
+            this.pictureReload.Click += new System.EventHandler(this.pictureReload_Click);
             // 
             // btnUsers
             // 
@@ -246,7 +278,7 @@
             this.btnReports.ForeColor = System.Drawing.Color.Black;
             this.btnReports.Image = global::control_elements_sena.Properties.Resources.reporte_de_negocios;
             this.btnReports.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnReports.Location = new System.Drawing.Point(3, 17);
+            this.btnReports.Location = new System.Drawing.Point(3, 48);
             this.btnReports.Margin = new System.Windows.Forms.Padding(3, 0, 3, 3);
             this.btnReports.Name = "btnReports";
             this.btnReports.Size = new System.Drawing.Size(162, 30);
@@ -277,7 +309,7 @@
             this.btnInforms.ForeColor = System.Drawing.Color.Black;
             this.btnInforms.Image = global::control_elements_sena.Properties.Resources.alerta;
             this.btnInforms.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnInforms.Location = new System.Drawing.Point(3, 53);
+            this.btnInforms.Location = new System.Drawing.Point(3, 84);
             this.btnInforms.Margin = new System.Windows.Forms.Padding(3, 3, 3, 0);
             this.btnInforms.Name = "btnInforms";
             this.btnInforms.Size = new System.Drawing.Size(162, 30);
@@ -309,7 +341,7 @@
             this.btnPerfil.ForeColor = System.Drawing.Color.Black;
             this.btnPerfil.Image = global::control_elements_sena.Properties.Resources.configuraciones;
             this.btnPerfil.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnPerfil.Location = new System.Drawing.Point(3, 101);
+            this.btnPerfil.Location = new System.Drawing.Point(3, 132);
             this.btnPerfil.Margin = new System.Windows.Forms.Padding(3, 0, 3, 3);
             this.btnPerfil.Name = "btnPerfil";
             this.btnPerfil.Size = new System.Drawing.Size(162, 30);
@@ -341,7 +373,7 @@
             this.btnLogOut.ForeColor = System.Drawing.Color.Black;
             this.btnLogOut.Image = global::control_elements_sena.Properties.Resources.cerrar_sesion;
             this.btnLogOut.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnLogOut.Location = new System.Drawing.Point(3, 137);
+            this.btnLogOut.Location = new System.Drawing.Point(3, 168);
             this.btnLogOut.Name = "btnLogOut";
             this.btnLogOut.Size = new System.Drawing.Size(162, 30);
             this.btnLogOut.TabIndex = 9;
@@ -418,6 +450,7 @@
             // 
             this.pSectionsContainer.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.pSectionsContainer.Controls.Add(this.btnEntrances);
             this.pSectionsContainer.Controls.Add(this.btnReports);
             this.pSectionsContainer.Controls.Add(this.btnSidebarControl);
             this.pSectionsContainer.Controls.Add(this.pictureBox3);
@@ -427,8 +460,29 @@
             this.pSectionsContainer.Controls.Add(this.btnPerfil);
             this.pSectionsContainer.Location = new System.Drawing.Point(0, 102);
             this.pSectionsContainer.Name = "pSectionsContainer";
-            this.pSectionsContainer.Size = new System.Drawing.Size(165, 273);
+            this.pSectionsContainer.Size = new System.Drawing.Size(165, 324);
             this.pSectionsContainer.TabIndex = 0;
+            // 
+            // btnEntrances
+            // 
+            this.btnEntrances.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnEntrances.FlatAppearance.BorderSize = 0;
+            this.btnEntrances.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Gainsboro;
+            this.btnEntrances.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnEntrances.Font = new System.Drawing.Font("Segoe UI Semibold", 11F, System.Drawing.FontStyle.Bold);
+            this.btnEntrances.ForeColor = System.Drawing.Color.Black;
+            this.btnEntrances.Image = global::control_elements_sena.Properties.Resources.entrances_icon;
+            this.btnEntrances.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnEntrances.Location = new System.Drawing.Point(3, 11);
+            this.btnEntrances.Margin = new System.Windows.Forms.Padding(3, 0, 3, 3);
+            this.btnEntrances.Name = "btnEntrances";
+            this.btnEntrances.Size = new System.Drawing.Size(162, 30);
+            this.btnEntrances.TabIndex = 14;
+            this.btnEntrances.Text = "        Entradas";
+            this.btnEntrances.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.toolTipEntrances.SetToolTip(this.btnEntrances, "Entradas");
+            this.btnEntrances.UseVisualStyleBackColor = true;
+            this.btnEntrances.Click += new System.EventHandler(this.btnEntrances_Click);
             // 
             // btnSidebarControl
             // 
@@ -441,7 +495,7 @@
             this.btnSidebarControl.ForeColor = System.Drawing.Color.Black;
             this.btnSidebarControl.Image = global::control_elements_sena.Properties.Resources.flecha_izq;
             this.btnSidebarControl.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnSidebarControl.Location = new System.Drawing.Point(60, 210);
+            this.btnSidebarControl.Location = new System.Drawing.Point(60, 241);
             this.btnSidebarControl.Margin = new System.Windows.Forms.Padding(0);
             this.btnSidebarControl.Name = "btnSidebarControl";
             this.btnSidebarControl.Size = new System.Drawing.Size(42, 39);
@@ -454,7 +508,7 @@
             // 
             this.pictureBox3.BackgroundImage = global::control_elements_sena.Properties.Resources.menos_linea_recta_horizontal;
             this.pictureBox3.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.pictureBox3.Location = new System.Drawing.Point(17, 83);
+            this.pictureBox3.Location = new System.Drawing.Point(17, 114);
             this.pictureBox3.Margin = new System.Windows.Forms.Padding(17, 0, 0, 0);
             this.pictureBox3.Name = "pictureBox3";
             this.pictureBox3.Size = new System.Drawing.Size(130, 18);
@@ -474,8 +528,9 @@
             // 
             // pDesktopContainer
             // 
-            this.pDesktopContainer.BackColor = System.Drawing.Color.Gainsboro;
+            this.pDesktopContainer.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(236)))), ((int)(((byte)(237)))), ((int)(((byte)(240)))));
             this.pDesktopContainer.Controls.Add(this.pContainer);
+            this.pDesktopContainer.Controls.Add(this.pFooter);
             this.pDesktopContainer.Controls.Add(this.pControlBox);
             this.pDesktopContainer.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pDesktopContainer.Location = new System.Drawing.Point(165, 0);
@@ -485,16 +540,81 @@
             // 
             // pContainer
             // 
-            this.pContainer.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(236)))), ((int)(((byte)(237)))), ((int)(((byte)(240)))));
             this.pContainer.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pContainer.Location = new System.Drawing.Point(0, 68);
+            this.pContainer.Margin = new System.Windows.Forms.Padding(0);
             this.pContainer.Name = "pContainer";
-            this.pContainer.Size = new System.Drawing.Size(1035, 582);
-            this.pContainer.TabIndex = 22;
+            this.pContainer.Size = new System.Drawing.Size(1035, 514);
+            this.pContainer.TabIndex = 24;
+            // 
+            // pFooter
+            // 
+            this.pFooter.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(4)))), ((int)(((byte)(50)))), ((int)(((byte)(77)))));
+            this.pFooter.Controls.Add(this.pictureDate);
+            this.pFooter.Controls.Add(this.lblDate);
+            this.pFooter.Controls.Add(this.lblName);
+            this.pFooter.Controls.Add(this.pictureAvatar);
+            this.pFooter.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.pFooter.Location = new System.Drawing.Point(0, 582);
+            this.pFooter.Name = "pFooter";
+            this.pFooter.Size = new System.Drawing.Size(1035, 68);
+            this.pFooter.TabIndex = 23;
+            // 
+            // pictureDate
+            // 
+            this.pictureDate.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.pictureDate.Image = global::control_elements_sena.Properties.Resources.calendar;
+            this.pictureDate.Location = new System.Drawing.Point(975, 16);
+            this.pictureDate.Name = "pictureDate";
+            this.pictureDate.Size = new System.Drawing.Size(36, 36);
+            this.pictureDate.TabIndex = 33;
+            this.pictureDate.TabStop = false;
+            // 
+            // lblDate
+            // 
+            this.lblDate.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.lblDate.AutoSize = true;
+            this.lblDate.BackColor = System.Drawing.Color.Transparent;
+            this.lblDate.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.lblDate.Font = new System.Drawing.Font("Segoe UI Semibold", 16F, System.Drawing.FontStyle.Bold);
+            this.lblDate.ForeColor = System.Drawing.Color.White;
+            this.lblDate.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.lblDate.Location = new System.Drawing.Point(1029, 19);
+            this.lblDate.Margin = new System.Windows.Forms.Padding(3, 15, 3, 15);
+            this.lblDate.Name = "lblDate";
+            this.lblDate.Size = new System.Drawing.Size(0, 30);
+            this.lblDate.TabIndex = 30;
+            this.lblDate.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // lblName
+            // 
+            this.lblName.AutoSize = true;
+            this.lblName.BackColor = System.Drawing.Color.Transparent;
+            this.lblName.Font = new System.Drawing.Font("Segoe UI Semibold", 14F, System.Drawing.FontStyle.Bold);
+            this.lblName.ForeColor = System.Drawing.Color.White;
+            this.lblName.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.lblName.Location = new System.Drawing.Point(57, 21);
+            this.lblName.Margin = new System.Windows.Forms.Padding(3, 15, 3, 15);
+            this.lblName.Name = "lblName";
+            this.lblName.Size = new System.Drawing.Size(162, 25);
+            this.lblName.TabIndex = 32;
+            this.lblName.Text = "Anderson Tasama";
+            // 
+            // pictureAvatar
+            // 
+            this.pictureAvatar.Image = global::control_elements_sena.Properties.Resources.perfil_avatar;
+            this.pictureAvatar.Location = new System.Drawing.Point(6, 11);
+            this.pictureAvatar.Name = "pictureAvatar";
+            this.pictureAvatar.Size = new System.Drawing.Size(48, 48);
+            this.pictureAvatar.TabIndex = 31;
+            this.pictureAvatar.TabStop = false;
             // 
             // pControlBox
             // 
             this.pControlBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(4)))), ((int)(((byte)(50)))), ((int)(((byte)(77)))));
+            this.pControlBox.Controls.Add(this.pictureReload);
+            this.pControlBox.Controls.Add(this.pictureBox1);
+            this.pControlBox.Controls.Add(this.lblTime);
             this.pControlBox.Controls.Add(this.lblPage);
             this.pControlBox.Controls.Add(this.btnCloseForm);
             this.pControlBox.Controls.Add(this.lblTitle);
@@ -509,6 +629,31 @@
             this.pControlBox.MouseDown += new System.Windows.Forms.MouseEventHandler(this.pControlBox_MouseDown);
             this.pControlBox.MouseMove += new System.Windows.Forms.MouseEventHandler(this.pControlBox_MouseMove);
             this.pControlBox.MouseUp += new System.Windows.Forms.MouseEventHandler(this.pControlBox_MouseUp);
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.pictureBox1.BackgroundImage = global::control_elements_sena.Properties.Resources.clock;
+            this.pictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.pictureBox1.Location = new System.Drawing.Point(718, 4);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(24, 24);
+            this.pictureBox1.TabIndex = 34;
+            this.pictureBox1.TabStop = false;
+            // 
+            // lblTime
+            // 
+            this.lblTime.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.lblTime.AutoSize = true;
+            this.lblTime.BackColor = System.Drawing.Color.Transparent;
+            this.lblTime.Font = new System.Drawing.Font("Segoe UI Semibold", 11.25F, System.Drawing.FontStyle.Bold);
+            this.lblTime.ForeColor = System.Drawing.Color.White;
+            this.lblTime.Location = new System.Drawing.Point(742, 6);
+            this.lblTime.Margin = new System.Windows.Forms.Padding(3, 15, 3, 15);
+            this.lblTime.Name = "lblTime";
+            this.lblTime.Size = new System.Drawing.Size(65, 20);
+            this.lblTime.TabIndex = 29;
+            this.lblTime.Text = "00:00:00";
             // 
             // lblPage
             // 
@@ -596,6 +741,28 @@
             this.btnCloseWindow.UseVisualStyleBackColor = false;
             this.btnCloseWindow.MouseClick += new System.Windows.Forms.MouseEventHandler(this.btnCloseWindow_Click);
             // 
+            // timeToday
+            // 
+            this.timeToday.Tick += new System.EventHandler(this.timeToday_Tick);
+            // 
+            // toolTipEntrances
+            // 
+            this.toolTipEntrances.AutomaticDelay = 0;
+            this.toolTipEntrances.AutoPopDelay = 5000;
+            this.toolTipEntrances.BackColor = System.Drawing.Color.Green;
+            this.toolTipEntrances.ForeColor = System.Drawing.Color.White;
+            this.toolTipEntrances.InitialDelay = 0;
+            this.toolTipEntrances.IsBalloon = true;
+            this.toolTipEntrances.ReshowDelay = 0;
+            // 
+            // toolTipReload
+            // 
+            this.toolTipReload.AutomaticDelay = 0;
+            this.toolTipReload.IsBalloon = true;
+            this.toolTipReload.Tag = "";
+            this.toolTipReload.ToolTipIcon = System.Windows.Forms.ToolTipIcon.Info;
+            this.toolTipReload.ToolTipTitle = "Recargar";
+            // 
             // ControlPanel
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
@@ -606,11 +773,14 @@
             this.Controls.Add(this.pDesktopContainer);
             this.Controls.Add(this.pSidebar);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "ControlPanel";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Panel de Control";
+            this.Load += new System.EventHandler(this.ControlPanel_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.pictureReload)).EndInit();
             this.dropMenuContainer.ResumeLayout(false);
             this.pSidebar.ResumeLayout(false);
             this.pSidebar.PerformLayout();
@@ -619,8 +789,13 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             this.pDesktopContainer.ResumeLayout(false);
+            this.pFooter.ResumeLayout(false);
+            this.pFooter.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureDate)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureAvatar)).EndInit();
             this.pControlBox.ResumeLayout(false);
             this.pControlBox.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -661,6 +836,18 @@
         private System.Windows.Forms.Panel pDesktopContainer;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Label lblPage;
+        private System.Windows.Forms.Panel pFooter;
         private System.Windows.Forms.Panel pContainer;
+        private System.Windows.Forms.Label lblTime;
+        private System.Windows.Forms.PictureBox pictureAvatar;
+        private System.Windows.Forms.Label lblName;
+        private System.Windows.Forms.Timer timeToday;
+        private System.Windows.Forms.Label lblDate;
+        private System.Windows.Forms.PictureBox pictureDate;
+        private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.Button btnEntrances;
+        private System.Windows.Forms.ToolTip toolTipEntrances;
+        private System.Windows.Forms.PictureBox pictureReload;
+        private System.Windows.Forms.ToolTip toolTipReload;
     }
 }
