@@ -42,10 +42,12 @@
             this.id_registro = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Marca = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.serie = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.toolTipNew = new System.Windows.Forms.ToolTip(this.components);
             this.toolTipEdit = new System.Windows.Forms.ToolTip(this.components);
-            this.toolTipStatus = new System.Windows.Forms.ToolTip(this.components);
+            this.btnEdit = new System.Windows.Forms.Button();
+            this.btnOptions = new System.Windows.Forms.Button();
+            this.pButtonsContainer = new System.Windows.Forms.Panel();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDatos)).BeginInit();
+            this.pButtonsContainer.SuspendLayout();
             this.SuspendLayout();
             // 
             // dgvDatos
@@ -97,6 +99,7 @@
             this.dgvDatos.RowHeadersVisible = false;
             this.dgvDatos.Size = new System.Drawing.Size(782, 432);
             this.dgvDatos.TabIndex = 7;
+            this.dgvDatos.SelectionChanged += new System.EventHandler(this.dgvDatos_SelectionChanged_1);
             // 
             // id
             // 
@@ -142,16 +145,6 @@
             this.serie.Name = "serie";
             this.serie.ReadOnly = true;
             // 
-            // toolTipNew
-            // 
-            this.toolTipNew.AutomaticDelay = 0;
-            this.toolTipNew.AutoPopDelay = 5000;
-            this.toolTipNew.InitialDelay = 0;
-            this.toolTipNew.IsBalloon = true;
-            this.toolTipNew.ReshowDelay = 0;
-            this.toolTipNew.ToolTipIcon = System.Windows.Forms.ToolTipIcon.Info;
-            this.toolTipNew.ToolTipTitle = "Agregar usuario";
-            // 
             // toolTipEdit
             // 
             this.toolTipEdit.AutomaticDelay = 0;
@@ -160,17 +153,49 @@
             this.toolTipEdit.IsBalloon = true;
             this.toolTipEdit.ReshowDelay = 0;
             this.toolTipEdit.ToolTipIcon = System.Windows.Forms.ToolTipIcon.Info;
-            this.toolTipEdit.ToolTipTitle = "Editar usuario";
+            this.toolTipEdit.ToolTipTitle = "Editar elemento";
             // 
-            // toolTipStatus
+            // btnEdit
             // 
-            this.toolTipStatus.AutomaticDelay = 0;
-            this.toolTipStatus.AutoPopDelay = 5000;
-            this.toolTipStatus.InitialDelay = 0;
-            this.toolTipStatus.IsBalloon = true;
-            this.toolTipStatus.ReshowDelay = 0;
-            this.toolTipStatus.ToolTipIcon = System.Windows.Forms.ToolTipIcon.Info;
-            this.toolTipStatus.ToolTipTitle = "Cambiar estado";
+            this.btnEdit.BackColor = System.Drawing.Color.Transparent;
+            this.btnEdit.BackgroundImage = global::control_elements_sena.Properties.Resources.open_enrollment;
+            this.btnEdit.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnEdit.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnEdit.FlatAppearance.BorderSize = 0;
+            this.btnEdit.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnEdit.Location = new System.Drawing.Point(0, 0);
+            this.btnEdit.Name = "btnEdit";
+            this.btnEdit.Size = new System.Drawing.Size(36, 36);
+            this.btnEdit.TabIndex = 1;
+            this.toolTipEdit.SetToolTip(this.btnEdit, "Asegúrate de haber seleccionado un elemento");
+            this.btnEdit.UseVisualStyleBackColor = false;
+            this.btnEdit.Click += new System.EventHandler(this.btnEdit_Click);
+            // 
+            // btnOptions
+            // 
+            this.btnOptions.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnOptions.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(4)))), ((int)(((byte)(55)))), ((int)(((byte)(77)))));
+            this.btnOptions.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnOptions.FlatAppearance.BorderSize = 0;
+            this.btnOptions.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnOptions.Image = global::control_elements_sena.Properties.Resources.options;
+            this.btnOptions.Location = new System.Drawing.Point(768, 9);
+            this.btnOptions.Name = "btnOptions";
+            this.btnOptions.Size = new System.Drawing.Size(23, 31);
+            this.btnOptions.TabIndex = 9;
+            this.btnOptions.UseVisualStyleBackColor = false;
+            this.btnOptions.Click += new System.EventHandler(this.btnOptions_Click);
+            // 
+            // pButtonsContainer
+            // 
+            this.pButtonsContainer.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.pButtonsContainer.AutoSize = true;
+            this.pButtonsContainer.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(4)))), ((int)(((byte)(50)))), ((int)(((byte)(77)))));
+            this.pButtonsContainer.Controls.Add(this.btnEdit);
+            this.pButtonsContainer.Location = new System.Drawing.Point(733, 9);
+            this.pButtonsContainer.Name = "pButtonsContainer";
+            this.pButtonsContainer.Size = new System.Drawing.Size(39, 39);
+            this.pButtonsContainer.TabIndex = 10;
             // 
             // Elementos
             // 
@@ -178,6 +203,8 @@
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(236)))), ((int)(((byte)(237)))), ((int)(((byte)(240)))));
             this.ClientSize = new System.Drawing.Size(800, 450);
             this.ControlBox = false;
+            this.Controls.Add(this.btnOptions);
+            this.Controls.Add(this.pButtonsContainer);
             this.Controls.Add(this.dgvDatos);
             this.ForeColor = System.Drawing.Color.Black;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
@@ -187,23 +214,26 @@
             this.ShowIcon = false;
             this.ShowInTaskbar = false;
             this.Text = "Users";
-            this.Load += new System.EventHandler(this.Users_Load);
+            this.Load += new System.EventHandler(this.Elementos_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvDatos)).EndInit();
+            this.pButtonsContainer.ResumeLayout(false);
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
         #endregion
 
         private System.Windows.Forms.DataGridView dgvDatos;
-        private System.Windows.Forms.ToolTip toolTipStatus;
         private System.Windows.Forms.ToolTip toolTipEdit;
-        private System.Windows.Forms.ToolTip toolTipNew;
         private System.Windows.Forms.DataGridViewTextBoxColumn id;
         private System.Windows.Forms.DataGridViewTextBoxColumn identificacion_propietario;
         private System.Windows.Forms.DataGridViewTextBoxColumn nombres_propietario;
         private System.Windows.Forms.DataGridViewTextBoxColumn id_registro;
         private System.Windows.Forms.DataGridViewTextBoxColumn Marca;
         private System.Windows.Forms.DataGridViewTextBoxColumn serie;
+        private System.Windows.Forms.Button btnOptions;
+        private System.Windows.Forms.Panel pButtonsContainer;
+        private System.Windows.Forms.Button btnEdit;
     }
 }

@@ -21,7 +21,7 @@ namespace control_elements_sena.Controllers.Usuarios
                         cmd.CommandType = CommandType.StoredProcedure;
                         cmd.Parameters.AddWithValue("@nom", nombres);
                         cmd.Parameters.AddWithValue("@ape", apellidos);
-                        cmd.Parameters.AddWithValue("@ide", Convert.ToInt64(identificacion));
+                        cmd.Parameters.AddWithValue("@ide", identificacion);
                         cmd.Parameters.AddWithValue("@cor", correo);
                         cmd.Parameters.AddWithValue("@pas", hashedPassword);
                         // Agregar otros parámetros según sea necesario

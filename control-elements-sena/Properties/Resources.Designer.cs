@@ -343,6 +343,16 @@ namespace control_elements_sena.Properties {
         /// <summary>
         ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap open_enrollment {
+            get {
+                object obj = ResourceManager.GetObject("open-enrollment", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap options {
             get {
                 object obj = ResourceManager.GetObject("options", resourceCulture);
@@ -376,6 +386,16 @@ namespace control_elements_sena.Properties {
         internal static System.Drawing.Bitmap perfil_avatar {
             get {
                 object obj = ResourceManager.GetObject("perfil-avatar", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap personal_data {
+            get {
+                object obj = ResourceManager.GetObject("personal-data", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

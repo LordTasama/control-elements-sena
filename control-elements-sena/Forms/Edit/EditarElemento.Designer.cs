@@ -1,6 +1,6 @@
 ﻿namespace control_elements_sena.Forms.Create
 {
-    partial class EstadoUsuario
+    partial class EditarElemento
     {
         /// <summary>
         /// Required designer variable.
@@ -32,9 +32,11 @@
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.lblTitle = new System.Windows.Forms.Label();
             this.btnCloseWindow = new System.Windows.Forms.Button();
-            this.label1 = new System.Windows.Forms.Label();
+            this.lbUser = new System.Windows.Forms.Label();
+            this.txtMarca = new System.Windows.Forms.TextBox();
+            this.label2 = new System.Windows.Forms.Label();
+            this.txtSerie = new System.Windows.Forms.TextBox();
             this.btnSend = new System.Windows.Forms.Button();
-            this.txtNameUser = new System.Windows.Forms.TextBox();
             this.pControlBox.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
@@ -56,7 +58,7 @@
             // 
             // pictureBox1
             // 
-            this.pictureBox1.BackgroundImage = global::control_elements_sena.Properties.Resources.status_user;
+            this.pictureBox1.BackgroundImage = global::control_elements_sena.Properties.Resources.open_enrollment;
             this.pictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.pictureBox1.Location = new System.Drawing.Point(3, 5);
             this.pictureBox1.Name = "pictureBox1";
@@ -71,9 +73,9 @@
             this.lblTitle.ForeColor = System.Drawing.Color.White;
             this.lblTitle.Location = new System.Drawing.Point(29, 4);
             this.lblTitle.Name = "lblTitle";
-            this.lblTitle.Size = new System.Drawing.Size(116, 21);
+            this.lblTitle.Size = new System.Drawing.Size(126, 21);
             this.lblTitle.TabIndex = 0;
-            this.lblTitle.Text = "Estado usuario";
+            this.lblTitle.Text = "Editar elemento";
             // 
             // btnCloseWindow
             // 
@@ -94,17 +96,47 @@
             this.btnCloseWindow.UseVisualStyleBackColor = false;
             this.btnCloseWindow.Click += new System.EventHandler(this.btnCloseWindow_Click);
             // 
-            // label1
+            // lbUser
             // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Segoe UI Semibold", 11F, System.Drawing.FontStyle.Bold);
-            this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(53)))), ((int)(((byte)(69)))));
-            this.label1.Location = new System.Drawing.Point(25, 67);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(171, 60);
-            this.label1.TabIndex = 19;
-            this.label1.Text = "Esta acción cambiara el \r\nestado de este usuario \r\n¿Estás seguro?";
-            this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.lbUser.AutoSize = true;
+            this.lbUser.BackColor = System.Drawing.Color.Transparent;
+            this.lbUser.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbUser.ForeColor = System.Drawing.Color.Black;
+            this.lbUser.Location = new System.Drawing.Point(5, 39);
+            this.lbUser.Name = "lbUser";
+            this.lbUser.Size = new System.Drawing.Size(45, 17);
+            this.lbUser.TabIndex = 2;
+            this.lbUser.Text = "Marca";
+            // 
+            // txtMarca
+            // 
+            this.txtMarca.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtMarca.Location = new System.Drawing.Point(8, 59);
+            this.txtMarca.MaxLength = 255;
+            this.txtMarca.Name = "txtMarca";
+            this.txtMarca.Size = new System.Drawing.Size(206, 25);
+            this.txtMarca.TabIndex = 3;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.BackColor = System.Drawing.Color.Transparent;
+            this.label2.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.ForeColor = System.Drawing.Color.Black;
+            this.label2.Location = new System.Drawing.Point(5, 89);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(37, 17);
+            this.label2.TabIndex = 4;
+            this.label2.Text = "Serie";
+            // 
+            // txtSerie
+            // 
+            this.txtSerie.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtSerie.Location = new System.Drawing.Point(8, 109);
+            this.txtSerie.MaxLength = 255;
+            this.txtSerie.Name = "txtSerie";
+            this.txtSerie.Size = new System.Drawing.Size(206, 25);
+            this.txtSerie.TabIndex = 5;
             // 
             // btnSend
             // 
@@ -116,43 +148,34 @@
             this.btnSend.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnSend.Font = new System.Drawing.Font("Segoe UI Semibold", 11F, System.Drawing.FontStyle.Bold);
             this.btnSend.ForeColor = System.Drawing.Color.White;
-            this.btnSend.Location = new System.Drawing.Point(68, 145);
+            this.btnSend.Location = new System.Drawing.Point(73, 150);
             this.btnSend.Name = "btnSend";
-            this.btnSend.Size = new System.Drawing.Size(86, 33);
+            this.btnSend.Size = new System.Drawing.Size(75, 33);
             this.btnSend.TabIndex = 13;
-            this.btnSend.Text = "Confirmar";
+            this.btnSend.Text = "Guardar";
             this.btnSend.UseVisualStyleBackColor = false;
             this.btnSend.Click += new System.EventHandler(this.btnSend_Click);
             // 
-            // txtNameUser
-            // 
-            this.txtNameUser.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtNameUser.Location = new System.Drawing.Point(12, 39);
-            this.txtNameUser.Name = "txtNameUser";
-            this.txtNameUser.ReadOnly = true;
-            this.txtNameUser.Size = new System.Drawing.Size(198, 25);
-            this.txtNameUser.TabIndex = 20;
-            this.txtNameUser.Text = "Jhon Anderson Tasama Pérez";
-            this.txtNameUser.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // EstadoUsuario
+            // EditarElemento
             // 
             this.AcceptButton = this.btnSend;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(236)))), ((int)(((byte)(237)))), ((int)(((byte)(240)))));
             this.CancelButton = this.btnCloseWindow;
-            this.ClientSize = new System.Drawing.Size(222, 190);
+            this.ClientSize = new System.Drawing.Size(222, 207);
             this.ControlBox = false;
-            this.Controls.Add(this.txtNameUser);
-            this.Controls.Add(this.label1);
             this.Controls.Add(this.btnSend);
+            this.Controls.Add(this.label2);
+            this.Controls.Add(this.txtSerie);
+            this.Controls.Add(this.lbUser);
+            this.Controls.Add(this.txtMarca);
             this.Controls.Add(this.pControlBox);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.Name = "EstadoUsuario";
+            this.Name = "EditarElemento";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Estado Usuario";
-            this.Load += new System.EventHandler(this.EditarUsuario_Load);
+            this.Text = "Editar Elemento";
+            this.Load += new System.EventHandler(this.EditarElemento_Load);
             this.pControlBox.ResumeLayout(false);
             this.pControlBox.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
@@ -165,10 +188,12 @@
 
         private System.Windows.Forms.Panel pControlBox;
         private System.Windows.Forms.Button btnCloseWindow;
+        private System.Windows.Forms.Label lbUser;
+        private System.Windows.Forms.TextBox txtMarca;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Label lblTitle;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.TextBox txtSerie;
         private System.Windows.Forms.Button btnSend;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.TextBox txtNameUser;
     }
 }

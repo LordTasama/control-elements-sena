@@ -37,11 +37,13 @@ namespace control_elements_sena
 
             if (dgvDatos.Rows.Count == 0)
             {
-                dgvDatos.Rows.Add(new object[] { "", "", "", "", "", "SIN DATOS PARA MOSTRAR", "", "" });
+                dgvDatos.Rows.Add(new object[] { "", "", "", "", "", "", "SIN DATOS PARA MOSTRAR", "","","" });
 
 
             }
             dgvDatos.ClearSelection();
         }
+
+     
     }
 }
