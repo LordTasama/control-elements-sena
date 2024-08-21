@@ -121,6 +121,7 @@
             this.txtIdPropietario.Name = "txtIdPropietario";
             this.txtIdPropietario.Size = new System.Drawing.Size(206, 25);
             this.txtIdPropietario.TabIndex = 3;
+            this.txtIdPropietario.TextChanged += new System.EventHandler(this.txtIdPropietario_TextChanged);
             // 
             // label2
             // 
@@ -202,6 +203,8 @@
             this.cmbMarca.Name = "cmbMarca";
             this.cmbMarca.Size = new System.Drawing.Size(206, 25);
             this.cmbMarca.TabIndex = 7;
+            this.cmbMarca.SelectedIndexChanged += new System.EventHandler(this.cmbMarca_SelectedIndexChanged);
+            this.cmbMarca.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.cmbMarca_KeyPress);
             // 
             // CrearEntrada
             // 

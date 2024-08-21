@@ -41,6 +41,7 @@ namespace control_elements_sena.Controllers.Elementos
                 return (elementsTable, false);
             }
         }
+
         public static bool EditarElemento(string id, string marca,string serie)
         {
 

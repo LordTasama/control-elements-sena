@@ -109,8 +109,8 @@ namespace control_elements_sena.Forms.Create
 
         private void EditarUsuario_Load(object sender, EventArgs e)
         {
-            txtIdentificacion.Text = _data[2];
-            txtNombres.Text = _data[1];
+            txtIdentificacion.Text = _data[1];
+            txtNombres.Text = _data[2];
         }
     }
 }

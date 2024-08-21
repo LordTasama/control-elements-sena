@@ -133,7 +133,7 @@
             // txtUser
             // 
             this.txtUser.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtUser.Location = new System.Drawing.Point(43, 151);
+            this.txtUser.Location = new System.Drawing.Point(44, 151);
             this.txtUser.MaxLength = 255;
             this.txtUser.Name = "txtUser";
             this.txtUser.Size = new System.Drawing.Size(172, 25);
@@ -142,7 +142,7 @@
             // txtPassword
             // 
             this.txtPassword.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtPassword.Location = new System.Drawing.Point(43, 218);
+            this.txtPassword.Location = new System.Drawing.Point(44, 218);
             this.txtPassword.MaxLength = 600;
             this.txtPassword.Name = "txtPassword";
             this.txtPassword.PasswordChar = '*';
@@ -173,7 +173,7 @@
             this.lbUser.BackColor = System.Drawing.Color.Transparent;
             this.lbUser.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbUser.ForeColor = System.Drawing.SystemColors.Control;
-            this.lbUser.Location = new System.Drawing.Point(46, 131);
+            this.lbUser.Location = new System.Drawing.Point(47, 131);
             this.lbUser.Name = "lbUser";
             this.lbUser.Size = new System.Drawing.Size(145, 17);
             this.lbUser.TabIndex = 11;
@@ -185,7 +185,7 @@
             this.label1.BackColor = System.Drawing.Color.Transparent;
             this.label1.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.SystemColors.Control;
-            this.label1.Location = new System.Drawing.Point(46, 198);
+            this.label1.Location = new System.Drawing.Point(47, 198);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(77, 17);
             this.label1.TabIndex = 12;
@@ -201,7 +201,7 @@
             this.btnShowPassword.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
             this.btnShowPassword.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
             this.btnShowPassword.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnShowPassword.Location = new System.Drawing.Point(218, 218);
+            this.btnShowPassword.Location = new System.Drawing.Point(219, 218);
             this.btnShowPassword.Name = "btnShowPassword";
             this.btnShowPassword.Size = new System.Drawing.Size(29, 23);
             this.btnShowPassword.TabIndex = 13;
@@ -224,7 +224,7 @@
             // 
             this.pictureBox1.BackColor = System.Drawing.Color.Transparent;
             this.pictureBox1.Image = global::control_elements_sena.Properties.Resources.avatar_white;
-            this.pictureBox1.Location = new System.Drawing.Point(14, 151);
+            this.pictureBox1.Location = new System.Drawing.Point(15, 151);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(23, 22);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -235,7 +235,7 @@
             // 
             this.pictureBox2.BackColor = System.Drawing.Color.Transparent;
             this.pictureBox2.Image = global::control_elements_sena.Properties.Resources.password_white;
-            this.pictureBox2.Location = new System.Drawing.Point(14, 219);
+            this.pictureBox2.Location = new System.Drawing.Point(15, 219);
             this.pictureBox2.Name = "pictureBox2";
             this.pictureBox2.Size = new System.Drawing.Size(23, 22);
             this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -297,7 +297,6 @@
             this.Name = "Login";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Panel de Control";
-            this.Load += new System.EventHandler(this.Login_Load);
             this.pControlBox.ResumeLayout(false);
             this.pControlBox.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();

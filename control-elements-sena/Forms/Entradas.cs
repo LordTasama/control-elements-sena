@@ -15,8 +15,6 @@ namespace control_elements_sena
             InitializeComponent();
         }
 
-
-
         private void btnCloseForm_Click_1(object sender, EventArgs e)
         {
             this.Close();
@@ -64,7 +62,12 @@ namespace control_elements_sena
             {
                 dgvDatos.Rows.Add(new object[] { "", "", "", "", "", "", "SIN DATOS PARA MOSTRAR", "", "", "" });
             }
-            dgvDatos.Rows[0].ReadOnly = true;
+            else
+            {
+                toolTipHelper.IsBalloon = false;
+                toolTipHelper.Show("Doble click en cualquier celda para registrar salida",this,50,-40,1500);
+                balloonToolTip.Start();
+            }
             dgvDatos.ClearSelection();
         }
 
@@ -85,7 +88,7 @@ namespace control_elements_sena
                 DialogResult dr = MessageBox.Show($"Selecciona 'OK' o 'Aceptar' para confirmar la hora de salida de este elemento.\n\nInformación del elemento:\n- Propietario: {data.Cells["nombres_propietario"].Value}\n- Marca: {data.Cells["marca"].Value}\n- Serie: {data.Cells["serie"].Value}", "Registrar salida", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
                 if(dr == DialogResult.OK)
                 {
-                    if (Controllers.Entradas.Entradas.RegistrarSalida())
+                    if (Controllers.Entradas.Entradas.RegistrarSalida(data.Cells["id"].Value.ToString()))
                     {
                         MessageBox.Show("Operación exitosa", "Respuesta", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     }
@@ -94,6 +97,12 @@ namespace control_elements_sena
                     }
                 }
             }
+        }
+
+        private void balloonToolTip_Tick(object sender, EventArgs e)
+        {
+            toolTipHelper.IsBalloon = true;
+            balloonToolTip.Stop();
         }
     }
 }

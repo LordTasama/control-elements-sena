@@ -1,6 +1,7 @@
 ﻿using control_elements_sena.Forms.Create;
 using System;
 using System.Collections.Generic;
+using System.Collections.Specialized;
 using System.Data;
 using System.Data.SqlClient;
 using System.Linq;
@@ -12,6 +13,8 @@ namespace control_elements_sena.Controllers.Entradas
     public class Entradas
     { 
         public static string errorMessage = "";
+        public static string idRegistro = null;
+        public static string idElemento = null;
         public static bool CrearEntrada(string id_propietario, string nombres_propietario, string marca_elemento, string serie_elemento)
         {
            
@@ -32,8 +35,10 @@ namespace control_elements_sena.Controllers.Entradas
                         command1.CommandType = CommandType.StoredProcedure;
                         command1.Parameters.AddWithValue("@ide", id_propietario);
                         command1.Parameters.AddWithValue("@nom", nombres_propietario);
-                        string idRegistro = command1.ExecuteScalar().ToString();
- 
+                        if (idRegistro == null)
+                        {
+                            idRegistro = command1.ExecuteScalar().ToString();
+                        }
                         using (SqlCommand command2 = new SqlCommand("CrearElemento", connection))
                         {
                             command2.Transaction = transaction;
@@ -41,14 +46,16 @@ namespace control_elements_sena.Controllers.Entradas
                             command2.Parameters.AddWithValue("@idr", idRegistro);
                             command2.Parameters.AddWithValue("@mar", marca_elemento);
                             command2.Parameters.AddWithValue("@ser", serie_elemento);
-                            string idElement = command2.ExecuteScalar().ToString();
-
+                            if (idElemento == null)
+                            {                         
+                            idElemento = command2.ExecuteScalar().ToString();
+                            }
                             using (SqlCommand command3 = new SqlCommand("CrearEntrada", connection))
                             {
                                 command3.Transaction = transaction;
                                 command3.CommandType = CommandType.StoredProcedure;
                                 command3.Parameters.AddWithValue("@idu", 1);
-                                command3.Parameters.AddWithValue("@ide", idElement);
+                                command3.Parameters.AddWithValue("@ide", idElemento);
                                 command3.Parameters.AddWithValue("@hoe", DateTime.Now);
                                 command3.Parameters.AddWithValue("@hos", DBNull.Value);
 
@@ -118,7 +125,38 @@ namespace control_elements_sena.Controllers.Entradas
                 return (entrancesTable, false);
             }
         }
-        public static  bool RegistrarSalida()
+        public static (DataTable, bool) SeleccionarDatosRegistro(string id_registro)
+        {
+            DataTable data = new DataTable();
+            try
+            {
+                using (SqlConnection connection = DatabaseConnect.GetConnection())
+                {
+                    using (SqlCommand command = new SqlCommand("SeleccionarDatosRegistro", connection))
+                    {
+                        command.CommandType = CommandType.StoredProcedure;
+                        command.Parameters.AddWithValue("@idr", id_registro);
+                        SqlDataAdapter adapter = new SqlDataAdapter(command);
+
+                        connection.Open();
+                        adapter.Fill(data);
+
+                        return (data, true);
+                    }
+                }
+            }
+            catch (SqlException ex)
+            {
+                errorMessage = "Error con la base de datos. Código de error: " + ex.Number + "\n\nDetalles:\n" + ex.Message;
+                return (data, false);
+            }
+            catch (Exception ex)
+            {
+                errorMessage = "Error al seleccionar datos del registro. Detalles: " + ex.Message;
+                return (data, false);
+            }
+        }
+        public static  bool RegistrarSalida(string id)
         {
 
             try
@@ -129,6 +167,7 @@ namespace control_elements_sena.Controllers.Entradas
                     {
                         connection.Open();
                         command.CommandType = CommandType.StoredProcedure;
+                        command.Parameters.AddWithValue("@ids", id);
                         command.Parameters.AddWithValue("@hos", DateTime.Now);
 
                      

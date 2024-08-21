@@ -309,6 +309,7 @@ namespace control_elements_sena
 
         private void ControlPanel_Load(object sender, EventArgs e)
         {
+
             firstTickTime = false;
             timeToday.Start();
         }

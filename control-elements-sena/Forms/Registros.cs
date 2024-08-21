@@ -35,7 +35,7 @@ namespace control_elements_sena
             foreach (DataRow data in recordData.Rows)
             {
 
-                dgvDatos.Rows.Add(new object[] { data[0], data[1], data[2]});
+                dgvDatos.Rows.Add(new object[] { data[0], data[2], data[1]});
 
 
             }

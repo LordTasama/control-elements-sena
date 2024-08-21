@@ -72,6 +72,7 @@
     <Compile Include="Controllers\Elementos\Elementos.cs" />
     <Compile Include="Controllers\Entradas\Entradas.cs" />
     <Compile Include="Controllers\Registros\Registros.cs" />
+    <Compile Include="Controllers\Session.cs" />
     <Compile Include="Controllers\Usuarios\Usuarios.cs" />
     <Compile Include="Controllers\ValidacionesEntrada.cs" />
     <Compile Include="Forms\Create\CrearEntrada.cs">
@@ -140,6 +141,7 @@
     <Compile Include="Forms\Users.Designer.cs">
       <DependentUpon>Users.cs</DependentUpon>
     </Compile>
+    <Compile Include="Models\Elemento.cs" />
     <Compile Include="Models\EntradasModel.cs" />
     <Compile Include="Models\UsuarioModel.cs" />
     <Compile Include="Forms\Login.cs">

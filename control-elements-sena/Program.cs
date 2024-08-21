@@ -13,7 +13,12 @@ namespace control_elements_sena
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new ControlPanel());
+            Login login = new Login();
+
+            if (login.ShowDialog() == DialogResult.OK) {
+                Application.Run(new ControlPanel());
+            }
+            
         }
     }
 }

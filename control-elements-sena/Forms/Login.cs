@@ -1,4 +1,5 @@
-﻿using System;
+﻿using control_elements_sena.Controllers;
+using System;
 using System.Drawing;
 using System.Windows.Forms;
 
@@ -45,12 +46,6 @@ namespace control_elements_sena
         {
             this.Close();
         }
-
-        private void Login_Load(object sender, EventArgs e)
-        {
-
-        }
-
         private void txtPassword_TextChanged(object sender, EventArgs e)
         {
             if (txtPassword.Text == "")
@@ -78,6 +73,31 @@ namespace control_elements_sena
 
         private void btnLogin_Click(object sender, EventArgs e)
         {
+            string mensaje = "No deberías estar viendo este mensaje, creo que algo no muy bueno pasó... si lo ves contáctame :D +57 3234407488";
+            MessageBoxIcon icono = MessageBoxIcon.Question;
+            if (txtUser.Text.Length > 0 && txtPassword.Text.Length > 0)
+            {
+                if (Session.SessionStart(txtUser.Text, txtPassword.Text))
+                {
+                    mensaje = "¡Inicio de sesión exitoso!";
+                    icono = MessageBoxIcon.Information;
+                    this.DialogResult = DialogResult.OK;
+                    this.Close();
+                }
+                else
+                {
+                    mensaje = Session.errorMessage;
+                    icono = MessageBoxIcon.Error;
+                }
+                
+
+            }
+            else
+            {
+                mensaje = "Verifica si hay campos vacíos";
+                icono = MessageBoxIcon.Error;
+            }
+            MessageBox.Show(mensaje,"Inicio de sesión",MessageBoxButtons.OK,icono);
 
         }
 
