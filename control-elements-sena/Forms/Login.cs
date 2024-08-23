@@ -75,18 +75,20 @@ namespace control_elements_sena
         {
             string mensaje = "No deberías estar viendo este mensaje, creo que algo no muy bueno pasó... si lo ves contáctame :D +57 3234407488";
             MessageBoxIcon icono = MessageBoxIcon.Question;
+            Session session = new Session();
             if (txtUser.Text.Length > 0 && txtPassword.Text.Length > 0)
             {
-                if (Session.SessionStart(txtUser.Text, txtPassword.Text))
+                var data = session.SessionStart(txtUser.Text, txtPassword.Text);
+                if (data.Item1)
                 {
-                    mensaje = "¡Inicio de sesión exitoso!";
+                    mensaje = "Autenticación completada";
                     icono = MessageBoxIcon.Information;
                     this.DialogResult = DialogResult.OK;
                     this.Close();
                 }
                 else
                 {
-                    mensaje = Session.errorMessage;
+                    mensaje = session.errorMessage;
                     icono = MessageBoxIcon.Error;
                 }
                 

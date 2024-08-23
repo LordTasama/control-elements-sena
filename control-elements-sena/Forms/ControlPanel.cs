@@ -1,4 +1,5 @@
-﻿using System;
+﻿using control_elements_sena.Controllers;
+using System;
 using System.Drawing;
 using System.Windows.Forms;
 
@@ -217,7 +218,12 @@ namespace control_elements_sena
 
         private void btnLogOut_Click(object sender, EventArgs e)
         {
+            DialogResult dr = MessageBox.Show("¿Desea cerrar la sesión actual?, deberás iniciar sesión nuevamente","Cerrar sesión",MessageBoxButtons.YesNo,MessageBoxIcon.Question);
 
+            if (dr == DialogResult.Yes)
+            {
+                Application.Restart();
+            }
         }
 
         private void btnCloseForm_Click_1(object sender, EventArgs e)
@@ -307,9 +313,14 @@ namespace control_elements_sena
             }
         }
 
-        private void ControlPanel_Load(object sender, EventArgs e)
+        private async void ControlPanel_Load(object sender, EventArgs e)
         {
-
+            Session session = new Session();
+            await session.DescifrarTokenAsync();
+            if (!session.validToken)
+            {
+                MessageBox.Show("Token no válido o ya expiró, por favor inicia sesión nuevamente", "Error al validar datos", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
             firstTickTime = false;
             timeToday.Start();
         }

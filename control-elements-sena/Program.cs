@@ -15,10 +15,10 @@ namespace control_elements_sena
             Application.SetCompatibleTextRenderingDefault(false);
             Login login = new Login();
 
-            if (login.ShowDialog() == DialogResult.OK) {
-                Application.Run(new ControlPanel());
+            if (login.ShowDialog() == DialogResult.OK) { 
+            Application.Run(new ControlPanel());
             }
-            
+
         }
     }
 }
