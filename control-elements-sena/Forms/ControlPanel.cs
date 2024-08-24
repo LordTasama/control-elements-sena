@@ -1,6 +1,8 @@
 ﻿using control_elements_sena.Controllers;
+using control_elements_sena.Forms;
 using System;
 using System.Drawing;
+using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace control_elements_sena
@@ -13,6 +15,8 @@ namespace control_elements_sena
         private bool sidebarExpand = true;
         private Form currentForm;
         private bool firstTickTime;
+        public static string idEmailUser = "";
+        public static string idSessionUser;
         public ControlPanel()
         {
             InitializeComponent();
@@ -199,7 +203,6 @@ namespace control_elements_sena
         {
             lblPage.Text = "Reportes ";
             this.Text = "Panel de Control - Reportes";
-            SidebarSelect();
         }
 
         private void btnInforms_Click(object sender, EventArgs e)
@@ -213,7 +216,8 @@ namespace control_elements_sena
         private void btnPerfil_Click(object sender, EventArgs e)
         {
             lblPage.Text = "Mi perfil";
-            SidebarSelect();
+            this.Text = "Panel de Control - Mi perfil";
+            loadForm("Mi perfil");
         }
 
         private void btnLogOut_Click(object sender, EventArgs e)
@@ -315,12 +319,20 @@ namespace control_elements_sena
 
         private async void ControlPanel_Load(object sender, EventArgs e)
         {
-            Session session = new Session();
-            await session.DescifrarTokenAsync();
-            if (!session.validToken)
+            string[] data = await DatosToken();
+            idSessionUser = data[0];
+            idEmailUser = $"{data[1]} - {data[4]}";
+            lblIdUser.Text = new string('*', idEmailUser.Length);
+            // Convertir a mayus la primera letra.
+
+            string[] names = data[2].Split(' ');
+            string[] newNames = new string[data.Length];
+            for (int i = 0; i < names.Length; i++)
             {
-                MessageBox.Show("Token no válido o ya expiró, por favor inicia sesión nuevamente", "Error al validar datos", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                newNames[i] = $"{names[i].Substring(0, 1).ToUpper()}{names[i].Substring(1, names[i].Length-1).ToLower()}";
             }
+
+            lblName.Text = string.Join(" ", newNames);
             firstTickTime = false;
             timeToday.Start();
         }
@@ -329,6 +341,33 @@ namespace control_elements_sena
         {
             currentForm.Close();
             loadForm(lblPage.Text);
+        }
+        
+        private void lblIdUser_MouseHover(object sender, EventArgs e)
+        {
+
+            lblIdUser.Text = idEmailUser;
+        }
+
+       
+
+        private void lblIdUser_MouseLeave(object sender, EventArgs e)
+        {
+            lblIdUser.Text = new string('*', lblIdUser.Text.Length);
+        }
+
+        // Funciones personalizadas
+        private async Task<string[]> DatosToken()
+        {
+            Session session = new Session();
+            string[] data = await session.DescifrarTokenAsync();
+            if (!session.validToken)
+            {
+                MessageBox.Show("Token no válido o ya expiró, por favor inicia sesión nuevamente", "Error al validar ", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                Application.Exit();
+            }
+
+            return data;
         }
         private void loadForm(string condition)
         {
@@ -384,7 +423,7 @@ namespace control_elements_sena
             {
 
             }
-            else if(condition == "Denuncias")
+            else if (condition == "Denuncias")
             {
                 var denuncias = new Denuncias();
                 denuncias.TopLevel = false;
@@ -395,9 +434,16 @@ namespace control_elements_sena
                 denuncias.Show();
                 currentForm = denuncias;
             }
-            else if(condition == "Mi perfil")
+            else if (condition == "Mi perfil")
             {
-
+                var perfil = new Perfil();
+                perfil.TopLevel = false;
+                perfil.Dock = DockStyle.Fill;
+                pContainer.Controls.Add(perfil);
+                pContainer.Tag = perfil;
+                perfil.BringToFront();
+                perfil.Show();
+                currentForm = perfil;
             }
             btnCloseForm.Visible = true;
             pictureReload.Visible = true;

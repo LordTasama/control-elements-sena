@@ -63,6 +63,16 @@ namespace control_elements_sena.Properties {
         /// <summary>
         ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap _31ec2ce212492e600b8de27f38846ed7 {
+            get {
+                object obj = ResourceManager.GetObject("31ec2ce212492e600b8de27f38846ed7", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap add_user {
             get {
                 object obj = ResourceManager.GetObject("add_user", resourceCulture);
@@ -206,6 +216,16 @@ namespace control_elements_sena.Properties {
         internal static System.Drawing.Bitmap control_panel {
             get {
                 object obj = ResourceManager.GetObject("control-panel", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap denuncia_create {
+            get {
+                object obj = ResourceManager.GetObject("denuncia-create", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -436,6 +456,16 @@ namespace control_elements_sena.Properties {
         internal static System.Drawing.Bitmap sena_logo {
             get {
                 object obj = ResourceManager.GetObject("sena-logo", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap solucion_denuncia {
+            get {
+                object obj = ResourceManager.GetObject("solucion-denuncia", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

@@ -93,6 +93,11 @@ namespace control_elements_sena.Controllers.Usuarios
 
         public static bool CambiarEstadoUsuario(long idUsuario, int estado)
         {
+            if(ControlPanel.idSessionUser == idUsuario.ToString())
+            {
+                errorMessage = "No puedes cambiar tu propio estado";
+                return false;
+            }
             try
             {
                 using (SqlConnection connection = DatabaseConnect.GetConnection())
@@ -103,6 +108,7 @@ namespace control_elements_sena.Controllers.Usuarios
 
                         command.Parameters.AddWithValue("@idu", idUsuario);
                         command.Parameters.AddWithValue("@est", estado);
+                        command.Parameters.AddWithValue("@ids", ControlPanel.idSessionUser);
 
                         connection.Open();
                         command.ExecuteNonQuery();

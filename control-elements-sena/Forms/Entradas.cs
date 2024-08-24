@@ -32,7 +32,7 @@ namespace control_elements_sena
             }
         }
 
-        private void Users_Load(object sender, EventArgs e)
+        private void Entradas_Load(object sender, EventArgs e)
         {
             pButtonsContainer.Visible = false;
             var response = Controllers.Entradas.Entradas.SeleccionarEntradas();
@@ -54,7 +54,7 @@ namespace control_elements_sena
             {
                 if (data.Cells["hora_salida"].Value.ToString() == "PENDIENTE")
                 {
-                    data.Cells["hora_salida"].Style.BackColor = Color.Red;
+                    data.Cells["hora_salida"].Style.BackColor = Color.FromArgb(57,169,0);
                     data.Cells["hora_salida"].ToolTipText = "Doble click para fijar hora de salida";
                 }
             }

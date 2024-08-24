@@ -8,11 +8,11 @@ using System.Windows.Forms;
 
 namespace control_elements_sena.Forms.Create
 {
-    public partial class CrearEntrada : Form
+    public partial class CrearDenuncia : Form
     {
         private Point lastLocation;
         private bool mouseDown;
-        public CrearEntrada()
+        public CrearDenuncia()
         {
             InitializeComponent();
         }
@@ -54,9 +54,8 @@ namespace control_elements_sena.Forms.Create
                 Id_Propietario = txtIdPropietario.Text,
                 Nombres_Propietario = txtNombres.Text,
                 Marca = cmbMarca.Text,
-                Serie = txtSerie.Text,
                 registroValidate = true,
-                elementValidate = true,
+                elementValidate = false,
             };
 
             var validator = new ValidacionesEntrada();
@@ -88,16 +87,16 @@ namespace control_elements_sena.Forms.Create
             // Enviar datos
             else
             {
-                bool response = Controllers.Entradas.Entradas.CrearEntrada(txtIdPropietario.Text,txtNombres.Text,cmbMarca.Text,txtSerie.Text);
+                bool response = Controllers.Denuncias.Denuncias.CrearDenuncia(txtDescription.Text, Controllers.Entradas.Entradas.idElemento,txtIdPropietario.Text);
 
                 if (response)
                 {
-                    MessageBox.Show("Entrada registrada exitosamente", "Respuesta", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    MessageBox.Show("Denuncia registrada exitosamente", "Respuesta", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     this.Close();
                 }
                 else
                 {
-                    MessageBox.Show(Controllers.Entradas.Entradas.errorMessage, "Respuesta", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show(Controllers.Denuncias.Denuncias.errorMessage, "Respuesta", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
 
@@ -118,7 +117,7 @@ namespace control_elements_sena.Forms.Create
                 {
                     nombres = nombres ?? row["nombres"].ToString();
                     firstSerie = firstSerie ?? row["serie"].ToString();
-                    datosElementos.Add(new Elemento { Id_Registro = row["id_registro"].ToString(), Id_Elemento = row["id_elemento"].ToString() , Marca =row["marca"].ToString(),Serie = row["serie"].ToString() });
+                    datosElementos.Add(new Elemento { Id_Elemento = row["id_elemento"].ToString() , Marca =row["marca"].ToString()});
 
                 }
                 cmbMarca.Text = "";
@@ -126,21 +125,18 @@ namespace control_elements_sena.Forms.Create
                 cmbMarca.DisplayMember = "Marca";
                 cmbMarca.ValueMember = "Serie";
                 txtNombres.Text = nombres;
-                txtSerie.Text = firstSerie;
 
             } 
             else
             {
-                MessageBox.Show("Error al traer los datos", "Datos registro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Error al traer los datos", "Datos denuncia", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
            if(data.Item1.Rows.Count == 0)
             {
-                Controllers.Entradas.Entradas.idRegistro = null;
                 Controllers.Entradas.Entradas.idElemento = null;
             }
             else
             {
-                Controllers.Entradas.Entradas.idRegistro = data.Item1.Rows[0]["id_registro"].ToString();
                 Controllers.Entradas.Entradas.idElemento = data.Item1.Rows[0]["id_elemento"].ToString();
             }
 
@@ -149,18 +145,11 @@ namespace control_elements_sena.Forms.Create
         private void cmbMarca_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (cmbMarca.SelectedItem is Elemento elemento) {
-                txtSerie.Text = elemento.Serie;
-                Controllers.Entradas.Entradas.idRegistro = elemento.Id_Registro;
                 Controllers.Entradas.Entradas.idElemento = elemento.Id_Elemento;
             }
         }
 
         private void cmbMarca_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            Controllers.Entradas.Entradas.idElemento = null;
-        }
-
-        private void CrearEntrada_Load(object sender, EventArgs e)
         {
             Controllers.Entradas.Entradas.idElemento = null;
         }

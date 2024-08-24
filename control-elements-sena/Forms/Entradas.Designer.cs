@@ -275,7 +275,7 @@
             this.ShowIcon = false;
             this.ShowInTaskbar = false;
             this.Text = "Users";
-            this.Load += new System.EventHandler(this.Users_Load);
+            this.Load += new System.EventHandler(this.Entradas_Load);
             this.pButtonsContainer.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgvDatos)).EndInit();
             this.ResumeLayout(false);

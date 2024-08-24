@@ -31,7 +31,7 @@
             this.components = new System.ComponentModel.Container();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle11 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
@@ -39,24 +39,21 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
             this.dgvDatos = new System.Windows.Forms.DataGridView();
             this.toolTipNew = new System.Windows.Forms.ToolTip(this.components);
             this.btnAdd = new System.Windows.Forms.Button();
-            this.toolTipEdit = new System.Windows.Forms.ToolTip(this.components);
-            this.button1 = new System.Windows.Forms.Button();
-            this.toolTipStatus = new System.Windows.Forms.ToolTip(this.components);
-            this.button2 = new System.Windows.Forms.Button();
             this.pButtonsContainer = new System.Windows.Forms.Panel();
             this.btnOptions = new System.Windows.Forms.Button();
             this.id = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.descripcion = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.identificacion_propietario = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.nombres_propietario = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.id_registro = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Marca = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.serie = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.fecha_inicio = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.fecha_fin = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.detalle_solucion = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.estado = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDatos)).BeginInit();
             this.pButtonsContainer.SuspendLayout();
@@ -91,20 +88,20 @@
             this.descripcion,
             this.identificacion_propietario,
             this.nombres_propietario,
-            this.id_registro,
             this.Marca,
             this.serie,
             this.fecha_inicio,
             this.fecha_fin,
+            this.detalle_solucion,
             this.estado});
-            dataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle10.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle10.Font = new System.Drawing.Font("Segoe UI Semibold", 10.25F, System.Drawing.FontStyle.Bold);
-            dataGridViewCellStyle10.ForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle10.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(4)))), ((int)(((byte)(50)))), ((int)(((byte)(77)))));
-            dataGridViewCellStyle10.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle10.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgvDatos.DefaultCellStyle = dataGridViewCellStyle10;
+            dataGridViewCellStyle11.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle11.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle11.Font = new System.Drawing.Font("Segoe UI Semibold", 10.25F, System.Drawing.FontStyle.Bold);
+            dataGridViewCellStyle11.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle11.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(4)))), ((int)(((byte)(50)))), ((int)(((byte)(77)))));
+            dataGridViewCellStyle11.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle11.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvDatos.DefaultCellStyle = dataGridViewCellStyle11;
             this.dgvDatos.EnableHeadersVisualStyles = false;
             this.dgvDatos.Location = new System.Drawing.Point(9, 9);
             this.dgvDatos.Margin = new System.Windows.Forms.Padding(0);
@@ -115,6 +112,7 @@
             this.dgvDatos.RowHeadersVisible = false;
             this.dgvDatos.Size = new System.Drawing.Size(782, 432);
             this.dgvDatos.TabIndex = 7;
+            this.dgvDatos.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvDatos_CellDoubleClick);
             // 
             // toolTipNew
             // 
@@ -124,7 +122,7 @@
             this.toolTipNew.IsBalloon = true;
             this.toolTipNew.ReshowDelay = 0;
             this.toolTipNew.ToolTipIcon = System.Windows.Forms.ToolTipIcon.Info;
-            this.toolTipNew.ToolTipTitle = "Agregar usuario";
+            this.toolTipNew.ToolTipTitle = "Registrar denuncia";
             // 
             // btnAdd
             // 
@@ -132,73 +130,24 @@
             this.btnAdd.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnAdd.FlatAppearance.BorderSize = 0;
             this.btnAdd.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnAdd.Image = global::control_elements_sena.Properties.Resources.add_user;
+            this.btnAdd.Image = global::control_elements_sena.Properties.Resources.denuncia_create;
             this.btnAdd.Location = new System.Drawing.Point(3, 3);
             this.btnAdd.Name = "btnAdd";
             this.btnAdd.Size = new System.Drawing.Size(36, 36);
             this.btnAdd.TabIndex = 0;
-            this.toolTipNew.SetToolTip(this.btnAdd, "Asegúrate de haber seleccionado un usuario");
+            this.toolTipNew.SetToolTip(this.btnAdd, "Asegúrate de haber seleccionado una denuncia");
             this.btnAdd.UseVisualStyleBackColor = false;
-            // 
-            // toolTipEdit
-            // 
-            this.toolTipEdit.AutomaticDelay = 0;
-            this.toolTipEdit.AutoPopDelay = 5000;
-            this.toolTipEdit.InitialDelay = 0;
-            this.toolTipEdit.IsBalloon = true;
-            this.toolTipEdit.ReshowDelay = 0;
-            this.toolTipEdit.ToolTipIcon = System.Windows.Forms.ToolTipIcon.Info;
-            this.toolTipEdit.ToolTipTitle = "Editar usuario";
-            // 
-            // button1
-            // 
-            this.button1.BackColor = System.Drawing.Color.Transparent;
-            this.button1.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.button1.FlatAppearance.BorderSize = 0;
-            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button1.Image = global::control_elements_sena.Properties.Resources.edit_user;
-            this.button1.Location = new System.Drawing.Point(3, 45);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(36, 36);
-            this.button1.TabIndex = 1;
-            this.toolTipEdit.SetToolTip(this.button1, "Asegúrate de haber seleccionado un usuario");
-            this.button1.UseVisualStyleBackColor = false;
-            // 
-            // toolTipStatus
-            // 
-            this.toolTipStatus.AutomaticDelay = 0;
-            this.toolTipStatus.AutoPopDelay = 5000;
-            this.toolTipStatus.InitialDelay = 0;
-            this.toolTipStatus.IsBalloon = true;
-            this.toolTipStatus.ReshowDelay = 0;
-            this.toolTipStatus.ToolTipIcon = System.Windows.Forms.ToolTipIcon.Info;
-            this.toolTipStatus.ToolTipTitle = "Cambiar estado";
-            // 
-            // button2
-            // 
-            this.button2.BackColor = System.Drawing.Color.Transparent;
-            this.button2.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.button2.FlatAppearance.BorderSize = 0;
-            this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button2.Image = global::control_elements_sena.Properties.Resources.status_user;
-            this.button2.Location = new System.Drawing.Point(3, 87);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(36, 36);
-            this.button2.TabIndex = 2;
-            this.toolTipStatus.SetToolTip(this.button2, "Asegúrate de haber seleccionado un usuario");
-            this.button2.UseVisualStyleBackColor = false;
+            this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
             // 
             // pButtonsContainer
             // 
             this.pButtonsContainer.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.pButtonsContainer.AutoSize = true;
             this.pButtonsContainer.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(4)))), ((int)(((byte)(50)))), ((int)(((byte)(77)))));
-            this.pButtonsContainer.Controls.Add(this.button2);
-            this.pButtonsContainer.Controls.Add(this.button1);
             this.pButtonsContainer.Controls.Add(this.btnAdd);
             this.pButtonsContainer.Location = new System.Drawing.Point(726, 9);
             this.pButtonsContainer.Name = "pButtonsContainer";
-            this.pButtonsContainer.Size = new System.Drawing.Size(44, 131);
+            this.pButtonsContainer.Size = new System.Drawing.Size(44, 45);
             this.pButtonsContainer.TabIndex = 8;
             // 
             // btnOptions
@@ -247,13 +196,6 @@
             this.nombres_propietario.Name = "nombres_propietario";
             this.nombres_propietario.ReadOnly = true;
             // 
-            // id_registro
-            // 
-            this.id_registro.HeaderText = "Id_registro";
-            this.id_registro.Name = "id_registro";
-            this.id_registro.ReadOnly = true;
-            this.id_registro.Visible = false;
-            // 
             // Marca
             // 
             dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
@@ -272,6 +214,7 @@
             // 
             // fecha_inicio
             // 
+            dataGridViewCellStyle8.Format = "dd/MM/yyyy";
             dataGridViewCellStyle8.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
             this.fecha_inicio.DefaultCellStyle = dataGridViewCellStyle8;
             this.fecha_inicio.HeaderText = "Fecha Inicio";
@@ -280,11 +223,20 @@
             // 
             // fecha_fin
             // 
+            dataGridViewCellStyle9.Format = "dd/MM/yyyy";
             dataGridViewCellStyle9.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
             this.fecha_fin.DefaultCellStyle = dataGridViewCellStyle9;
             this.fecha_fin.HeaderText = "Fecha Fin";
             this.fecha_fin.Name = "fecha_fin";
             this.fecha_fin.ReadOnly = true;
+            // 
+            // detalle_solucion
+            // 
+            dataGridViewCellStyle10.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.detalle_solucion.DefaultCellStyle = dataGridViewCellStyle10;
+            this.detalle_solucion.HeaderText = "Detalles de la solución";
+            this.detalle_solucion.Name = "detalle_solucion";
+            this.detalle_solucion.ReadOnly = true;
             // 
             // estado
             // 
@@ -309,7 +261,7 @@
             this.ShowIcon = false;
             this.ShowInTaskbar = false;
             this.Text = "Users";
-            this.Load += new System.EventHandler(this.Users_Load);
+            this.Load += new System.EventHandler(this.Denuncias_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvDatos)).EndInit();
             this.pButtonsContainer.ResumeLayout(false);
             this.ResumeLayout(false);
@@ -320,23 +272,19 @@
         #endregion
 
         private System.Windows.Forms.DataGridView dgvDatos;
-        private System.Windows.Forms.ToolTip toolTipStatus;
-        private System.Windows.Forms.ToolTip toolTipEdit;
         private System.Windows.Forms.ToolTip toolTipNew;
         private System.Windows.Forms.Button btnAdd;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Panel pButtonsContainer;
         private System.Windows.Forms.Button btnOptions;
         private System.Windows.Forms.DataGridViewTextBoxColumn id;
         private System.Windows.Forms.DataGridViewTextBoxColumn descripcion;
         private System.Windows.Forms.DataGridViewTextBoxColumn identificacion_propietario;
         private System.Windows.Forms.DataGridViewTextBoxColumn nombres_propietario;
-        private System.Windows.Forms.DataGridViewTextBoxColumn id_registro;
         private System.Windows.Forms.DataGridViewTextBoxColumn Marca;
         private System.Windows.Forms.DataGridViewTextBoxColumn serie;
         private System.Windows.Forms.DataGridViewTextBoxColumn fecha_inicio;
         private System.Windows.Forms.DataGridViewTextBoxColumn fecha_fin;
+        private System.Windows.Forms.DataGridViewTextBoxColumn detalle_solucion;
         private System.Windows.Forms.DataGridViewTextBoxColumn estado;
     }
 }

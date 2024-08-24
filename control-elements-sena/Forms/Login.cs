@@ -71,7 +71,7 @@ namespace control_elements_sena
 
         }
 
-        private void btnLogin_Click(object sender, EventArgs e)
+        private async void btnLogin_Click(object sender, EventArgs e)
         {
             string mensaje = "No deberías estar viendo este mensaje, creo que algo no muy bueno pasó... si lo ves contáctame :D +57 3234407488";
             MessageBoxIcon icono = MessageBoxIcon.Question;
@@ -79,7 +79,7 @@ namespace control_elements_sena
             if (txtUser.Text.Length > 0 && txtPassword.Text.Length > 0)
             {
                 var data = session.SessionStart(txtUser.Text, txtPassword.Text);
-                if (data.Item1)
+                if (await data)
                 {
                     mensaje = "Autenticación completada";
                     icono = MessageBoxIcon.Information;

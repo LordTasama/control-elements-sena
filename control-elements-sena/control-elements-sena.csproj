@@ -93,6 +93,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Controllers\DatabaseConnect.cs" />
+    <Compile Include="Controllers\Denuncias\Denuncias.cs" />
     <Compile Include="Controllers\Elementos\Elementos.cs" />
     <Compile Include="Controllers\Entradas\Entradas.cs" />
     <Compile Include="Controllers\Registros\Registros.cs" />
@@ -105,11 +106,23 @@
     <Compile Include="Forms\Create\CrearEntrada.Designer.cs">
       <DependentUpon>CrearEntrada.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\Create\CrearDenuncia.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Create\CrearDenuncia.Designer.cs">
+      <DependentUpon>CrearDenuncia.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\Create\CrearUsuario.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Forms\Create\CrearUsuario.Designer.cs">
       <DependentUpon>CrearUsuario.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Edit\SolucionarDenuncia.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Edit\SolucionarDenuncia.Designer.cs">
+      <DependentUpon>SolucionarDenuncia.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\Edit\EditarElemento.cs">
       <SubType>Form</SubType>
@@ -146,6 +159,12 @@
     </Compile>
     <Compile Include="Forms\Elementos.Designer.cs">
       <DependentUpon>Elementos.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Perfil.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Perfil.Designer.cs">
+      <DependentUpon>Perfil.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\Registros.cs">
       <SubType>Form</SubType>
@@ -186,8 +205,14 @@
     <EmbeddedResource Include="Forms\Create\CrearEntrada.resx">
       <DependentUpon>CrearEntrada.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Create\CrearDenuncia.resx">
+      <DependentUpon>CrearDenuncia.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\Create\CrearUsuario.resx">
       <DependentUpon>CrearUsuario.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Edit\SolucionarDenuncia.resx">
+      <DependentUpon>SolucionarDenuncia.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Edit\EditarElemento.resx">
       <DependentUpon>EditarElemento.cs</DependentUpon>
@@ -212,6 +237,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Elementos.resx">
       <DependentUpon>Elementos.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Perfil.resx">
+      <DependentUpon>Perfil.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Registros.resx">
       <DependentUpon>Registros.cs</DependentUpon>
@@ -252,6 +280,7 @@
     <None Include="Resources\minus.png" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Resources\solucion-denuncia.png" />
     <None Include="Resources\status-user.png" />
     <None Include="Resources\trabajo-en-equipo.png" />
     <None Include="Resources\tabla-de-base-de-datos.png" />
@@ -268,6 +297,7 @@
     <None Include="Resources\clock.png" />
     <None Include="Resources\calendar.png" />
     <None Include="Resources\avatar-white.png" />
+    <None Include="Resources\31ec2ce212492e600b8de27f38846ed7.jpg" />
     <Content Include="Resources\control-panel.png" />
     <None Include="Resources\maximize-white.png" />
     <None Include="Resources\minus-white.png" />
@@ -293,6 +323,7 @@
     <None Include="Resources\reload.png" />
     <None Include="Resources\open-enrollment.png" />
     <None Include="Resources\personal-data.png" />
+    <None Include="Resources\denuncia-create.png" />
     <Content Include="Resources\sena-logo.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

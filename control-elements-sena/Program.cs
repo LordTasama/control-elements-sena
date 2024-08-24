@@ -1,4 +1,5 @@
-﻿using System;
+﻿using control_elements_sena.Controllers;
+using System;
 using System.Windows.Forms;
 
 namespace control_elements_sena
@@ -15,8 +16,10 @@ namespace control_elements_sena
             Application.SetCompatibleTextRenderingDefault(false);
             Login login = new Login();
 
-            if (login.ShowDialog() == DialogResult.OK) { 
+            if (login.ShowDialog() == DialogResult.OK) {
+
             Application.Run(new ControlPanel());
+        
             }
 
         }

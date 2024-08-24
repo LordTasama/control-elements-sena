@@ -13,12 +13,12 @@ namespace control_elements_sena.Controllers
 {
     public class Session
     {
-        private const string secretKey = "Adso2671333#CTA-20240821/Tasama.954310";
-        private readonly SymmetricSecurityKey _signingKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(secretKey));
-        public long idUserGlobal;
+        private static string secretKey = "Adso2671333#CTA-20240821/Tasama.954310";
+        private static readonly SymmetricSecurityKey _signingKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(secretKey));
+        public static long idUserGlobal { get; set; }
         public string errorMessage;
         public bool validToken = false;
-        public (bool,string) SessionStart(string parametro, string password)
+        public async Task<bool> SessionStart(string parametro, string password)
         {
             string passwordDatabase = "";
             byte estado = 0;
@@ -26,6 +26,7 @@ namespace control_elements_sena.Controllers
             string nombres = "";
             byte rol = 2;
             string correo = "";
+            long identificacion = 0;
             string token = "";
             try
             {
@@ -47,11 +48,12 @@ namespace control_elements_sena.Controllers
                                     nombres = infoUser.GetString(3);
                                     rol = infoUser.GetByte(4);
                                     correo = infoUser.GetString(5);
+                                    identificacion = infoUser.GetInt64(6);
                                 }
                                if(estado == 0)
                                 {
                                     errorMessage = "Su estado actual es inactivo, contacta con un administrador para activar tu cuenta";
-                                    return (false,"");
+                                    return false;
                                 }
 
                              
@@ -60,13 +62,18 @@ namespace control_elements_sena.Controllers
                             else
                             {
                                 errorMessage = "Identificación o correo no existe";
-                                return (false, "");
+                                return false;
                             }
                        
                         }
                         if (BCrypt.Net.BCrypt.Verify(password, passwordDatabase))
                         {
-                            token = GenerarToken(userId.ToString(), rol.ToString(), nombres, correo);
+                            idUserGlobal = userId;
+                            await DescifrarTokenAsync();
+                            if (validToken) {
+                                return true;
+                            }
+                            token = GenerarToken(userId.ToString(),identificacion.ToString(), rol.ToString(), nombres, correo);
                             using (SqlCommand command1 = new SqlCommand("RegistrarSession", conn))
                             {
                                 command1.CommandType = System.Data.CommandType.StoredProcedure;
@@ -75,13 +82,13 @@ namespace control_elements_sena.Controllers
                                 command1.Parameters.AddWithValue("@tok", token);
                                 command1.ExecuteNonQuery();
                             }
-                            idUserGlobal = userId;
-                            return (true, token);
+                            
+                            return true;
                         }
                         else
                         {
                             errorMessage = "Contraseña incorrecta";
-                            return (false, "");
+                            return false;
                         }
                     }
                 }
@@ -89,18 +96,19 @@ namespace control_elements_sena.Controllers
             catch (SqlException e)
             {
                 errorMessage = $"Algo ocurrió con la base de datos. Código de error: {e.Number} \n\nDetalles:\n{e.Message}";
-                return (false, "");
+                return false;
             }
             catch (Exception e) {
                 errorMessage = $"Algo ocurrió al tratar de iniciar sesión. \n\nDetalles:\n{e.Message}";
-                return (false, "");
+                return false;
             }
         }
-        private string GenerarToken(string userid,string rol, string nombres, string correo)
+        private string GenerarToken(string userid,string identificacion,string rol, string nombres, string correo)
         {
             var claims = new[]
         {
             new Claim("UserId", userid),
+            new Claim("UserIdentificacion",identificacion),
             new Claim(ClaimTypes.Name,nombres),
             new Claim(ClaimTypes.Role,rol ),
             new Claim(ClaimTypes.Email,correo),
@@ -117,7 +125,9 @@ namespace control_elements_sena.Controllers
         };
 
         var tokenHandler = new JsonWebTokenHandler();
-        return tokenHandler.CreateToken(tokenDescriptor);
+        string token = tokenHandler.CreateToken(tokenDescriptor);
+            idUserGlobal = Convert.ToInt64(userid);
+            return token;
         }
 
         public async Task<string[]> DescifrarTokenAsync()
@@ -139,13 +149,13 @@ namespace control_elements_sena.Controllers
             try
             {
                 // Validar el token
-
-                var principal = await tokenHandler.ValidateTokenAsync(await TraerToken(), validationParameters);
+                string token = await TraerToken();
+                var principal = await tokenHandler.ValidateTokenAsync(token, validationParameters);
 
                 if(!principal.IsValid)
                 {
                     validToken = false;
-                    return new string[] { "", "", "", "" };
+                    return new string[] { "", "", "", "","" };
                 }
                 // Obtener los reclamos
                 var claims = principal.ClaimsIdentity.Claims;
@@ -155,21 +165,20 @@ namespace control_elements_sena.Controllers
                 string name = claims.FirstOrDefault(c => c.Type == ClaimTypes.Name)?.Value;
                 string role = claims.FirstOrDefault(c => c.Type == ClaimTypes.Role)?.Value;
                 string email = claims.FirstOrDefault(c => c.Type == ClaimTypes.Email)?.Value;
-
+                string identificacion = claims.FirstOrDefault(c => c.Type == "UserIdentificacion")?.Value;
                 // Devolver los datos como un arreglo
                 validToken = true;
-                return new string[] { userId,name,role,email };
+                return new string[] { userId,identificacion,name,role,email };
             }
             catch (Exception ex)
             {
-                MessageBox.Show($"Error al descifrar el token: {ex.Message}");
                 validToken = false;
-                return  new string[] { "", "", "", "" }; // Valores por defecto en caso de error
+                return  new string[] { "", "", "", "",""}; // Valores por defecto en caso de error
             }
         }
 
 
-        async private string TraerToken()
+        async private Task<string> TraerToken()
         {
             string token = "";
        
@@ -177,12 +186,12 @@ namespace control_elements_sena.Controllers
             {
                 using (SqlConnection conn = DatabaseConnect.GetConnection())
                 {
-                    using (SqlCommand cmd = new SqlCommand())
+                    using (SqlCommand cmd = new SqlCommand("TraerToken",conn))
                     {
                         conn.Open();
                         cmd.CommandType = CommandType.StoredProcedure;
                         cmd.Parameters.AddWithValue("@idr",idUserGlobal);
-                        using (SqlDataReader dr = cmd.ExecuteReader()) {
+                        using (SqlDataReader dr = await cmd.ExecuteReaderAsync()) {
 
                             if (dr.HasRows)
                             {

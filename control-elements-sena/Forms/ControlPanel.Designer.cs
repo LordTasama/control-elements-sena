@@ -36,8 +36,8 @@
             this.toolTipTables = new System.Windows.Forms.ToolTip(this.components);
             this.btnTables = new System.Windows.Forms.Button();
             this.toolTipUsers = new System.Windows.Forms.ToolTip(this.components);
-            this.pictureReload = new System.Windows.Forms.PictureBox();
             this.btnUsers = new System.Windows.Forms.Button();
+            this.pictureReload = new System.Windows.Forms.PictureBox();
             this.toolTipRecords = new System.Windows.Forms.ToolTip(this.components);
             this.btnRecords = new System.Windows.Forms.Button();
             this.toolTipElements = new System.Windows.Forms.ToolTip(this.components);
@@ -63,6 +63,7 @@
             this.pDesktopContainer = new System.Windows.Forms.Panel();
             this.pContainer = new System.Windows.Forms.Panel();
             this.pFooter = new System.Windows.Forms.Panel();
+            this.lblIdUser = new System.Windows.Forms.Label();
             this.pictureDate = new System.Windows.Forms.PictureBox();
             this.lblDate = new System.Windows.Forms.Label();
             this.lblName = new System.Windows.Forms.Label();
@@ -159,21 +160,6 @@
             this.toolTipUsers.IsBalloon = true;
             this.toolTipUsers.ReshowDelay = 0;
             // 
-            // pictureReload
-            // 
-            this.pictureReload.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.pictureReload.BackgroundImage = global::control_elements_sena.Properties.Resources.reload;
-            this.pictureReload.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.pictureReload.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.pictureReload.Location = new System.Drawing.Point(688, 4);
-            this.pictureReload.Name = "pictureReload";
-            this.pictureReload.Size = new System.Drawing.Size(24, 24);
-            this.pictureReload.TabIndex = 35;
-            this.pictureReload.TabStop = false;
-            this.toolTipReload.SetToolTip(this.pictureReload, "Recarga la página actual");
-            this.pictureReload.Visible = false;
-            this.pictureReload.Click += new System.EventHandler(this.pictureReload_Click);
-            // 
             // btnUsers
             // 
             this.btnUsers.BackColor = System.Drawing.Color.WhiteSmoke;
@@ -195,6 +181,21 @@
             this.toolTipUsers.SetToolTip(this.btnUsers, "Usuarios");
             this.btnUsers.UseVisualStyleBackColor = false;
             this.btnUsers.Click += new System.EventHandler(this.btnUsers_Click);
+            // 
+            // pictureReload
+            // 
+            this.pictureReload.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.pictureReload.BackgroundImage = global::control_elements_sena.Properties.Resources.reload;
+            this.pictureReload.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.pictureReload.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.pictureReload.Location = new System.Drawing.Point(688, 4);
+            this.pictureReload.Name = "pictureReload";
+            this.pictureReload.Size = new System.Drawing.Size(24, 24);
+            this.pictureReload.TabIndex = 35;
+            this.pictureReload.TabStop = false;
+            this.toolTipReload.SetToolTip(this.pictureReload, "Recarga la página actual");
+            this.pictureReload.Visible = false;
+            this.pictureReload.Click += new System.EventHandler(this.pictureReload_Click);
             // 
             // toolTipRecords
             // 
@@ -550,6 +551,7 @@
             // pFooter
             // 
             this.pFooter.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(4)))), ((int)(((byte)(50)))), ((int)(((byte)(77)))));
+            this.pFooter.Controls.Add(this.lblIdUser);
             this.pFooter.Controls.Add(this.pictureDate);
             this.pFooter.Controls.Add(this.lblDate);
             this.pFooter.Controls.Add(this.lblName);
@@ -559,6 +561,22 @@
             this.pFooter.Name = "pFooter";
             this.pFooter.Size = new System.Drawing.Size(1035, 68);
             this.pFooter.TabIndex = 23;
+            // 
+            // lblIdUser
+            // 
+            this.lblIdUser.AutoSize = true;
+            this.lblIdUser.BackColor = System.Drawing.Color.Transparent;
+            this.lblIdUser.Font = new System.Drawing.Font("Segoe UI Semibold", 8F, System.Drawing.FontStyle.Bold);
+            this.lblIdUser.ForeColor = System.Drawing.Color.White;
+            this.lblIdUser.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.lblIdUser.Location = new System.Drawing.Point(60, 46);
+            this.lblIdUser.Margin = new System.Windows.Forms.Padding(3, 15, 3, 15);
+            this.lblIdUser.Name = "lblIdUser";
+            this.lblIdUser.Size = new System.Drawing.Size(13, 13);
+            this.lblIdUser.TabIndex = 34;
+            this.lblIdUser.Text = "0";
+            this.lblIdUser.MouseLeave += new System.EventHandler(this.lblIdUser_MouseLeave);
+            this.lblIdUser.MouseHover += new System.EventHandler(this.lblIdUser_MouseHover);
             // 
             // pictureDate
             // 
@@ -849,5 +867,6 @@
         private System.Windows.Forms.ToolTip toolTipEntrances;
         private System.Windows.Forms.PictureBox pictureReload;
         private System.Windows.Forms.ToolTip toolTipReload;
+        private System.Windows.Forms.Label lblIdUser;
     }
 }
