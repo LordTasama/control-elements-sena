@@ -9,7 +9,7 @@ namespace control_elements_sena.Controllers.Denuncias
     public class Denuncias
     {
         public static string errorMessage;
-        public static (DataTable, bool) SeleccionarDenuncias()
+        public static (DataTable, bool) SeleccionarDenuncias(string all)
         {
             DataTable reportsTable = new DataTable();
             try
@@ -18,7 +18,8 @@ namespace control_elements_sena.Controllers.Denuncias
                 {
                     using (SqlCommand command = new SqlCommand("SeleccionarDenuncias", connection))
                     {
-
+                        command.CommandType = CommandType.StoredProcedure;
+                        command.Parameters.AddWithValue("@all", all);
                         SqlDataAdapter adapter = new SqlDataAdapter(command);
 
                         connection.Open();

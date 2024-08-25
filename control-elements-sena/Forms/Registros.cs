@@ -24,27 +24,8 @@ namespace control_elements_sena
 
         private void Registros_Load(object sender, EventArgs e)
         {
-            pButtonsContainer.Visible = false;
-            var response = Controllers.Registros.Registros.SeleccionarRegistros();
-            DataTable recordData = response.Item1;
-            if (!response.Item2)
-            {
-                MessageBox.Show("Error al traer los datos de los registros", "Tabla registros", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-
-            foreach (DataRow data in recordData.Rows)
-            {
-
-                dgvDatos.Rows.Add(new object[] { data[0], data[2], data[1]});
-
-
-            }
-            if (dgvDatos.Rows.Count == 0)
-            {
-                dgvDatos.Rows.Add(new object[] { "", "", "SIN DATOS PARA MOSTRAR" });
-
-
-            }
+            CargarData("0", "10");
+            SetPlaceholder(txtSearch,"Buscar por Identificación o Nombres");
 
            
         }
@@ -59,7 +40,10 @@ namespace control_elements_sena
             {
                 data[cell.ColumnIndex] = cell.Value.ToString();
             }
-            new EditarRegistro(data).ShowDialog();
+            if(new EditarRegistro(data).ShowDialog() == DialogResult.OK)
+                {
+                    CargarData("0","10");
+                }
             }
             else
             {
@@ -91,6 +75,133 @@ namespace control_elements_sena
             {
                 pButtonsContainer.Visible = true;
             }
+        }
+
+       
+        private void btnSearch_Click(object sender, EventArgs e)
+        {
+            BuscarParametro();
+
+        }
+
+        private void cmbValue_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            CargarData("0", cmbValue.Text);
+        }
+
+        private void btnListAll_Click(object sender, EventArgs e)
+        {
+            CargarData("1", "0");
+        }
+        private void cmbValue_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsDigit(e.KeyChar) && !char.IsControl(e.KeyChar))
+            {
+               
+                // Si no es un número ni una tecla de control (como Backspace), cancelar el evento
+                e.Handled = true;
+            }
+            if (e.KeyChar == 13)
+            {
+                CargarData("0", cmbValue.Text);
+            }
+        }
+
+        private void txtSearch_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == 13)
+            {
+                BuscarParametro();
+            }
+        }
+
+        // Funciones personalizadas
+        private void CargarData(string all, string limit)
+        {
+            pButtonsContainer.Visible = false;
+            var response = Controllers.Registros.Registros.SeleccionarRegistros(all, limit);
+            DataTable recordData = response.Item1;
+            dgvDatos.Rows.Clear();
+            if (!response.Item2)
+            {
+                MessageBox.Show("Error al traer los datos de los registros", "Tabla registros", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+
+            foreach (DataRow data in recordData.Rows)
+            {
+
+                dgvDatos.Rows.Add(new object[] { data[0], data[2], data[1] });
+
+
+            }
+            if (dgvDatos.Rows.Count == 0)
+            {
+                dgvDatos.Rows.Add(new object[] { "", "", "SIN DATOS PARA MOSTRAR" });
+
+
+            }
+        }
+        private void BuscarParametro()
+        {
+            if (txtSearch.Text.Length == 0 || txtSearch.Text == "Buscar por Identificación o Nombres")
+            {
+                MessageBox.Show("Digita por lo menos un parámetro de búsqueda", "Buscar registro", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+
+            }
+            else
+            {
+                pButtonsContainer.Visible = false;
+                var response = Controllers.Registros.Registros.SeleccionarRegistro(txtSearch.Text, cmbValue.Text != "" ? cmbValue.Text : "5");
+                DataTable elementData = response.Item1;
+                dgvDatos.Rows.Clear();
+                if (!response.Item2)
+                {
+                    MessageBox.Show("Error al traer los datos de busqueda", "Tabla registros", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+
+                foreach (DataRow data in elementData.Rows)
+                {
+
+                    dgvDatos.Rows.Add(new object[] { data[0], data[2], data[1] });
+
+
+                }
+                if (dgvDatos.Rows.Count == 0)
+                {
+                    dgvDatos.Rows.Add(new object[] { "", "", "NO SE ENCONTRÓ NINGÚN DATO" });
+
+
+                }
+            }
+        }
+        private void SetPlaceholder(TextBox textBox, string placeholder)
+        {
+            // Si el TextBox está vacío, muestra el placeholder en color gris
+            if (string.IsNullOrWhiteSpace(textBox.Text))
+            {
+                textBox.Text = placeholder;
+                textBox.ForeColor = Color.Gray;
+            }
+
+            // Evento Enter para eliminar el placeholder cuando el usuario hace clic
+            textBox.Enter += (sender, e) =>
+            {
+                if (textBox.Text == placeholder)
+                {
+                    textBox.Text = "";
+                    textBox.ForeColor = Color.Black;
+                }
+            };
+
+            // Evento Leave para volver a mostrar el placeholder si el usuario no escribe nada
+            textBox.Leave += (sender, e) =>
+            {
+                if (string.IsNullOrWhiteSpace(textBox.Text))
+                {
+                    textBox.Text = placeholder;
+                    textBox.ForeColor = Color.Gray;
+                }
+            };
         }
 
        

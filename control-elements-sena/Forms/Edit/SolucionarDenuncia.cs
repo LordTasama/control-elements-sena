@@ -61,6 +61,7 @@ namespace control_elements_sena.Forms.Create
                 if (response)
                 {
                     MessageBox.Show("Denuncia solucionada exitosamente", "Respuesta", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    this.DialogResult = DialogResult.OK;
                     this.Close();
                 }
                 else

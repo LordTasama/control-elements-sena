@@ -29,35 +29,49 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle11 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle12 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle13 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle14 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle15 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle16 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle17 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle18 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle19 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle20 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle31 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle32 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle40 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle33 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle34 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle35 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle36 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle37 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle38 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle39 = new System.Windows.Forms.DataGridViewCellStyle();
             this.pButtonsContainer = new System.Windows.Forms.Panel();
+            this.btnListAll = new System.Windows.Forms.Button();
             this.btnAdd = new System.Windows.Forms.Button();
             this.toolTipNew = new System.Windows.Forms.ToolTip(this.components);
-            this.hora_salida = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.hora_entrada = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.serie = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.marca = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.id_elemento = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.nombres_propietario = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.identificacion_propietario = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.registrador = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.id_usuario = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.id = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dgvDatos = new System.Windows.Forms.DataGridView();
             this.btnOptions = new System.Windows.Forms.Button();
+            this.toolTipListAll = new System.Windows.Forms.ToolTip(this.components);
             this.toolTipHelper = new System.Windows.Forms.ToolTip(this.components);
-            this.balloonToolTip = new System.Windows.Forms.Timer(this.components);
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.btnSearch = new System.Windows.Forms.Button();
+            this.txtSearch = new System.Windows.Forms.TextBox();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
+            this.cmbValue = new System.Windows.Forms.ComboBox();
+            this.cmbType = new System.Windows.Forms.ComboBox();
+            this.id = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.id_usuario = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.registrador = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.identificacion_propietario = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.nombres_propietario = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.id_elemento = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.marca = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.serie = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.hora_entrada = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.hora_salida = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.label3 = new System.Windows.Forms.Label();
+            this.dtpInitialDate = new System.Windows.Forms.DateTimePicker();
+            this.label4 = new System.Windows.Forms.Label();
+            this.dtpEndDate = new System.Windows.Forms.DateTimePicker();
+            this.btnDateSearch = new System.Windows.Forms.Button();
             this.pButtonsContainer.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDatos)).BeginInit();
+            this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // pButtonsContainer
@@ -65,11 +79,27 @@
             this.pButtonsContainer.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.pButtonsContainer.AutoSize = true;
             this.pButtonsContainer.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(4)))), ((int)(((byte)(50)))), ((int)(((byte)(77)))));
+            this.pButtonsContainer.Controls.Add(this.btnListAll);
             this.pButtonsContainer.Controls.Add(this.btnAdd);
-            this.pButtonsContainer.Location = new System.Drawing.Point(726, 9);
+            this.pButtonsContainer.Location = new System.Drawing.Point(726, 98);
             this.pButtonsContainer.Name = "pButtonsContainer";
-            this.pButtonsContainer.Size = new System.Drawing.Size(44, 45);
+            this.pButtonsContainer.Size = new System.Drawing.Size(44, 83);
             this.pButtonsContainer.TabIndex = 8;
+            // 
+            // btnListAll
+            // 
+            this.btnListAll.BackColor = System.Drawing.Color.Transparent;
+            this.btnListAll.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnListAll.FlatAppearance.BorderSize = 0;
+            this.btnListAll.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnListAll.Image = global::control_elements_sena.Properties.Resources.check_list;
+            this.btnListAll.Location = new System.Drawing.Point(3, 44);
+            this.btnListAll.Name = "btnListAll";
+            this.btnListAll.Size = new System.Drawing.Size(36, 36);
+            this.btnListAll.TabIndex = 2;
+            this.toolTipListAll.SetToolTip(this.btnListAll, "Listado completo de entradas");
+            this.btnListAll.UseVisualStyleBackColor = false;
+            this.btnListAll.Click += new System.EventHandler(this.btnListAll_Click);
             // 
             // btnAdd
             // 
@@ -96,88 +126,12 @@
             this.toolTipNew.ToolTipIcon = System.Windows.Forms.ToolTipIcon.Info;
             this.toolTipNew.ToolTipTitle = "Entradas";
             // 
-            // hora_salida
-            // 
-            dataGridViewCellStyle11.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.hora_salida.DefaultCellStyle = dataGridViewCellStyle11;
-            this.hora_salida.HeaderText = "Hora de salida";
-            this.hora_salida.Name = "hora_salida";
-            this.hora_salida.ReadOnly = true;
-            // 
-            // hora_entrada
-            // 
-            dataGridViewCellStyle12.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.hora_entrada.DefaultCellStyle = dataGridViewCellStyle12;
-            this.hora_entrada.HeaderText = "Hora de entrada";
-            this.hora_entrada.Name = "hora_entrada";
-            this.hora_entrada.ReadOnly = true;
-            // 
-            // serie
-            // 
-            dataGridViewCellStyle13.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.serie.DefaultCellStyle = dataGridViewCellStyle13;
-            this.serie.HeaderText = "Serie";
-            this.serie.Name = "serie";
-            this.serie.ReadOnly = true;
-            // 
-            // marca
-            // 
-            dataGridViewCellStyle14.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.marca.DefaultCellStyle = dataGridViewCellStyle14;
-            this.marca.HeaderText = "Marca";
-            this.marca.Name = "marca";
-            this.marca.ReadOnly = true;
-            // 
-            // id_elemento
-            // 
-            this.id_elemento.HeaderText = "Id_elemento";
-            this.id_elemento.Name = "id_elemento";
-            this.id_elemento.ReadOnly = true;
-            this.id_elemento.Visible = false;
-            // 
-            // nombres_propietario
-            // 
-            dataGridViewCellStyle15.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.nombres_propietario.DefaultCellStyle = dataGridViewCellStyle15;
-            this.nombres_propietario.HeaderText = "Nombres propietario";
-            this.nombres_propietario.Name = "nombres_propietario";
-            this.nombres_propietario.ReadOnly = true;
-            // 
-            // identificacion_propietario
-            // 
-            dataGridViewCellStyle16.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.identificacion_propietario.DefaultCellStyle = dataGridViewCellStyle16;
-            this.identificacion_propietario.HeaderText = "Identificación propietario";
-            this.identificacion_propietario.Name = "identificacion_propietario";
-            this.identificacion_propietario.ReadOnly = true;
-            // 
-            // registrador
-            // 
-            dataGridViewCellStyle17.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.registrador.DefaultCellStyle = dataGridViewCellStyle17;
-            this.registrador.HeaderText = "Registrador";
-            this.registrador.Name = "registrador";
-            this.registrador.ReadOnly = true;
-            // 
-            // id_usuario
-            // 
-            this.id_usuario.HeaderText = "Identificación registrador";
-            this.id_usuario.Name = "id_usuario";
-            this.id_usuario.ReadOnly = true;
-            // 
-            // id
-            // 
-            this.id.HeaderText = "id";
-            this.id.Name = "id";
-            this.id.ReadOnly = true;
-            this.id.Visible = false;
-            // 
             // dgvDatos
             // 
             this.dgvDatos.AllowUserToAddRows = false;
             this.dgvDatos.AllowUserToDeleteRows = false;
-            dataGridViewCellStyle18.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.dgvDatos.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle18;
+            dataGridViewCellStyle31.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.dgvDatos.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle31;
             this.dgvDatos.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
@@ -187,13 +141,13 @@
             this.dgvDatos.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dgvDatos.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.RaisedHorizontal;
             this.dgvDatos.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle19.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(4)))), ((int)(((byte)(50)))), ((int)(((byte)(77)))));
-            dataGridViewCellStyle19.Font = new System.Drawing.Font("Segoe UI Black", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle19.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle19.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(4)))), ((int)(((byte)(50)))), ((int)(((byte)(77)))));
-            dataGridViewCellStyle19.SelectionForeColor = System.Drawing.Color.Transparent;
-            dataGridViewCellStyle19.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvDatos.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle19;
+            dataGridViewCellStyle32.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(4)))), ((int)(((byte)(50)))), ((int)(((byte)(77)))));
+            dataGridViewCellStyle32.Font = new System.Drawing.Font("Segoe UI Black", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle32.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle32.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(4)))), ((int)(((byte)(50)))), ((int)(((byte)(77)))));
+            dataGridViewCellStyle32.SelectionForeColor = System.Drawing.Color.Transparent;
+            dataGridViewCellStyle32.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvDatos.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle32;
             this.dgvDatos.ColumnHeadersHeight = 38;
             this.dgvDatos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             this.dgvDatos.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
@@ -207,23 +161,23 @@
             this.serie,
             this.hora_entrada,
             this.hora_salida});
-            dataGridViewCellStyle20.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle20.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle20.Font = new System.Drawing.Font("Segoe UI Semibold", 10.25F, System.Drawing.FontStyle.Bold);
-            dataGridViewCellStyle20.ForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle20.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(4)))), ((int)(((byte)(50)))), ((int)(((byte)(77)))));
-            dataGridViewCellStyle20.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle20.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgvDatos.DefaultCellStyle = dataGridViewCellStyle20;
+            dataGridViewCellStyle40.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle40.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle40.Font = new System.Drawing.Font("Segoe UI Semibold", 10.25F, System.Drawing.FontStyle.Bold);
+            dataGridViewCellStyle40.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle40.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(4)))), ((int)(((byte)(50)))), ((int)(((byte)(77)))));
+            dataGridViewCellStyle40.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle40.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvDatos.DefaultCellStyle = dataGridViewCellStyle40;
             this.dgvDatos.EnableHeadersVisualStyles = false;
-            this.dgvDatos.Location = new System.Drawing.Point(9, 9);
+            this.dgvDatos.Location = new System.Drawing.Point(9, 98);
             this.dgvDatos.Margin = new System.Windows.Forms.Padding(0);
             this.dgvDatos.MultiSelect = false;
             this.dgvDatos.Name = "dgvDatos";
             this.dgvDatos.ReadOnly = true;
             this.dgvDatos.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Sunken;
             this.dgvDatos.RowHeadersVisible = false;
-            this.dgvDatos.Size = new System.Drawing.Size(782, 432);
+            this.dgvDatos.Size = new System.Drawing.Size(782, 343);
             this.dgvDatos.TabIndex = 7;
             this.dgvDatos.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvDatos_CellDoubleClick);
             // 
@@ -235,13 +189,23 @@
             this.btnOptions.FlatAppearance.BorderSize = 0;
             this.btnOptions.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnOptions.Image = global::control_elements_sena.Properties.Resources.options;
-            this.btnOptions.Location = new System.Drawing.Point(768, 12);
+            this.btnOptions.Location = new System.Drawing.Point(768, 98);
             this.btnOptions.Name = "btnOptions";
-            this.btnOptions.Size = new System.Drawing.Size(23, 31);
+            this.btnOptions.Size = new System.Drawing.Size(23, 39);
             this.btnOptions.TabIndex = 3;
             this.toolTipHelper.SetToolTip(this.btnOptions, "Doble click en cualquier celda para registrar salida");
             this.btnOptions.UseVisualStyleBackColor = false;
             this.btnOptions.Click += new System.EventHandler(this.btnOptions_Click);
+            // 
+            // toolTipListAll
+            // 
+            this.toolTipListAll.AutomaticDelay = 0;
+            this.toolTipListAll.AutoPopDelay = 5000;
+            this.toolTipListAll.InitialDelay = 0;
+            this.toolTipListAll.IsBalloon = true;
+            this.toolTipListAll.ReshowDelay = 0;
+            this.toolTipListAll.ToolTipIcon = System.Windows.Forms.ToolTipIcon.Info;
+            this.toolTipListAll.ToolTipTitle = "Mostrar todo";
             // 
             // toolTipHelper
             // 
@@ -253,10 +217,243 @@
             this.toolTipHelper.ToolTipIcon = System.Windows.Forms.ToolTipIcon.Info;
             this.toolTipHelper.ToolTipTitle = "Registrar salida";
             // 
-            // balloonToolTip
+            // panel1
             // 
-            this.balloonToolTip.Interval = 1500;
-            this.balloonToolTip.Tick += new System.EventHandler(this.balloonToolTip_Tick);
+            this.panel1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.panel1.BackColor = System.Drawing.Color.White;
+            this.panel1.Controls.Add(this.btnDateSearch);
+            this.panel1.Controls.Add(this.dtpEndDate);
+            this.panel1.Controls.Add(this.label4);
+            this.panel1.Controls.Add(this.dtpInitialDate);
+            this.panel1.Controls.Add(this.label3);
+            this.panel1.Controls.Add(this.cmbType);
+            this.panel1.Controls.Add(this.btnSearch);
+            this.panel1.Controls.Add(this.txtSearch);
+            this.panel1.Controls.Add(this.label2);
+            this.panel1.Controls.Add(this.label1);
+            this.panel1.Controls.Add(this.cmbValue);
+            this.panel1.Location = new System.Drawing.Point(9, 5);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(782, 82);
+            this.panel1.TabIndex = 12;
+            // 
+            // btnSearch
+            // 
+            this.btnSearch.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnSearch.BackColor = System.Drawing.Color.Transparent;
+            this.btnSearch.BackgroundImage = global::control_elements_sena.Properties.Resources.loupe;
+            this.btnSearch.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnSearch.FlatAppearance.BorderSize = 0;
+            this.btnSearch.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnSearch.Location = new System.Drawing.Point(743, 12);
+            this.btnSearch.Name = "btnSearch";
+            this.btnSearch.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.btnSearch.Size = new System.Drawing.Size(22, 22);
+            this.btnSearch.TabIndex = 12;
+            this.btnSearch.UseVisualStyleBackColor = false;
+            this.btnSearch.Click += new System.EventHandler(this.btnSearch_Click);
+            // 
+            // txtSearch
+            // 
+            this.txtSearch.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtSearch.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtSearch.Location = new System.Drawing.Point(395, 10);
+            this.txtSearch.MaxLength = 60;
+            this.txtSearch.Name = "txtSearch";
+            this.txtSearch.Size = new System.Drawing.Size(342, 25);
+            this.txtSearch.TabIndex = 11;
+            this.txtSearch.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtSearch_KeyPress);
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Location = new System.Drawing.Point(149, 13);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(61, 17);
+            this.label2.TabIndex = 2;
+            this.label2.Text = "Entradas";
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(13, 13);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(56, 17);
+            this.label1.TabIndex = 1;
+            this.label1.Text = "Mostrar";
+            // 
+            // cmbValue
+            // 
+            this.cmbValue.Font = new System.Drawing.Font("Segoe UI Semibold", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cmbValue.FormattingEnabled = true;
+            this.cmbValue.Items.AddRange(new object[] {
+            "5",
+            "10",
+            "25",
+            "50",
+            "100",
+            "250",
+            "500"});
+            this.cmbValue.Location = new System.Drawing.Point(75, 12);
+            this.cmbValue.MaxLength = 3;
+            this.cmbValue.Name = "cmbValue";
+            this.cmbValue.Size = new System.Drawing.Size(70, 21);
+            this.cmbValue.TabIndex = 0;
+            this.cmbValue.Text = "5";
+            this.cmbValue.SelectedIndexChanged += new System.EventHandler(this.cmbValue_SelectedIndexChanged);
+            this.cmbValue.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.cmbValue_KeyPress);
+            // 
+            // cmbType
+            // 
+            this.cmbType.Font = new System.Drawing.Font("Segoe UI Semibold", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cmbType.FormattingEnabled = true;
+            this.cmbType.Items.AddRange(new object[] {
+            "Activas",
+            "Inactivas",
+            "Todas"});
+            this.cmbType.Location = new System.Drawing.Point(216, 12);
+            this.cmbType.MaxLength = 3;
+            this.cmbType.Name = "cmbType";
+            this.cmbType.Size = new System.Drawing.Size(70, 21);
+            this.cmbType.TabIndex = 13;
+            this.cmbType.Text = "Activas";
+            this.cmbType.SelectedIndexChanged += new System.EventHandler(this.cmbType_SelectedIndexChanged);
+            this.cmbType.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.cmbType_KeyPress);
+            // 
+            // id
+            // 
+            this.id.HeaderText = "id";
+            this.id.Name = "id";
+            this.id.ReadOnly = true;
+            this.id.Visible = false;
+            // 
+            // id_usuario
+            // 
+            this.id_usuario.HeaderText = "Identificación registrador";
+            this.id_usuario.Name = "id_usuario";
+            this.id_usuario.ReadOnly = true;
+            // 
+            // registrador
+            // 
+            dataGridViewCellStyle33.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.registrador.DefaultCellStyle = dataGridViewCellStyle33;
+            this.registrador.HeaderText = "Registrador";
+            this.registrador.Name = "registrador";
+            this.registrador.ReadOnly = true;
+            // 
+            // identificacion_propietario
+            // 
+            dataGridViewCellStyle34.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.identificacion_propietario.DefaultCellStyle = dataGridViewCellStyle34;
+            this.identificacion_propietario.HeaderText = "Identificación propietario";
+            this.identificacion_propietario.Name = "identificacion_propietario";
+            this.identificacion_propietario.ReadOnly = true;
+            // 
+            // nombres_propietario
+            // 
+            dataGridViewCellStyle35.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.nombres_propietario.DefaultCellStyle = dataGridViewCellStyle35;
+            this.nombres_propietario.HeaderText = "Nombres propietario";
+            this.nombres_propietario.Name = "nombres_propietario";
+            this.nombres_propietario.ReadOnly = true;
+            // 
+            // id_elemento
+            // 
+            this.id_elemento.HeaderText = "Id_elemento";
+            this.id_elemento.Name = "id_elemento";
+            this.id_elemento.ReadOnly = true;
+            this.id_elemento.Visible = false;
+            // 
+            // marca
+            // 
+            dataGridViewCellStyle36.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.marca.DefaultCellStyle = dataGridViewCellStyle36;
+            this.marca.HeaderText = "Marca";
+            this.marca.Name = "marca";
+            this.marca.ReadOnly = true;
+            // 
+            // serie
+            // 
+            dataGridViewCellStyle37.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.serie.DefaultCellStyle = dataGridViewCellStyle37;
+            this.serie.HeaderText = "Serie";
+            this.serie.Name = "serie";
+            this.serie.ReadOnly = true;
+            // 
+            // hora_entrada
+            // 
+            dataGridViewCellStyle38.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.hora_entrada.DefaultCellStyle = dataGridViewCellStyle38;
+            this.hora_entrada.HeaderText = "Hora de entrada";
+            this.hora_entrada.Name = "hora_entrada";
+            this.hora_entrada.ReadOnly = true;
+            // 
+            // hora_salida
+            // 
+            dataGridViewCellStyle39.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.hora_salida.DefaultCellStyle = dataGridViewCellStyle39;
+            this.hora_salida.HeaderText = "Hora de salida";
+            this.hora_salida.Name = "hora_salida";
+            this.hora_salida.ReadOnly = true;
+            this.hora_salida.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.Location = new System.Drawing.Point(13, 49);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(295, 17);
+            this.label3.TabIndex = 14;
+            this.label3.Text = "Seleccionar entradas por rango de fecha desde:";
+            // 
+            // dtpInitialDate
+            // 
+            this.dtpInitialDate.CalendarFont = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dtpInitialDate.CustomFormat = "dddd dd/MM/yyyy";
+            this.dtpInitialDate.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.dtpInitialDate.Location = new System.Drawing.Point(309, 49);
+            this.dtpInitialDate.Name = "dtpInitialDate";
+            this.dtpInitialDate.Size = new System.Drawing.Size(155, 20);
+            this.dtpInitialDate.TabIndex = 15;
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.Location = new System.Drawing.Point(470, 49);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(43, 17);
+            this.label4.TabIndex = 16;
+            this.label4.Text = "Hasta";
+            // 
+            // dtpEndDate
+            // 
+            this.dtpEndDate.CalendarFont = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dtpEndDate.CustomFormat = "dddd dd/MM/yyyy";
+            this.dtpEndDate.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.dtpEndDate.Location = new System.Drawing.Point(519, 49);
+            this.dtpEndDate.Name = "dtpEndDate";
+            this.dtpEndDate.Size = new System.Drawing.Size(155, 20);
+            this.dtpEndDate.TabIndex = 17;
+            // 
+            // btnDateSearch
+            // 
+            this.btnDateSearch.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(4)))), ((int)(((byte)(50)))), ((int)(((byte)(77)))));
+            this.btnDateSearch.FlatAppearance.BorderSize = 0;
+            this.btnDateSearch.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnDateSearch.Font = new System.Drawing.Font("Segoe UI Black", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnDateSearch.ForeColor = System.Drawing.Color.White;
+            this.btnDateSearch.Location = new System.Drawing.Point(690, 47);
+            this.btnDateSearch.Name = "btnDateSearch";
+            this.btnDateSearch.Size = new System.Drawing.Size(75, 23);
+            this.btnDateSearch.TabIndex = 18;
+            this.btnDateSearch.Text = "Buscar";
+            this.btnDateSearch.UseVisualStyleBackColor = false;
+            this.btnDateSearch.Click += new System.EventHandler(this.btnDateSearch_Click);
             // 
             // Entradas
             // 
@@ -264,6 +461,7 @@
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(236)))), ((int)(((byte)(237)))), ((int)(((byte)(240)))));
             this.ClientSize = new System.Drawing.Size(800, 450);
             this.ControlBox = false;
+            this.Controls.Add(this.panel1);
             this.Controls.Add(this.btnOptions);
             this.Controls.Add(this.pButtonsContainer);
             this.Controls.Add(this.dgvDatos);
@@ -278,6 +476,8 @@
             this.Load += new System.EventHandler(this.Entradas_Load);
             this.pButtonsContainer.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgvDatos)).EndInit();
+            this.panel1.ResumeLayout(false);
+            this.panel1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -287,19 +487,32 @@
         private System.Windows.Forms.Panel pButtonsContainer;
         private System.Windows.Forms.ToolTip toolTipNew;
         private System.Windows.Forms.Button btnAdd;
-        private System.Windows.Forms.DataGridViewTextBoxColumn hora_salida;
-        private System.Windows.Forms.DataGridViewTextBoxColumn hora_entrada;
-        private System.Windows.Forms.DataGridViewTextBoxColumn serie;
-        private System.Windows.Forms.DataGridViewTextBoxColumn marca;
-        private System.Windows.Forms.DataGridViewTextBoxColumn id_elemento;
-        private System.Windows.Forms.DataGridViewTextBoxColumn nombres_propietario;
-        private System.Windows.Forms.DataGridViewTextBoxColumn identificacion_propietario;
-        private System.Windows.Forms.DataGridViewTextBoxColumn registrador;
-        private System.Windows.Forms.DataGridViewTextBoxColumn id_usuario;
-        private System.Windows.Forms.DataGridViewTextBoxColumn id;
         private System.Windows.Forms.DataGridView dgvDatos;
         private System.Windows.Forms.Button btnOptions;
+        private System.Windows.Forms.Button btnListAll;
+        private System.Windows.Forms.ToolTip toolTipListAll;
         private System.Windows.Forms.ToolTip toolTipHelper;
-        private System.Windows.Forms.Timer balloonToolTip;
+        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Button btnSearch;
+        private System.Windows.Forms.TextBox txtSearch;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.ComboBox cmbValue;
+        private System.Windows.Forms.ComboBox cmbType;
+        private System.Windows.Forms.DataGridViewTextBoxColumn id;
+        private System.Windows.Forms.DataGridViewTextBoxColumn id_usuario;
+        private System.Windows.Forms.DataGridViewTextBoxColumn registrador;
+        private System.Windows.Forms.DataGridViewTextBoxColumn identificacion_propietario;
+        private System.Windows.Forms.DataGridViewTextBoxColumn nombres_propietario;
+        private System.Windows.Forms.DataGridViewTextBoxColumn id_elemento;
+        private System.Windows.Forms.DataGridViewTextBoxColumn marca;
+        private System.Windows.Forms.DataGridViewTextBoxColumn serie;
+        private System.Windows.Forms.DataGridViewTextBoxColumn hora_entrada;
+        private System.Windows.Forms.DataGridViewTextBoxColumn hora_salida;
+        private System.Windows.Forms.DateTimePicker dtpInitialDate;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.DateTimePicker dtpEndDate;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Button btnDateSearch;
     }
 }

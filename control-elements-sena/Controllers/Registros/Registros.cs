@@ -11,34 +11,71 @@ namespace control_elements_sena.Controllers.Registros
     public class Registros
     {
         public static string errorMessage;
-        public static (DataTable, bool) SeleccionarRegistros()
+   
+
+        public static (DataTable, bool) SeleccionarRegistros(string all, string limit)
         {
-            DataTable recordsTable = new DataTable();
+            DataTable elementsTable = new DataTable();
             try
             {
                 using (SqlConnection connection = DatabaseConnect.GetConnection())
                 {
                     using (SqlCommand command = new SqlCommand("SeleccionarRegistros", connection))
                     {
-
+                        command.CommandType = CommandType.StoredProcedure;
+                        command.Parameters.AddWithValue("@all", all);
+                        command.Parameters.AddWithValue("@lim", limit);
                         SqlDataAdapter adapter = new SqlDataAdapter(command);
 
                         connection.Open();
-                        adapter.Fill(recordsTable);
+                        adapter.Fill(elementsTable);
 
-                        return (recordsTable, true);
+                        return (elementsTable, true);
                     }
                 }
             }
             catch (SqlException ex)
             {
                 errorMessage = "Error con la base de datos. Código de error: " + ex.Number + "\n\nDetalles:\n" + ex.Message;
-                return (recordsTable, false);
+                return (elementsTable, false);
             }
             catch (Exception ex)
             {
                 errorMessage = "Error al seleccionar registros. Detalles: " + ex.Message;
-                return (recordsTable, false);
+                return (elementsTable, false);
+            }
+        }
+
+        public static (DataTable, bool) SeleccionarRegistro(string parametro, string limit)
+        {
+            DataTable elementsTable = new DataTable();
+            try
+            {
+                using (SqlConnection connection = DatabaseConnect.GetConnection())
+                {
+                    using (SqlCommand command = new SqlCommand("SeleccionarRegistro", connection))
+                    {
+                        command.CommandType = CommandType.StoredProcedure;
+                        command.Parameters.AddWithValue("@inf", parametro);
+                        command.Parameters.AddWithValue("@lim", limit);
+                        SqlDataAdapter adapter = new SqlDataAdapter(command);
+
+                        connection.Open();
+                        adapter.Fill(elementsTable);
+
+                        return (elementsTable, true);
+                    }
+                }
+            }
+            catch (SqlException ex)
+            {
+                errorMessage = "Error con la base de datos. Código de error: " + ex.Number + "\n\nDetalles:\n" + ex.Message;
+                return (elementsTable, false);
+            }
+            catch (Exception ex)
+            {
+                errorMessage = "Error al seleccionar registro. Detalles: " + ex.Message;
+                return (elementsTable, false);
             }
         }
         public static bool EditarRegistro(string id, string identificacion, string nombres)

@@ -34,46 +34,16 @@ namespace control_elements_sena
 
         private void Entradas_Load(object sender, EventArgs e)
         {
-            pButtonsContainer.Visible = false;
-            var response = Controllers.Entradas.Entradas.SeleccionarEntradas();
-            DataTable entranceData = response.Item1;
-            if (!response.Item2)
-            {
-                MessageBox.Show("Error al traer los datos de las entradas", "Tabla entradas", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-
-            foreach (DataRow data in entranceData.Rows)
-            {
-                var horaSalida = data[9].ToString() == "" ? "PENDIENTE" : data[9];
-                
-                dgvDatos.Rows.Add(new object[] { data[0], data[1], data[2], data[3], data[4], data[5], data[6], data[7], data[8], horaSalida });
-              
-
-            }
-            foreach(DataGridViewRow data in dgvDatos.Rows)
-            {
-                if (data.Cells["hora_salida"].Value.ToString() == "PENDIENTE")
-                {
-                    data.Cells["hora_salida"].Style.BackColor = Color.FromArgb(57,169,0);
-                    data.Cells["hora_salida"].ToolTipText = "Doble click para fijar hora de salida";
-                }
-            }
-            if (dgvDatos.Rows.Count == 0)
-            {
-                dgvDatos.Rows.Add(new object[] { "", "", "", "", "", "", "SIN DATOS PARA MOSTRAR", "", "", "" });
-            }
-            else
-            {
-                toolTipHelper.IsBalloon = false;
-                toolTipHelper.Show("Doble click en cualquier celda para registrar salida",this,50,-40,1500);
-                balloonToolTip.Start();
-            }
-            dgvDatos.ClearSelection();
+            CargarData("0");
+            SetPlaceholder(txtSearch, "Buscar por Identificación, Nombres, Serie o Marca");
         }
 
         private void btnAdd_Click(object sender, EventArgs e)
         {
-            new CrearEntrada().ShowDialog();
+            if (new CrearEntrada().ShowDialog() == DialogResult.OK)
+            {
+                CargarData("0");
+            }
         }
 
         private void dgvDatos_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
@@ -91,6 +61,7 @@ namespace control_elements_sena
                     if (Controllers.Entradas.Entradas.RegistrarSalida(data.Cells["id"].Value.ToString()))
                     {
                         MessageBox.Show("Operación exitosa", "Respuesta", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        CargarData("0");
                     }
                     else {
                         MessageBox.Show(Controllers.Entradas.Entradas.errorMessage, "Respuesta", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -99,10 +70,232 @@ namespace control_elements_sena
             }
         }
 
-        private void balloonToolTip_Tick(object sender, EventArgs e)
+
+
+        private void btnSearch_Click(object sender, EventArgs e)
         {
-            toolTipHelper.IsBalloon = true;
-            balloonToolTip.Stop();
+            BuscarParametro();
         }
+        private void btnDateSearch_Click(object sender, EventArgs e)
+        {
+            pButtonsContainer.Visible = false;
+            var response = Controllers.Entradas.Entradas.SeleccionarEntradasFecha(cmbValue.Text == "" ? "5" : cmbValue.Text, cmbType.Text, dtpInitialDate.Value.AddDays(1).ToString("yyyy/MM/dd"),dtpEndDate.Value.AddDays(1).ToString("yyyy/MM/dd"));
+            DataTable entranceData = response.Item1;
+            // Limpiar datos
+            dgvDatos.Rows.Clear();
+            if (!response.Item2)
+            {
+                MessageBox.Show("Error al traer los datos de las entradas", "Tabla entradas", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+
+            foreach (DataRow data in entranceData.Rows)
+            {
+                var horaSalida = data[9].ToString() == "" ? "PENDIENTE" : data[9];
+
+                dgvDatos.Rows.Add(new object[] { data[0], data[1], data[2], data[3], data[4], data[5], data[6], data[7], data[8], horaSalida });
+
+
+            }
+            foreach (DataGridViewRow data in dgvDatos.Rows)
+            {
+                if (data.Cells["hora_salida"].Value.ToString() == "PENDIENTE")
+                {
+                    data.Cells["hora_salida"].Style.BackColor = Color.FromArgb(57, 169, 0);
+                    data.Cells["hora_salida"].ToolTipText = "Doble click para fijar hora de salida";
+                }
+            }
+            if (dgvDatos.Rows.Count == 0)
+            {
+                dgvDatos.Rows.Add(new object[] { "", "", "", "", "", "", "SIN DATOS PARA MOSTRAR", "", "", "" });
+            }
+            dgvDatos.ClearSelection();
+        }
+        private void cmbValue_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            CargarDataRango();
+        }
+        private void cmbType_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            CargarDataRango();
+        }
+        private void btnListAll_Click(object sender, EventArgs e)
+        {
+            if(MessageBox.Show("¿Estás seguro que quieres listar todo?\nEste proceso podría tardar unos minutos en completarse", "Listar todo", MessageBoxButtons.YesNo,MessageBoxIcon.Question) == DialogResult.Yes)
+            {
+                CargarData("1");
+            }
+            
+        }
+        private void cmbValue_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsDigit(e.KeyChar) && !char.IsControl(e.KeyChar))
+            {
+
+                // Si no es un número ni una tecla de control (como Backspace), cancelar el evento
+                e.Handled = true;
+            }
+            if (e.KeyChar == 13)
+            {
+                CargarDataRango();
+            }
+        }
+
+        private void txtSearch_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == 13)
+            {
+                BuscarParametro();
+            }
+        }
+
+ 
+
+        // Funciones personalizadas
+        private void CargarData(string all)
+        {
+            pButtonsContainer.Visible = false;
+            var response = Controllers.Entradas.Entradas.SeleccionarEntradas(all);
+            DataTable entranceData = response.Item1;
+            // Limpiar datos
+            dgvDatos.Rows.Clear();
+            if (!response.Item2)
+            {
+                MessageBox.Show("Error al traer los datos de las entradas", "Tabla entradas", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+
+            foreach (DataRow data in entranceData.Rows)
+            {
+                var horaSalida = data[9].ToString() == "" ? "PENDIENTE" : data[9];
+
+                dgvDatos.Rows.Add(new object[] { data[0], data[1], data[2], data[3], data[4], data[5], data[6], data[7], data[8], horaSalida });
+
+
+            }
+            foreach (DataGridViewRow data in dgvDatos.Rows)
+            {
+                if (data.Cells["hora_salida"].Value.ToString() == "PENDIENTE")
+                {
+                    data.Cells["hora_salida"].Style.BackColor = Color.FromArgb(57, 169, 0);
+                    data.Cells["hora_salida"].ToolTipText = "Doble click para fijar hora de salida";
+                }
+            }
+            if (dgvDatos.Rows.Count == 0)
+            {
+                dgvDatos.Rows.Add(new object[] { "", "", "", "", "", "", "SIN DATOS PARA MOSTRAR", "", "", "" });
+            }
+            dgvDatos.ClearSelection();
+        }
+        private void CargarDataRango()
+        {
+            pButtonsContainer.Visible = false;
+            var response = Controllers.Entradas.Entradas.SeleccionarEntradasRango(cmbValue.Text == "" ? "5" : cmbValue.Text, cmbType.Text);
+            DataTable entranceData = response.Item1;
+            // Limpiar datos
+            dgvDatos.Rows.Clear();
+            if (!response.Item2)
+            {
+                MessageBox.Show("Error al traer los datos de las entradas", "Tabla entradas", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+
+            foreach (DataRow data in entranceData.Rows)
+            {
+                var horaSalida = data[9].ToString() == "" ? "PENDIENTE" : data[9];
+
+                dgvDatos.Rows.Add(new object[] { data[0], data[1], data[2], data[3], data[4], data[5], data[6], data[7], data[8], horaSalida });
+
+
+            }
+            foreach (DataGridViewRow data in dgvDatos.Rows)
+            {
+                if (data.Cells["hora_salida"].Value.ToString() == "PENDIENTE")
+                {
+                    data.Cells["hora_salida"].Style.BackColor = Color.FromArgb(57, 169, 0);
+                    data.Cells["hora_salida"].ToolTipText = "Doble click para fijar hora de salida";
+                }
+            }
+            if (dgvDatos.Rows.Count == 0)
+            {
+                dgvDatos.Rows.Add(new object[] { "", "", "", "", "", "", "SIN DATOS PARA MOSTRAR", "", "", "" });
+            }
+            dgvDatos.ClearSelection();
+        }
+        private void BuscarParametro()
+        {
+            if (txtSearch.Text.Length == 0 || txtSearch.Text == "Buscar por Identificación o Nombres")
+            {
+                MessageBox.Show("Digita por lo menos un parámetro de búsqueda", "Buscar registro", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+
+            }
+            else
+            {
+                pButtonsContainer.Visible = false;
+                var response = Controllers.Entradas.Entradas.SeleccionarEntradasParametro(cmbValue.Text == "" ? "5" : cmbValue.Text,cmbType.Text,txtSearch.Text);
+                DataTable entranceData = response.Item1;
+                // Limpiar datos
+                dgvDatos.Rows.Clear();
+                if (!response.Item2)
+                {
+                    MessageBox.Show("Error al traer los datos de las entradas", "Tabla entradas", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+
+                foreach (DataRow data in entranceData.Rows)
+                {
+                    var horaSalida = data[9].ToString() == "" ? "PENDIENTE" : data[9];
+
+                    dgvDatos.Rows.Add(new object[] { data[0], data[1], data[2], data[3], data[4], data[5], data[6], data[7], data[8], horaSalida });
+
+
+                }
+                foreach (DataGridViewRow data in dgvDatos.Rows)
+                {
+                    if (data.Cells["hora_salida"].Value.ToString() == "PENDIENTE")
+                    {
+                        data.Cells["hora_salida"].Style.BackColor = Color.FromArgb(57, 169, 0);
+                        data.Cells["hora_salida"].ToolTipText = "Doble click para fijar hora de salida";
+                    }
+                }
+                if (dgvDatos.Rows.Count == 0)
+                {
+                    dgvDatos.Rows.Add(new object[] { "", "", "", "", "", "", "SIN DATOS PARA MOSTRAR", "", "", "" });
+                }
+                dgvDatos.ClearSelection();
+            }
+        }
+        private void SetPlaceholder(TextBox textBox, string placeholder)
+        {
+            // Si el TextBox está vacío, muestra el placeholder en color gris
+            if (string.IsNullOrWhiteSpace(textBox.Text))
+            {
+                textBox.Text = placeholder;
+                textBox.ForeColor = Color.Gray;
+            }
+
+            // Evento Enter para eliminar el placeholder cuando el usuario hace clic
+            textBox.Enter += (sender, e) =>
+            {
+                if (textBox.Text == placeholder)
+                {
+                    textBox.Text = "";
+                    textBox.ForeColor = Color.Black;
+                }
+            };
+
+            // Evento Leave para volver a mostrar el placeholder si el usuario no escribe nada
+            textBox.Leave += (sender, e) =>
+            {
+                if (string.IsNullOrWhiteSpace(textBox.Text))
+                {
+                    textBox.Text = placeholder;
+                    textBox.ForeColor = Color.Gray;
+                }
+            };
+        }
+
+        private void cmbType_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            e.Handled = true;
+        }
+
+      
     }
 }

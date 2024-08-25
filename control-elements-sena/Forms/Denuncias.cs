@@ -35,37 +35,15 @@ namespace control_elements_sena
 
         private void Denuncias_Load(object sender, EventArgs e)
         {
-            pButtonsContainer.Visible = false;
-            var response = Controllers.Denuncias.Denuncias.SeleccionarDenuncias();
-            DataTable reportData = response.Item1;
-            if (!response.Item2)
-            {
-                MessageBox.Show("Error al traer los datos de las denuncias", "Tabla denuncias", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-
-            foreach (DataRow data in reportData.Rows)
-            {
-                dgvDatos.Rows.Add(new object[] { data[0], data[1], data[2], data[3], data[4], data[5], data[6], data[7].ToString() != "" ? data[7] : "SIN FECHA", data[8], Convert.ToByte(data[9]) == 1 ? "Activa":"Inactiva"});
-            }
-            foreach(DataGridViewRow data in dgvDatos.Rows)
-            {
-                if (data.Cells[9].Value.ToString() == "Activa")
-                {
-                    data.Cells[9].Style.BackColor = Color.FromArgb(57, 169, 0);
-                }
-            }
-            if (dgvDatos.Rows.Count == 0)
-            {
-                dgvDatos.Rows.Add(new object[] { "", "", "", "", "", "", "SIN DATOS PARA MOSTRAR", "","","","" });
-
-
-            }
-            dgvDatos.ClearSelection();
+            CargarData("0");
         }
 
         private void btnAdd_Click(object sender, EventArgs e)
         {
-            new CrearDenuncia().ShowDialog();
+            if (new CrearDenuncia().ShowDialog() == DialogResult.OK)
+            {
+                CargarData("0");
+            }
         }
 
         private void dgvDatos_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
@@ -77,9 +55,54 @@ namespace control_elements_sena
             }
             else
             {
-                new SolucionarDenuncia(dgvDatos.Rows[celdaSeleccionada].Cells[0].Value.ToString()).ShowDialog();
+                
+                if (new SolucionarDenuncia(dgvDatos.Rows[celdaSeleccionada].Cells[0].Value.ToString()).ShowDialog() == DialogResult.OK)
+                {
+                    CargarData("0");
+                }
             }
             
         }
+
+       
+        private void btnListAll_Click(object sender, EventArgs e)
+        {
+            CargarData("1");
+        }
+        // Funciones personalizadas
+        private void CargarData(string all)
+        {
+            pButtonsContainer.Visible = false;
+            var response = Controllers.Denuncias.Denuncias.SeleccionarDenuncias(all);
+            DataTable reportData = response.Item1;
+            // Limpiar DataGridView
+            dgvDatos.Rows.Clear();
+            if (!response.Item2)
+            {
+                MessageBox.Show("Error al traer los datos de las denuncias", "Tabla denuncias", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+
+            foreach (DataRow data in reportData.Rows)
+            {
+                dgvDatos.Rows.Add(new object[] { data[0], data[1], data[2], data[3], data[4], data[5], data[6], data[7].ToString() != "" ? data[7] : "SIN FECHA", data[8], Convert.ToByte(data[9]) == 1 ? "Activa" : "Inactiva" });
+            }
+            foreach (DataGridViewRow data in dgvDatos.Rows)
+            {
+                if (data.Cells[9].Value.ToString() == "Activa")
+                {
+                    data.Cells[9].Style.BackColor = Color.FromArgb(57, 169, 0);
+                }
+            }
+            if (dgvDatos.Rows.Count == 0)
+            {
+                dgvDatos.Rows.Add(new object[] { "", "", "", "", "", "NINGUNA DENUNCIA ACTIVA ACTUALMENTE", "", "", "", "", "" });
+
+
+            }
+  
+            dgvDatos.ClearSelection();
+        }
+
+       
     }
 }

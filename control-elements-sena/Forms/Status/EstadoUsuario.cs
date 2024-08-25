@@ -55,7 +55,8 @@ namespace control_elements_sena.Forms.Create
                 if (response)
                 {
                     MessageBox.Show("El estado del usuario ha sido cambiado exitosamente", "Respuesta", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    this.Close();
+                this.DialogResult = DialogResult.OK;
+                this.Close();
                 }
                 else
                 {

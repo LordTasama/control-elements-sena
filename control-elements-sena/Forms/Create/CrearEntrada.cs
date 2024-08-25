@@ -93,6 +93,7 @@ namespace control_elements_sena.Forms.Create
                 if (response)
                 {
                     MessageBox.Show("Entrada registrada exitosamente", "Respuesta", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    this.DialogResult = DialogResult.OK;
                     this.Close();
                 }
                 else
@@ -162,6 +163,7 @@ namespace control_elements_sena.Forms.Create
 
         private void CrearEntrada_Load(object sender, EventArgs e)
         {
+            Controllers.Entradas.Entradas.idRegistro = null;
             Controllers.Entradas.Entradas.idElemento = null;
         }
     }

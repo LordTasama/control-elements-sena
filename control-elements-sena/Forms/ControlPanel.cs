@@ -356,6 +356,7 @@ namespace control_elements_sena
             lblIdUser.Text = new string('*', lblIdUser.Text.Length);
         }
 
+ 
         // Funciones personalizadas
         private async Task<string[]> DatosToken()
         {
@@ -371,10 +372,7 @@ namespace control_elements_sena
         }
         private void loadForm(string condition)
         {
-            if (currentForm != null)
-            {
-                currentForm.Close();
-            }
+            
             if (condition == "Usuarios ")
             {
                 var users = new Users();
@@ -449,6 +447,8 @@ namespace control_elements_sena
             pictureReload.Visible = true;
             SidebarSelect();
         }
+
+        
 
         // Fin
     }

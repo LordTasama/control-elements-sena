@@ -44,7 +44,10 @@
             this.toolTipNew = new System.Windows.Forms.ToolTip(this.components);
             this.btnAdd = new System.Windows.Forms.Button();
             this.pButtonsContainer = new System.Windows.Forms.Panel();
+            this.btnListAll = new System.Windows.Forms.Button();
+            this.toolTipHelper = new System.Windows.Forms.ToolTip(this.components);
             this.btnOptions = new System.Windows.Forms.Button();
+            this.toolTipListAll = new System.Windows.Forms.ToolTip(this.components);
             this.id = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.descripcion = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.identificacion_propietario = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -144,11 +147,37 @@
             this.pButtonsContainer.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.pButtonsContainer.AutoSize = true;
             this.pButtonsContainer.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(4)))), ((int)(((byte)(50)))), ((int)(((byte)(77)))));
+            this.pButtonsContainer.Controls.Add(this.btnListAll);
             this.pButtonsContainer.Controls.Add(this.btnAdd);
             this.pButtonsContainer.Location = new System.Drawing.Point(726, 9);
             this.pButtonsContainer.Name = "pButtonsContainer";
-            this.pButtonsContainer.Size = new System.Drawing.Size(44, 45);
+            this.pButtonsContainer.Size = new System.Drawing.Size(44, 83);
             this.pButtonsContainer.TabIndex = 8;
+            // 
+            // btnListAll
+            // 
+            this.btnListAll.BackColor = System.Drawing.Color.Transparent;
+            this.btnListAll.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnListAll.FlatAppearance.BorderSize = 0;
+            this.btnListAll.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnListAll.Image = global::control_elements_sena.Properties.Resources.check_list;
+            this.btnListAll.Location = new System.Drawing.Point(3, 44);
+            this.btnListAll.Name = "btnListAll";
+            this.btnListAll.Size = new System.Drawing.Size(36, 36);
+            this.btnListAll.TabIndex = 1;
+            this.toolTipListAll.SetToolTip(this.btnListAll, "Listado completo de denuncias");
+            this.btnListAll.UseVisualStyleBackColor = false;
+            this.btnListAll.Click += new System.EventHandler(this.btnListAll_Click);
+            // 
+            // toolTipHelper
+            // 
+            this.toolTipHelper.AutomaticDelay = 0;
+            this.toolTipHelper.AutoPopDelay = 2000;
+            this.toolTipHelper.InitialDelay = 0;
+            this.toolTipHelper.IsBalloon = true;
+            this.toolTipHelper.ReshowDelay = 0;
+            this.toolTipHelper.ToolTipIcon = System.Windows.Forms.ToolTipIcon.Info;
+            this.toolTipHelper.ToolTipTitle = "Solucionar denuncia";
             // 
             // btnOptions
             // 
@@ -162,8 +191,19 @@
             this.btnOptions.Name = "btnOptions";
             this.btnOptions.Size = new System.Drawing.Size(23, 31);
             this.btnOptions.TabIndex = 3;
+            this.toolTipHelper.SetToolTip(this.btnOptions, "Haz doble click en cualquier celda para solucionar una denuncia");
             this.btnOptions.UseVisualStyleBackColor = false;
             this.btnOptions.Click += new System.EventHandler(this.btnOptions_Click);
+            // 
+            // toolTipListAll
+            // 
+            this.toolTipListAll.AutomaticDelay = 0;
+            this.toolTipListAll.AutoPopDelay = 5000;
+            this.toolTipListAll.InitialDelay = 0;
+            this.toolTipListAll.IsBalloon = true;
+            this.toolTipListAll.ReshowDelay = 0;
+            this.toolTipListAll.ToolTipIcon = System.Windows.Forms.ToolTipIcon.Info;
+            this.toolTipListAll.ToolTipTitle = "Mostrar todo";
             // 
             // id
             // 
@@ -229,6 +269,7 @@
             this.fecha_fin.HeaderText = "Fecha Fin";
             this.fecha_fin.Name = "fecha_fin";
             this.fecha_fin.ReadOnly = true;
+            this.fecha_fin.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
             // 
             // detalle_solucion
             // 
@@ -270,12 +311,14 @@
         }
 
         #endregion
-
-        private System.Windows.Forms.DataGridView dgvDatos;
         private System.Windows.Forms.ToolTip toolTipNew;
         private System.Windows.Forms.Button btnAdd;
         private System.Windows.Forms.Panel pButtonsContainer;
         private System.Windows.Forms.Button btnOptions;
+        private System.Windows.Forms.ToolTip toolTipHelper;
+        public System.Windows.Forms.DataGridView dgvDatos;
+        private System.Windows.Forms.Button btnListAll;
+        private System.Windows.Forms.ToolTip toolTipListAll;
         private System.Windows.Forms.DataGridViewTextBoxColumn id;
         private System.Windows.Forms.DataGridViewTextBoxColumn descripcion;
         private System.Windows.Forms.DataGridViewTextBoxColumn identificacion_propietario;

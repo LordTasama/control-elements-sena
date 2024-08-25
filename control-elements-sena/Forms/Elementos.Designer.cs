@@ -44,11 +44,22 @@
             this.Marca = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.serie = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.toolTipEdit = new System.Windows.Forms.ToolTip(this.components);
+            this.button1 = new System.Windows.Forms.Button();
             this.btnEdit = new System.Windows.Forms.Button();
-            this.btnOptions = new System.Windows.Forms.Button();
             this.pButtonsContainer = new System.Windows.Forms.Panel();
+            this.btnListAll = new System.Windows.Forms.Button();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.btnSearch = new System.Windows.Forms.Button();
+            this.txtSearch = new System.Windows.Forms.TextBox();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
+            this.cmbValue = new System.Windows.Forms.ComboBox();
+            this.toolTipListAll = new System.Windows.Forms.ToolTip(this.components);
+            this.btnOptions = new System.Windows.Forms.Button();
+            this.toolTipOwnValue = new System.Windows.Forms.ToolTip(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.dgvDatos)).BeginInit();
             this.pButtonsContainer.SuspendLayout();
+            this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // dgvDatos
@@ -91,16 +102,16 @@
             dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
             this.dgvDatos.DefaultCellStyle = dataGridViewCellStyle6;
             this.dgvDatos.EnableHeadersVisualStyles = false;
-            this.dgvDatos.Location = new System.Drawing.Point(9, 9);
+            this.dgvDatos.Location = new System.Drawing.Point(9, 56);
             this.dgvDatos.Margin = new System.Windows.Forms.Padding(0);
             this.dgvDatos.MultiSelect = false;
             this.dgvDatos.Name = "dgvDatos";
             this.dgvDatos.ReadOnly = true;
             this.dgvDatos.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Sunken;
             this.dgvDatos.RowHeadersVisible = false;
-            this.dgvDatos.Size = new System.Drawing.Size(782, 432);
+            this.dgvDatos.Size = new System.Drawing.Size(782, 385);
             this.dgvDatos.TabIndex = 7;
-            this.dgvDatos.SelectionChanged += new System.EventHandler(this.dgvDatos_SelectionChanged_1);
+            this.dgvDatos.SelectionChanged += new System.EventHandler(this.dgvDatos_SelectionChanged);
             // 
             // id
             // 
@@ -156,6 +167,20 @@
             this.toolTipEdit.ToolTipIcon = System.Windows.Forms.ToolTipIcon.Info;
             this.toolTipEdit.ToolTipTitle = "Editar elemento";
             // 
+            // button1
+            // 
+            this.button1.BackColor = System.Drawing.Color.Transparent;
+            this.button1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.button1.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.button1.FlatAppearance.BorderSize = 0;
+            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button1.Location = new System.Drawing.Point(1, 37);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(36, 36);
+            this.button1.TabIndex = 2;
+            this.toolTipEdit.SetToolTip(this.button1, "Asegúrate de haber seleccionado un elemento");
+            this.button1.UseVisualStyleBackColor = false;
+            // 
             // btnEdit
             // 
             this.btnEdit.BackColor = System.Drawing.Color.Transparent;
@@ -172,6 +197,128 @@
             this.btnEdit.UseVisualStyleBackColor = false;
             this.btnEdit.Click += new System.EventHandler(this.btnEdit_Click);
             // 
+            // pButtonsContainer
+            // 
+            this.pButtonsContainer.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.pButtonsContainer.AutoSize = true;
+            this.pButtonsContainer.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(4)))), ((int)(((byte)(50)))), ((int)(((byte)(77)))));
+            this.pButtonsContainer.Controls.Add(this.btnListAll);
+            this.pButtonsContainer.Controls.Add(this.button1);
+            this.pButtonsContainer.Controls.Add(this.btnEdit);
+            this.pButtonsContainer.Location = new System.Drawing.Point(732, 56);
+            this.pButtonsContainer.Name = "pButtonsContainer";
+            this.pButtonsContainer.Size = new System.Drawing.Size(40, 77);
+            this.pButtonsContainer.TabIndex = 10;
+            // 
+            // btnListAll
+            // 
+            this.btnListAll.BackColor = System.Drawing.Color.Transparent;
+            this.btnListAll.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnListAll.FlatAppearance.BorderSize = 0;
+            this.btnListAll.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnListAll.Image = global::control_elements_sena.Properties.Resources.all_list;
+            this.btnListAll.Location = new System.Drawing.Point(0, 37);
+            this.btnListAll.Name = "btnListAll";
+            this.btnListAll.Size = new System.Drawing.Size(36, 36);
+            this.btnListAll.TabIndex = 3;
+            this.toolTipListAll.SetToolTip(this.btnListAll, "Listado completo de elementos");
+            this.btnListAll.UseVisualStyleBackColor = false;
+            this.btnListAll.Click += new System.EventHandler(this.btnListAll_Click);
+            // 
+            // panel1
+            // 
+            this.panel1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.panel1.BackColor = System.Drawing.Color.White;
+            this.panel1.Controls.Add(this.btnSearch);
+            this.panel1.Controls.Add(this.txtSearch);
+            this.panel1.Controls.Add(this.label2);
+            this.panel1.Controls.Add(this.label1);
+            this.panel1.Controls.Add(this.cmbValue);
+            this.panel1.Location = new System.Drawing.Point(9, 5);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(782, 46);
+            this.panel1.TabIndex = 11;
+            // 
+            // btnSearch
+            // 
+            this.btnSearch.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnSearch.BackColor = System.Drawing.Color.Transparent;
+            this.btnSearch.BackgroundImage = global::control_elements_sena.Properties.Resources.loupe;
+            this.btnSearch.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnSearch.FlatAppearance.BorderSize = 0;
+            this.btnSearch.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnSearch.Location = new System.Drawing.Point(743, 12);
+            this.btnSearch.Name = "btnSearch";
+            this.btnSearch.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.btnSearch.Size = new System.Drawing.Size(22, 22);
+            this.btnSearch.TabIndex = 12;
+            this.btnSearch.UseVisualStyleBackColor = false;
+            this.btnSearch.Click += new System.EventHandler(this.btnSearch_Click);
+            // 
+            // txtSearch
+            // 
+            this.txtSearch.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtSearch.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtSearch.Location = new System.Drawing.Point(463, 10);
+            this.txtSearch.MaxLength = 60;
+            this.txtSearch.Name = "txtSearch";
+            this.txtSearch.Size = new System.Drawing.Size(274, 25);
+            this.txtSearch.TabIndex = 11;
+            this.txtSearch.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtSearch_KeyPress);
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Location = new System.Drawing.Point(202, 13);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(71, 17);
+            this.label2.TabIndex = 2;
+            this.label2.Text = "Elementos";
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(13, 13);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(56, 17);
+            this.label1.TabIndex = 1;
+            this.label1.Text = "Mostrar";
+            // 
+            // cmbValue
+            // 
+            this.cmbValue.Font = new System.Drawing.Font("Segoe UI Semibold", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cmbValue.FormattingEnabled = true;
+            this.cmbValue.Items.AddRange(new object[] {
+            "5",
+            "10",
+            "25",
+            "50",
+            "100",
+            "250",
+            "500"});
+            this.cmbValue.Location = new System.Drawing.Point(75, 12);
+            this.cmbValue.MaxLength = 3;
+            this.cmbValue.Name = "cmbValue";
+            this.cmbValue.Size = new System.Drawing.Size(121, 21);
+            this.cmbValue.TabIndex = 0;
+            this.cmbValue.Text = "5";
+            this.toolTipOwnValue.SetToolTip(this.cmbValue, "Presiona Enter para un valor personalizado");
+            this.cmbValue.SelectedIndexChanged += new System.EventHandler(this.cmbValue_SelectedIndexChanged);
+            this.cmbValue.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.cmbValue_KeyPress);
+            // 
+            // toolTipListAll
+            // 
+            this.toolTipListAll.AutomaticDelay = 0;
+            this.toolTipListAll.AutoPopDelay = 5000;
+            this.toolTipListAll.InitialDelay = 0;
+            this.toolTipListAll.IsBalloon = true;
+            this.toolTipListAll.ReshowDelay = 0;
+            this.toolTipListAll.ToolTipIcon = System.Windows.Forms.ToolTipIcon.Info;
+            this.toolTipListAll.ToolTipTitle = "Mostrar todo";
+            // 
             // btnOptions
             // 
             this.btnOptions.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
@@ -180,23 +327,22 @@
             this.btnOptions.FlatAppearance.BorderSize = 0;
             this.btnOptions.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnOptions.Image = global::control_elements_sena.Properties.Resources.options;
-            this.btnOptions.Location = new System.Drawing.Point(768, 9);
+            this.btnOptions.Location = new System.Drawing.Point(768, 56);
             this.btnOptions.Name = "btnOptions";
             this.btnOptions.Size = new System.Drawing.Size(23, 31);
             this.btnOptions.TabIndex = 9;
             this.btnOptions.UseVisualStyleBackColor = false;
             this.btnOptions.Click += new System.EventHandler(this.btnOptions_Click);
             // 
-            // pButtonsContainer
+            // toolTipOwnValue
             // 
-            this.pButtonsContainer.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.pButtonsContainer.AutoSize = true;
-            this.pButtonsContainer.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(4)))), ((int)(((byte)(50)))), ((int)(((byte)(77)))));
-            this.pButtonsContainer.Controls.Add(this.btnEdit);
-            this.pButtonsContainer.Location = new System.Drawing.Point(733, 9);
-            this.pButtonsContainer.Name = "pButtonsContainer";
-            this.pButtonsContainer.Size = new System.Drawing.Size(39, 39);
-            this.pButtonsContainer.TabIndex = 10;
+            this.toolTipOwnValue.AutomaticDelay = 0;
+            this.toolTipOwnValue.AutoPopDelay = 5000;
+            this.toolTipOwnValue.InitialDelay = 0;
+            this.toolTipOwnValue.IsBalloon = true;
+            this.toolTipOwnValue.ReshowDelay = 0;
+            this.toolTipOwnValue.ToolTipIcon = System.Windows.Forms.ToolTipIcon.Info;
+            this.toolTipOwnValue.ToolTipTitle = "Cantidad personalizada";
             // 
             // Elementos
             // 
@@ -204,6 +350,7 @@
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(236)))), ((int)(((byte)(237)))), ((int)(((byte)(240)))));
             this.ClientSize = new System.Drawing.Size(800, 450);
             this.ControlBox = false;
+            this.Controls.Add(this.panel1);
             this.Controls.Add(this.btnOptions);
             this.Controls.Add(this.pButtonsContainer);
             this.Controls.Add(this.dgvDatos);
@@ -219,6 +366,8 @@
             this.Load += new System.EventHandler(this.Elementos_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvDatos)).EndInit();
             this.pButtonsContainer.ResumeLayout(false);
+            this.panel1.ResumeLayout(false);
+            this.panel1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -237,5 +386,15 @@
         private System.Windows.Forms.Button btnOptions;
         private System.Windows.Forms.Panel pButtonsContainer;
         private System.Windows.Forms.Button btnEdit;
+        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.ComboBox cmbValue;
+        private System.Windows.Forms.TextBox txtSearch;
+        private System.Windows.Forms.Button btnSearch;
+        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button btnListAll;
+        private System.Windows.Forms.ToolTip toolTipListAll;
+        private System.Windows.Forms.ToolTip toolTipOwnValue;
     }
 }

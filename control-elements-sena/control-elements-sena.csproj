@@ -298,6 +298,8 @@
     <None Include="Resources\calendar.png" />
     <None Include="Resources\avatar-white.png" />
     <None Include="Resources\31ec2ce212492e600b8de27f38846ed7.jpg" />
+    <None Include="Resources\check-list.png" />
+    <None Include="Resources\all-list.png" />
     <Content Include="Resources\control-panel.png" />
     <None Include="Resources\maximize-white.png" />
     <None Include="Resources\minus-white.png" />
@@ -324,6 +326,7 @@
     <None Include="Resources\open-enrollment.png" />
     <None Include="Resources\personal-data.png" />
     <None Include="Resources\denuncia-create.png" />
+    <None Include="Resources\loupe.png" />
     <Content Include="Resources\sena-logo.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
