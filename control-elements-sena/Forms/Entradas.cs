@@ -9,17 +9,10 @@ namespace control_elements_sena
 {
     public partial class Entradas : Form
     {
-        private Point initialPosition;
         public Entradas()
         {
             InitializeComponent();
         }
-
-        private void btnCloseForm_Click_1(object sender, EventArgs e)
-        {
-            this.Close();
-        }
-
         private void btnOptions_Click(object sender, EventArgs e)
         {
             if (pButtonsContainer.Visible)
@@ -40,9 +33,24 @@ namespace control_elements_sena
 
         private void btnAdd_Click(object sender, EventArgs e)
         {
-            if (new CrearEntrada().ShowDialog() == DialogResult.OK)
+            bool shouldContinue = true;
+
+            while (shouldContinue)
             {
-                CargarData("0");
+                // Mostrar el diálogo
+                using (CrearEntrada crearEntradaForm = new CrearEntrada())
+                {
+                    DialogResult result = crearEntradaForm.ShowDialog();
+
+                    if (result == DialogResult.OK)
+                    {
+                        CargarData("0");
+                    }
+                    else
+                    {
+                        shouldContinue = false;
+                    }
+                }
             }
         }
 

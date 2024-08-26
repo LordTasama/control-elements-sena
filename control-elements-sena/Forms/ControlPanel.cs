@@ -201,8 +201,9 @@ namespace control_elements_sena
 
         private void btnReports_Click(object sender, EventArgs e)
         {
-            lblPage.Text = "Reportes ";
+            lblPage.Text = "Reportes "; 
             this.Text = "Panel de Control - Reportes";
+            loadForm("Reportes");
         }
 
         private void btnInforms_Click(object sender, EventArgs e)
@@ -419,7 +420,14 @@ namespace control_elements_sena
             }
             else if (condition == "Reportes")
             {
-
+                var reportes = new Reportes();
+                reportes.TopLevel = false;
+                reportes.Dock = DockStyle.Fill;
+                pContainer.Controls.Add(reportes);
+                pContainer.Tag = reportes;
+                reportes.BringToFront();
+                reportes.Show();
+                currentForm = reportes;
             }
             else if (condition == "Denuncias")
             {

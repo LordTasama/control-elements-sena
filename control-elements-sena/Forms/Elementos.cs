@@ -9,21 +9,11 @@ namespace control_elements_sena
 {
     public partial class Elementos : Form
     {
-        private Point initialPosition;
         private bool selectedCellRow;
         public Elementos()
         {
             InitializeComponent();
         }
-
-
-
-        private void btnCloseForm_Click_1(object sender, EventArgs e)
-        {
-            this.Close();
-        }
-
-  
 
         private void Elementos_Load(object sender, EventArgs e)
         {

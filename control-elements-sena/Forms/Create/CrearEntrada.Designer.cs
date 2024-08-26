@@ -164,6 +164,7 @@
             this.txtSerie.Name = "txtSerie";
             this.txtSerie.Size = new System.Drawing.Size(206, 25);
             this.txtSerie.TabIndex = 9;
+            this.txtSerie.TextChanged += new System.EventHandler(this.txtSerie_TextChanged);
             // 
             // btnSend
             // 
@@ -192,6 +193,7 @@
             this.cmbMarca.Size = new System.Drawing.Size(206, 25);
             this.cmbMarca.TabIndex = 7;
             this.cmbMarca.SelectedIndexChanged += new System.EventHandler(this.cmbMarca_SelectedIndexChanged);
+            this.cmbMarca.TextChanged += new System.EventHandler(this.cmbMarca_TextChanged);
             // 
             // label3
             // 

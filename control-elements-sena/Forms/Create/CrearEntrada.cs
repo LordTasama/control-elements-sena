@@ -43,7 +43,7 @@ namespace control_elements_sena.Forms.Create
 
         private void btnCloseWindow_Click(object sender, EventArgs e)
         {
-            this.Close();
+            this.DialogResult = DialogResult.Cancel;
         }
 
         private void btnSend_Click(object sender, EventArgs e)
@@ -94,7 +94,7 @@ namespace control_elements_sena.Forms.Create
                 {
                     MessageBox.Show("Entrada registrada exitosamente", "Respuesta", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     this.DialogResult = DialogResult.OK;
-                    this.Close();
+
                 }
                 else
                 {
@@ -107,44 +107,7 @@ namespace control_elements_sena.Forms.Create
 
         private void txtIdPropietario_TextChanged(object sender, EventArgs e)
         {
-            
-            var data = Controllers.Entradas.Entradas.SeleccionarDatosRegistro(txtIdPropietario.Text);
-        
-            string nombres = null;
-            string firstSerie = null;
-            List<Elemento> datosElementos = new List<Elemento>();
-            if (data.Item2)
-            {
-                foreach (DataRow row in data.Item1.Rows)
-                {
-                    nombres = nombres ?? row["nombres"].ToString();
-                    firstSerie = firstSerie ?? row["serie"].ToString();
-                    datosElementos.Add(new Elemento { Id_Registro = row["id_registro"].ToString(), Id_Elemento = row["id_elemento"].ToString() , Marca =row["marca"].ToString(),Serie = row["serie"].ToString() });
-
-                }
-                cmbMarca.Text = "";
-                cmbMarca.DataSource = datosElementos;
-                cmbMarca.DisplayMember = "Marca";
-                cmbMarca.ValueMember = "Serie";
-                txtNombres.Text = nombres;
-                txtSerie.Text = firstSerie;
-
-            } 
-            else
-            {
-                MessageBox.Show("Error al traer los datos", "Datos registro", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-           if(data.Item1.Rows.Count == 0)
-            {
-                Controllers.Entradas.Entradas.idRegistro = null;
-                Controllers.Entradas.Entradas.idElemento = null;
-            }
-            else
-            {
-                Controllers.Entradas.Entradas.idRegistro = data.Item1.Rows[0]["id_registro"].ToString();
-                Controllers.Entradas.Entradas.idElemento = data.Item1.Rows[0]["id_elemento"].ToString();
-            }
-
+            CargarDatosRegistro();
         }
 
         private void cmbMarca_SelectedIndexChanged(object sender, EventArgs e)
@@ -156,15 +119,105 @@ namespace control_elements_sena.Forms.Create
             }
         }
 
-        private void cmbMarca_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            Controllers.Entradas.Entradas.idElemento = null;
-        }
-
         private void CrearEntrada_Load(object sender, EventArgs e)
         {
             Controllers.Entradas.Entradas.idRegistro = null;
             Controllers.Entradas.Entradas.idElemento = null;
+        }
+
+        private void txtSerie_TextChanged(object sender, EventArgs e)
+        {
+
+            bool condition = false;
+            string idElement = null;
+            foreach (var item in cmbMarca.Items)
+            {
+                 if (item is Elemento elemento)
+                {
+                    if (elemento.Serie == txtSerie.Text)
+                    {
+                        condition = true;
+                        idElement = elemento.Id_Elemento;
+                    }
+                }
+            }
+            if (!condition)
+            {
+                Controllers.Entradas.Entradas.idElemento = null;
+            }
+            else
+            {
+                Controllers.Entradas.Entradas.idElemento = idElement;
+            }
+        }
+
+        private void cmbMarca_TextChanged(object sender, EventArgs e)
+        {
+            
+            bool condition = false;
+            string idElement = null;
+            foreach(var item in cmbMarca.Items)
+            {
+                if (item is Elemento elemento)
+                {
+                    if (elemento.Marca == cmbMarca.Text)
+                    {
+                        condition = true;
+                        idElement = elemento.Id_Elemento;
+                    }
+                }
+            }
+            if (!condition)
+            {
+                Controllers.Entradas.Entradas.idElemento = null;
+            }
+            else
+            {
+                Controllers.Entradas.Entradas.idElemento = idElement;
+            }
+            
+        }
+
+
+        // Funciones personalizadas
+        private void CargarDatosRegistro()
+        {
+            var data = Controllers.Entradas.Entradas.SeleccionarDatosRegistro(txtIdPropietario.Text);
+
+            string nombres = null;
+            string firstSerie = null;
+            List<Elemento> datosElementos = new List<Elemento>();
+            if (data.Item2)
+            {
+                foreach (DataRow row in data.Item1.Rows)
+                {
+                    nombres = nombres ?? row["nombres"].ToString();
+                    firstSerie = firstSerie ?? row["serie"].ToString();
+                    datosElementos.Add(new Elemento { Id_Registro = row["id_registro"].ToString(), Id_Elemento = row["id_elemento"].ToString(), Marca = row["marca"].ToString(), Serie = row["serie"].ToString() });
+
+                }
+                cmbMarca.Text = "";
+                cmbMarca.DataSource = datosElementos;
+                cmbMarca.DisplayMember = "Marca";
+                cmbMarca.ValueMember = "Serie";
+                txtNombres.Text = nombres;
+                txtSerie.Text = firstSerie;
+
+            }
+            else
+            {
+                MessageBox.Show("Error al traer los datos", "Datos registro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            if (data.Item1.Rows.Count == 0)
+            {
+                Controllers.Entradas.Entradas.idRegistro = null;
+                Controllers.Entradas.Entradas.idElemento = null;
+            }
+            else
+            {
+                Controllers.Entradas.Entradas.idRegistro = data.Item1.Rows[0]["id_registro"].ToString();
+                Controllers.Entradas.Entradas.idElemento = data.Item1.Rows[0]["id_elemento"].ToString();
+            }
         }
     }
 }

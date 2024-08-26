@@ -8,17 +8,9 @@ namespace control_elements_sena
 {
     public partial class Denuncias : Form
     {
-        private Point initialPosition;
         public Denuncias()
         {
             InitializeComponent();
-        }
-
-
-
-        private void btnCloseForm_Click_1(object sender, EventArgs e)
-        {
-            this.Close();
         }
 
         private void btnOptions_Click(object sender, EventArgs e)

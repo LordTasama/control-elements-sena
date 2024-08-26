@@ -8,18 +8,11 @@ namespace control_elements_sena
 {
     public partial class Registros : Form
     {
-        private Point initialPosition;
+        
         private bool selectedCellRow;
         public Registros()
         {
             InitializeComponent();
-        }
-
-
-
-        private void btnCloseForm_Click_1(object sender, EventArgs e)
-        {
-            this.Close();
         }
 
         private void Registros_Load(object sender, EventArgs e)
