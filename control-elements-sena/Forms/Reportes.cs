@@ -3,7 +3,6 @@ using OfficeOpenXml;
 using OfficeOpenXml.Table;
 using System;
 using System.Data;
-using System.Data.SqlClient;
 using System.Drawing;
 using System.IO;
 using System.Windows.Forms;
@@ -13,6 +12,8 @@ namespace control_elements_sena
 {
     public partial class Reportes : Form
     {
+        public static string fechaInicial = null;
+        public static string fechaFinal = null;
         public Reportes()
         {
             InitializeComponent();
@@ -105,9 +106,9 @@ namespace control_elements_sena
             {
 
                 dataTable = Controllers.Registros.Registros.SeleccionarRegistros("1", "0").Item1;
-              
+
             }
-            else if(cmbType.Text == "Lista de Elementos" && cmbFormat.Text == "Excel")
+            else if (cmbType.Text == "Lista de Elementos" && cmbFormat.Text == "Excel")
             {
                 dataTable = Controllers.Elementos.Elementos.SeleccionarElementos("1", "0").Item1;
             }
@@ -117,7 +118,7 @@ namespace control_elements_sena
             }
             else if (cmbType.Text == "Entradas Totales" && cmbFormat.Text == "Excel")
             {
-               
+
                 dataTable = Controllers.Entradas.Entradas.SeleccionarEntradas("1").Item1;
 
             }
@@ -134,11 +135,21 @@ namespace control_elements_sena
 
                 // Llamada al procedimiento almacenado
                 dataTable = Controllers.Entradas.Entradas.SeleccionarEntradasFecha("SIN LIMITE", "3", firstDayOfMonth.ToString("yyyy-MM-dd"), lastDayOfMonth.ToString("yyyy-MM-dd")).Item1;
-                
+
             }
             else if (cmbType.Text == "Entradas por Fecha" && cmbFormat.Text == "Excel")
             {
-               
+                if (fechaInicial != null && fechaFinal != null)
+                {
+                    dataTable = Controllers.Entradas.Entradas.SeleccionarEntradasFecha("SIN LIMITE", "3", fechaInicial, fechaFinal).Item1;
+                    fechaInicial = null;
+                    fechaFinal = null;
+                }
+                else
+                {
+                    MessageBox.Show("Selecciona un rango de fecha", "Reportes", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
             }
             else if (cmbType.Text == "Entradas de Hoy o Activas" && cmbFormat.Text == "Excel")
             {
@@ -230,8 +241,17 @@ namespace control_elements_sena
                         MessageBox.Show($"Error al generar el archivo Excel: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
                 }
-           }
+            }
 
+        }
+
+        private void cmbType_SelectedIndexChanged(object sender, EventArgs e)
+        {
+             if (cmbType.Text == "Entradas por Fecha")
+            {
+                ReportsDates reportsDates = new ReportsDates();
+                reportsDates.ShowDialog();
+            }
         }
     }
 }

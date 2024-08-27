@@ -259,6 +259,12 @@
     <Compile Include="Forms\Registros.Designer.cs">
       <DependentUpon>Registros.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\Reports\ReportsDates.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Reports\ReportsDates.Designer.cs">
+      <DependentUpon>ReportsDates.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\Status\EstadoUsuario.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -333,6 +339,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Registros.resx">
       <DependentUpon>Registros.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Reports\ReportsDates.resx">
+      <DependentUpon>ReportsDates.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Status\EstadoUsuario.resx">
       <DependentUpon>EstadoUsuario.cs</DependentUpon>
