@@ -2,6 +2,7 @@
 using control_elements_sena.Forms;
 using System;
 using System.Drawing;
+using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -39,6 +40,7 @@ namespace control_elements_sena
                     (this.Location.X - lastLocation.X) + e.X, (this.Location.Y - lastLocation.Y) + e.Y);
 
                 this.Update(); // Actualiza la posición del formulario
+               
             }
         }
 
@@ -288,8 +290,39 @@ namespace control_elements_sena
         }
 
 
-        private void timeToday_Tick(object sender, EventArgs e)
+       async private void timeToday_Tick(object sender, EventArgs e)
         {
+            Session session = new Session();
+            await session.DescifrarTokenAsync();
+            if (!session.validToken)
+            {
+                MessageBox.Show("Su sesión expiró, inicie sesión nuevamente", "Sesión", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                Application.Restart();
+            }
+            string[] data = await DatosToken();
+
+            if (data[3] == "2")
+            {
+                btnUsers.Enabled = false;
+                btnReports.Enabled = false;
+                if(currentForm != null)
+                {
+                    if (currentForm.Name == "Users" || currentForm.Name == "Reportes")
+                    {
+                        pContainer.Controls.Clear();
+                        pContainer.Tag = null;
+                        Form formModal = Application.OpenForms.Cast<Form>().FirstOrDefault(form => form.Modal);
+
+                        formModal?.Close();
+                    }
+                }
+                
+            }
+            else if (data[3] == "1")
+            {
+                btnUsers.Enabled = true;
+                btnReports.Enabled = true;
+            }
             var timeToday = DateTime.Now;
             string hour = timeToday.Hour.ToString();
             string minute = timeToday.Minute.ToString();
@@ -321,6 +354,7 @@ namespace control_elements_sena
         private async void ControlPanel_Load(object sender, EventArgs e)
         {
             string[] data = await DatosToken();
+
             idSessionUser = data[0];
             idEmailUser = $"{data[1]} - {data[4]}";
             lblIdUser.Text = new string('*', idEmailUser.Length);

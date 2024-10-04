@@ -7,7 +7,7 @@ namespace control_elements_sena.Controllers.Usuarios
     public class Usuarios
     {
         public static string errorMessage = "";
-        public static bool CrearUsuario(string nombres, string apellidos, string identificacion, string correo, string password)
+        public static bool CrearUsuario(string nombres, string apellidos, string identificacion, string correo, string password, byte id_rol)
         {
             string hashedPassword = BCrypt.Net.BCrypt.HashPassword(password);
 
@@ -24,6 +24,7 @@ namespace control_elements_sena.Controllers.Usuarios
                         cmd.Parameters.AddWithValue("@ide", identificacion);
                         cmd.Parameters.AddWithValue("@cor", correo);
                         cmd.Parameters.AddWithValue("@pas", hashedPassword);
+                        cmd.Parameters.AddWithValue("@idr", id_rol);
                         // Agregar otros parámetros según sea necesario
 
 
@@ -48,7 +49,7 @@ namespace control_elements_sena.Controllers.Usuarios
             }
         }
 
-        public static bool EditarUsuario(string id, string nombres, string apellidos, string identificacion, string correo, string password)
+        public static bool EditarUsuario(string id, string nombres, string apellidos, string identificacion, string correo, string password, byte id_rol)
         {
             string hashedPassword = "";
             if (password != "")
@@ -56,6 +57,11 @@ namespace control_elements_sena.Controllers.Usuarios
                 hashedPassword = BCrypt.Net.BCrypt.HashPassword(password);
             }
 
+            if(Session.idUserGlobal.ToString() == id && id_rol != 1)
+            {
+                errorMessage = "No puedes cambiar tu propio rol de administrador";
+                return false;
+            }
 
             using (SqlConnection con = DatabaseConnect.GetConnection())
             {
@@ -71,6 +77,7 @@ namespace control_elements_sena.Controllers.Usuarios
                         cmd.Parameters.AddWithValue("@ide", identificacion);
                         cmd.Parameters.AddWithValue("@cor", correo);
                         cmd.Parameters.AddWithValue("@pas", hashedPassword);
+                        cmd.Parameters.AddWithValue("@idr", id_rol);
                         // Agregar otros parámetros según sea necesario
 
 
@@ -192,5 +199,36 @@ namespace control_elements_sena.Controllers.Usuarios
                 return (userTable, false);
             }
         }
+        public static (DataTable, bool) SeleccionarRoles()
+        {
+            DataTable userTable = new DataTable();
+            try
+            {
+                using (SqlConnection connection = DatabaseConnect.GetConnection())
+                {
+                    using (SqlCommand command = new SqlCommand("SeleccionarRoles", connection))
+                    {
+
+                        SqlDataAdapter adapter = new SqlDataAdapter(command);
+
+                        connection.Open();
+                        adapter.Fill(userTable);
+
+                        return (userTable, true);
+                    }
+                }
+            }
+            catch (SqlException ex)
+            {
+                errorMessage = "Error con la base de datos. Código de error: " + ex.Number + "\n\nDetalles:\n" + ex.Message;
+                return (userTable, false);
+            }
+            catch (Exception ex)
+            {
+                errorMessage = "Error al seleccionar roles. Detalles: " + ex.Message;
+                return (userTable, false);
+            }
+        }
+
     }
 }

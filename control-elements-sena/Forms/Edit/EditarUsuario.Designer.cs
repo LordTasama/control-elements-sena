@@ -45,6 +45,8 @@
             this.txtCorreo = new System.Windows.Forms.TextBox();
             this.btnSend = new System.Windows.Forms.Button();
             this.btnShowPassword = new System.Windows.Forms.Button();
+            this.cmbRol = new System.Windows.Forms.ComboBox();
+            this.label5 = new System.Windows.Forms.Label();
             this.pControlBox.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
@@ -223,7 +225,7 @@
             this.btnSend.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnSend.Font = new System.Drawing.Font("Segoe UI Semibold", 11F, System.Drawing.FontStyle.Bold);
             this.btnSend.ForeColor = System.Drawing.Color.White;
-            this.btnSend.Location = new System.Drawing.Point(73, 301);
+            this.btnSend.Location = new System.Drawing.Point(73, 355);
             this.btnSend.Name = "btnSend";
             this.btnSend.Size = new System.Drawing.Size(75, 33);
             this.btnSend.TabIndex = 13;
@@ -249,6 +251,28 @@
             this.btnShowPassword.Visible = false;
             this.btnShowPassword.Click += new System.EventHandler(this.btnShowPassword_Click);
             // 
+            // cmbRol
+            // 
+            this.cmbRol.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold);
+            this.cmbRol.FormattingEnabled = true;
+            this.cmbRol.Location = new System.Drawing.Point(7, 311);
+            this.cmbRol.Name = "cmbRol";
+            this.cmbRol.Size = new System.Drawing.Size(206, 25);
+            this.cmbRol.TabIndex = 16;
+            this.cmbRol.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.cmbRol_KeyPress);
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.BackColor = System.Drawing.Color.Transparent;
+            this.label5.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5.ForeColor = System.Drawing.Color.Black;
+            this.label5.Location = new System.Drawing.Point(6, 291);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(27, 17);
+            this.label5.TabIndex = 15;
+            this.label5.Text = "Rol";
+            // 
             // EditarUsuario
             // 
             this.AcceptButton = this.btnSend;
@@ -256,8 +280,10 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(236)))), ((int)(((byte)(237)))), ((int)(((byte)(240)))));
             this.CancelButton = this.btnCloseWindow;
-            this.ClientSize = new System.Drawing.Size(222, 358);
+            this.ClientSize = new System.Drawing.Size(222, 406);
             this.ControlBox = false;
+            this.Controls.Add(this.cmbRol);
+            this.Controls.Add(this.label5);
             this.Controls.Add(this.btnShowPassword);
             this.Controls.Add(this.btnSend);
             this.Controls.Add(this.label4);
@@ -303,5 +329,7 @@
         private System.Windows.Forms.TextBox txtCorreo;
         private System.Windows.Forms.Button btnSend;
         private System.Windows.Forms.Button btnShowPassword;
+        private System.Windows.Forms.ComboBox cmbRol;
+        private System.Windows.Forms.Label label5;
     }
 }

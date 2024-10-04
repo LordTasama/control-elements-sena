@@ -11,17 +11,17 @@ using System.Threading.Tasks;
 namespace control_elements_sena.Controllers.Entradas
 {
     public class Entradas
-    { 
+    {
         public static string errorMessage = "";
         public static string idRegistro = null;
         public static string idElemento = null;
-        public static bool CrearEntrada(string id_propietario, string nombres_propietario, string marca_elemento, string serie_elemento)
+        public static bool CrearEntrada(string id_propietario, string nombres_propietario, string marca_elemento, string serie_elemento, string cargador_mouse, string formato3)
         {
-           
+
             using (SqlConnection connection = DatabaseConnect.GetConnection())
             {
-                
-                    SqlTransaction transaction = null;
+
+                SqlTransaction transaction = null;
 
                 try
                 {
@@ -32,21 +32,22 @@ namespace control_elements_sena.Controllers.Entradas
                         {
                             elementExists.CommandType = CommandType.StoredProcedure;
                             elementExists.Parameters.AddWithValue("@ide", idElemento);
-                            using (SqlDataReader reader = elementExists.ExecuteReader()) { 
-                            if (reader.HasRows)
+                            using (SqlDataReader reader = elementExists.ExecuteReader())
+                            {
+                                if (reader.HasRows)
                                 {
                                     errorMessage = "Ya hay una entrada de este elemento activa";
                                     return false;
                                 }
-                            
+
                             }
                         }
                     }
-                   
+
                     // Iniciar la transacción
                     transaction = connection.BeginTransaction();
                     // Crear comandos con la transacción
-                    using (SqlCommand command1 = new SqlCommand("CrearRegistro",connection))
+                    using (SqlCommand command1 = new SqlCommand("CrearRegistro", connection))
                     {
                         command1.Transaction = transaction;
                         command1.CommandType = CommandType.StoredProcedure;
@@ -63,9 +64,10 @@ namespace control_elements_sena.Controllers.Entradas
                             command2.Parameters.AddWithValue("@idr", idRegistro);
                             command2.Parameters.AddWithValue("@mar", marca_elemento);
                             command2.Parameters.AddWithValue("@ser", serie_elemento);
+                            command2.Parameters.AddWithValue("@fm3", formato3);
                             if (idElemento == null)
-                            {                         
-                            idElemento = command2.ExecuteScalar().ToString();
+                            {
+                                idElemento = command2.ExecuteScalar().ToString();
                             }
                             using (SqlCommand command3 = new SqlCommand("CrearEntrada", connection))
                             {
@@ -73,16 +75,26 @@ namespace control_elements_sena.Controllers.Entradas
                                 command3.CommandType = CommandType.StoredProcedure;
                                 command3.Parameters.AddWithValue("@idu", ControlPanel.idSessionUser);
                                 command3.Parameters.AddWithValue("@ide", idElemento);
-                                command3.Parameters.AddWithValue("@hoe", DateTime.Now);
-                                command3.Parameters.AddWithValue("@hos", DBNull.Value);
+                                command3.Parameters.AddWithValue("@cym", cargador_mouse);
+                                command3.Parameters.AddWithValue("@fm3", formato3);
+                                if (formato3 == "SI")
+                                {
+                                    command3.Parameters.AddWithValue("@hoe", DBNull.Value);
+                                    command3.Parameters.AddWithValue("@hos", DateTime.Now);
+                                }
+                                else
+                                {
+                                    command3.Parameters.AddWithValue("@hoe", DateTime.Now);
+                                    command3.Parameters.AddWithValue("@hos", DBNull.Value);
+                                }
 
                                 command3.ExecuteNonQuery();
                             }
                         }
                     }
 
-                        
-                   
+
+
                     // Confirmar la transacción si todo sale bien
                     transaction.Commit();
                     return true;
@@ -144,7 +156,7 @@ namespace control_elements_sena.Controllers.Entradas
                 return (entrancesTable, false);
             }
         }
-        public static (DataTable, bool) SeleccionarEntradasRango(string lim,string estado)
+        public static (DataTable, bool) SeleccionarEntradasRango(string lim, string estado)
         {
             DataTable entrancesTable = new DataTable();
             try
@@ -176,7 +188,7 @@ namespace control_elements_sena.Controllers.Entradas
                 return (entrancesTable, false);
             }
         }
-        public static (DataTable, bool) SeleccionarEntradasParametro(string lim, string estado,string parametro)
+        public static (DataTable, bool) SeleccionarEntradasParametro(string lim, string estado, string parametro)
         {
             DataTable entrancesTable = new DataTable();
             try
@@ -188,8 +200,8 @@ namespace control_elements_sena.Controllers.Entradas
                         int status = estado == "Activas" ? 1 : estado == "Inactivas" ? 0 : 3;
                         command.CommandType = CommandType.StoredProcedure;
                         command.Parameters.AddWithValue("@lim", lim);
-                        command.Parameters.AddWithValue("@est",status );
-                        command.Parameters.AddWithValue("@inf",parametro);
+                        command.Parameters.AddWithValue("@est", status);
+                        command.Parameters.AddWithValue("@inf", parametro);
                         SqlDataAdapter adapter = new SqlDataAdapter(command);
 
                         connection.Open();
@@ -275,7 +287,7 @@ namespace control_elements_sena.Controllers.Entradas
                 return (data, false);
             }
         }
-        public static  bool RegistrarSalida(string id)
+        public static bool RegistrarSalida(string id, string formato3)
         {
 
             try
@@ -288,8 +300,9 @@ namespace control_elements_sena.Controllers.Entradas
                         command.CommandType = CommandType.StoredProcedure;
                         command.Parameters.AddWithValue("@ids", id);
                         command.Parameters.AddWithValue("@hos", DateTime.Now);
+                        command.Parameters.AddWithValue("@fm3", formato3);
 
-                     
+
                         command.ExecuteNonQuery();
 
                         return true;

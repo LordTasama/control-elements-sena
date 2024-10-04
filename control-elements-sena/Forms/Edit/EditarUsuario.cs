@@ -1,5 +1,7 @@
 ﻿using control_elements_sena.Controllers.Usuarios;
+using control_elements_sena.Models;
 using System;
+using System.Collections.Generic;
 using System.Data;
 using System.Drawing;
 using System.Windows.Forms;
@@ -115,7 +117,7 @@ namespace control_elements_sena.Forms.Create
             // Enviar datos
             else
             {
-                bool response = Usuarios.EditarUsuario(_data[0],txtNombres.Text, txtApellidos.Text, txtIdentificacion.Text, txtCorreo.Text, txtPassword.Text);
+                bool response = Usuarios.EditarUsuario(_data[0],txtNombres.Text, txtApellidos.Text, txtIdentificacion.Text, txtCorreo.Text, txtPassword.Text,Convert.ToByte(cmbRol.SelectedValue));
 
                 if (response)
                 {
@@ -134,10 +136,50 @@ namespace control_elements_sena.Forms.Create
 
         private void EditarUsuario_Load(object sender, EventArgs e)
         {
+            var data = Usuarios.SeleccionarRoles();
+            List<Rol> datosRol = new List<Rol>();
+            if (data.Item2)
+            {
+                foreach (DataRow row in data.Item1.Rows)
+                {
+                    datosRol.Add(new Rol { id = Convert.ToByte(row["id"]), nombre = row["nombre"].ToString() });
+
+                }
+                cmbRol.DataSource = datosRol;
+                cmbRol.DisplayMember = "nombre";
+                cmbRol.ValueMember = "id";
+
+            }
+            else
+            {
+                MessageBox.Show("Error al traer los datos", "Datos roles", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
             txtIdentificacion.Text = _data[1];
             txtNombres.Text = _data[2];
             txtApellidos.Text = _data[3];
             txtCorreo.Text = _data[4];
+
+            foreach (var item in cmbRol.Items)
+            {
+                if (item is Rol rol)
+                {
+                    if (rol.id == Convert.ToByte(_data[5]))
+                    {
+                        // Encuentra el índice del elemento que coincide
+                        int index = cmbRol.Items.IndexOf(item);
+                        // Establece el índice seleccionado
+                        cmbRol.SelectedIndex = index;
+                        break; // Sale del bucle una vez que se ha encontrado el elemento
+                    }
+                }
+            }
+
+
+        }
+
+        private void cmbRol_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            e.Handled = true;
         }
     }
 }

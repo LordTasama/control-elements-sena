@@ -279,7 +279,7 @@
             this.btnReports.ForeColor = System.Drawing.Color.Black;
             this.btnReports.Image = global::control_elements_sena.Properties.Resources.reporte_de_negocios;
             this.btnReports.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnReports.Location = new System.Drawing.Point(3, 48);
+            this.btnReports.Location = new System.Drawing.Point(3, 49);
             this.btnReports.Margin = new System.Windows.Forms.Padding(3, 0, 3, 3);
             this.btnReports.Name = "btnReports";
             this.btnReports.Size = new System.Drawing.Size(162, 30);
@@ -310,7 +310,7 @@
             this.btnInforms.ForeColor = System.Drawing.Color.Black;
             this.btnInforms.Image = global::control_elements_sena.Properties.Resources.alerta;
             this.btnInforms.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnInforms.Location = new System.Drawing.Point(3, 84);
+            this.btnInforms.Location = new System.Drawing.Point(3, 85);
             this.btnInforms.Margin = new System.Windows.Forms.Padding(3, 3, 3, 0);
             this.btnInforms.Name = "btnInforms";
             this.btnInforms.Size = new System.Drawing.Size(162, 30);
@@ -342,7 +342,7 @@
             this.btnPerfil.ForeColor = System.Drawing.Color.Black;
             this.btnPerfil.Image = global::control_elements_sena.Properties.Resources.configuraciones;
             this.btnPerfil.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnPerfil.Location = new System.Drawing.Point(3, 132);
+            this.btnPerfil.Location = new System.Drawing.Point(3, 133);
             this.btnPerfil.Margin = new System.Windows.Forms.Padding(3, 0, 3, 3);
             this.btnPerfil.Name = "btnPerfil";
             this.btnPerfil.Size = new System.Drawing.Size(162, 30);
@@ -374,7 +374,7 @@
             this.btnLogOut.ForeColor = System.Drawing.Color.Black;
             this.btnLogOut.Image = global::control_elements_sena.Properties.Resources.cerrar_sesion;
             this.btnLogOut.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnLogOut.Location = new System.Drawing.Point(3, 168);
+            this.btnLogOut.Location = new System.Drawing.Point(3, 169);
             this.btnLogOut.Name = "btnLogOut";
             this.btnLogOut.Size = new System.Drawing.Size(162, 30);
             this.btnLogOut.TabIndex = 9;
@@ -509,7 +509,7 @@
             // 
             this.pictureBox3.BackgroundImage = global::control_elements_sena.Properties.Resources.menos_linea_recta_horizontal;
             this.pictureBox3.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.pictureBox3.Location = new System.Drawing.Point(17, 114);
+            this.pictureBox3.Location = new System.Drawing.Point(17, 115);
             this.pictureBox3.Margin = new System.Windows.Forms.Padding(17, 0, 0, 0);
             this.pictureBox3.Name = "pictureBox3";
             this.pictureBox3.Size = new System.Drawing.Size(130, 18);
@@ -831,13 +831,6 @@
         private System.Windows.Forms.ToolTip toolTipPerfil;
         private System.Windows.Forms.ToolTip toolTipLogOut;
         private System.Windows.Forms.PictureBox picLogoSena;
-        private System.Windows.Forms.Button btnPerfil;
-        private System.Windows.Forms.PictureBox pictureBox3;
-        private System.Windows.Forms.Button btnLogOut;
-        private System.Windows.Forms.Button btnInforms;
-        private System.Windows.Forms.Button btnSidebarControl;
-        private System.Windows.Forms.Button btnReports;
-        private System.Windows.Forms.PictureBox pictureBox2;
         private System.Windows.Forms.FlowLayoutPanel dropMenuContainer;
         private System.Windows.Forms.Button btnTables;
         private System.Windows.Forms.Button btnUsers;
@@ -845,7 +838,6 @@
         private System.Windows.Forms.Button btnElements;
         private System.Windows.Forms.Panel pSidebar;
         private System.Windows.Forms.Button btnCloseForm;
-        private System.Windows.Forms.Panel pSectionsContainer;
         private System.Windows.Forms.Label lblCentro;
         private System.Windows.Forms.Panel pControlBox;
         private System.Windows.Forms.Button btnMaximizeWindow;
@@ -863,10 +855,18 @@
         private System.Windows.Forms.Label lblDate;
         private System.Windows.Forms.PictureBox pictureDate;
         private System.Windows.Forms.PictureBox pictureBox1;
-        private System.Windows.Forms.Button btnEntrances;
         private System.Windows.Forms.ToolTip toolTipEntrances;
         private System.Windows.Forms.PictureBox pictureReload;
         private System.Windows.Forms.ToolTip toolTipReload;
         private System.Windows.Forms.Label lblIdUser;
+        private System.Windows.Forms.Panel pSectionsContainer;
+        private System.Windows.Forms.Button btnEntrances;
+        private System.Windows.Forms.Button btnReports;
+        private System.Windows.Forms.Button btnSidebarControl;
+        private System.Windows.Forms.PictureBox pictureBox3;
+        private System.Windows.Forms.PictureBox pictureBox2;
+        private System.Windows.Forms.Button btnInforms;
+        private System.Windows.Forms.Button btnLogOut;
+        private System.Windows.Forms.Button btnPerfil;
     }
 }

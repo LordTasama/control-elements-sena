@@ -50,7 +50,7 @@ namespace control_elements_sena.Forms.Create
           
             // Enviar datos
 
-                bool response = Usuarios.CambiarEstadoUsuario(Convert.ToInt64(_data[0]), _data[6] == "Activo" ? 0 : 1);
+                bool response = Usuarios.CambiarEstadoUsuario(Convert.ToInt64(_data[0]), _data[7] == "Activo" ? 0 : 1);
 
                 if (response)
                 {

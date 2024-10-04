@@ -1,4 +1,5 @@
-﻿using control_elements_sena.Forms.Create;
+﻿using control_elements_sena.Controllers;
+using control_elements_sena.Forms.Create;
 using System;
 using System.Data;
 using System.Drawing;
@@ -109,8 +110,15 @@ namespace control_elements_sena
         }
 
         // Funciones personalizadas
-        private void CargarData(string all, string limit)
+        async private void CargarData(string all, string limit)
         {
+            Session session = new Session();
+            await session.DescifrarTokenAsync();
+            if (!session.validToken)
+            {
+                MessageBox.Show("Su sesión expiró, inicie sesión nuevamente", "Sesión", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                Application.Restart();
+            }
             pButtonsContainer.Visible = false;
             var response = Controllers.Registros.Registros.SeleccionarRegistros(all, limit);
             DataTable recordData = response.Item1;

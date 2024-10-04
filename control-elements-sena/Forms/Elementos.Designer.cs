@@ -37,12 +37,6 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Elementos));
             this.dgvDatos = new System.Windows.Forms.DataGridView();
-            this.id = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.identificacion_propietario = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.nombres_propietario = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.id_registro = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Marca = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.serie = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.toolTipEdit = new System.Windows.Forms.ToolTip(this.components);
             this.button1 = new System.Windows.Forms.Button();
             this.btnEdit = new System.Windows.Forms.Button();
@@ -57,6 +51,13 @@
             this.toolTipListAll = new System.Windows.Forms.ToolTip(this.components);
             this.btnOptions = new System.Windows.Forms.Button();
             this.toolTipOwnValue = new System.Windows.Forms.ToolTip(this.components);
+            this.id = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.identificacion_propietario = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.nombres_propietario = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.id_registro = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Marca = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.serie = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.formato3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDatos)).BeginInit();
             this.pButtonsContainer.SuspendLayout();
             this.panel1.SuspendLayout();
@@ -92,7 +93,8 @@
             this.nombres_propietario,
             this.id_registro,
             this.Marca,
-            this.serie});
+            this.serie,
+            this.formato3});
             dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle6.BackColor = System.Drawing.SystemColors.Window;
             dataGridViewCellStyle6.Font = new System.Drawing.Font("Segoe UI Semibold", 10.25F, System.Drawing.FontStyle.Bold);
@@ -112,50 +114,6 @@
             this.dgvDatos.Size = new System.Drawing.Size(782, 385);
             this.dgvDatos.TabIndex = 7;
             this.dgvDatos.SelectionChanged += new System.EventHandler(this.dgvDatos_SelectionChanged);
-            // 
-            // id
-            // 
-            this.id.HeaderText = "id";
-            this.id.Name = "id";
-            this.id.ReadOnly = true;
-            this.id.Visible = false;
-            // 
-            // identificacion_propietario
-            // 
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.identificacion_propietario.DefaultCellStyle = dataGridViewCellStyle3;
-            this.identificacion_propietario.HeaderText = "Identificación propietario";
-            this.identificacion_propietario.Name = "identificacion_propietario";
-            this.identificacion_propietario.ReadOnly = true;
-            // 
-            // nombres_propietario
-            // 
-            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.nombres_propietario.DefaultCellStyle = dataGridViewCellStyle4;
-            this.nombres_propietario.HeaderText = "Nombres propietario";
-            this.nombres_propietario.Name = "nombres_propietario";
-            this.nombres_propietario.ReadOnly = true;
-            // 
-            // id_registro
-            // 
-            this.id_registro.HeaderText = "Id_registro";
-            this.id_registro.Name = "id_registro";
-            this.id_registro.ReadOnly = true;
-            this.id_registro.Visible = false;
-            // 
-            // Marca
-            // 
-            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.Marca.DefaultCellStyle = dataGridViewCellStyle5;
-            this.Marca.HeaderText = "Marca";
-            this.Marca.Name = "Marca";
-            this.Marca.ReadOnly = true;
-            // 
-            // serie
-            // 
-            this.serie.HeaderText = "Serie";
-            this.serie.Name = "serie";
-            this.serie.ReadOnly = true;
             // 
             // toolTipEdit
             // 
@@ -344,6 +302,56 @@
             this.toolTipOwnValue.ToolTipIcon = System.Windows.Forms.ToolTipIcon.Info;
             this.toolTipOwnValue.ToolTipTitle = "Cantidad personalizada";
             // 
+            // id
+            // 
+            this.id.HeaderText = "id";
+            this.id.Name = "id";
+            this.id.ReadOnly = true;
+            this.id.Visible = false;
+            // 
+            // identificacion_propietario
+            // 
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.identificacion_propietario.DefaultCellStyle = dataGridViewCellStyle3;
+            this.identificacion_propietario.HeaderText = "Identificación propietario";
+            this.identificacion_propietario.Name = "identificacion_propietario";
+            this.identificacion_propietario.ReadOnly = true;
+            // 
+            // nombres_propietario
+            // 
+            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.nombres_propietario.DefaultCellStyle = dataGridViewCellStyle4;
+            this.nombres_propietario.HeaderText = "Nombres propietario";
+            this.nombres_propietario.Name = "nombres_propietario";
+            this.nombres_propietario.ReadOnly = true;
+            // 
+            // id_registro
+            // 
+            this.id_registro.HeaderText = "Id_registro";
+            this.id_registro.Name = "id_registro";
+            this.id_registro.ReadOnly = true;
+            this.id_registro.Visible = false;
+            // 
+            // Marca
+            // 
+            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.Marca.DefaultCellStyle = dataGridViewCellStyle5;
+            this.Marca.HeaderText = "Marca";
+            this.Marca.Name = "Marca";
+            this.Marca.ReadOnly = true;
+            // 
+            // serie
+            // 
+            this.serie.HeaderText = "Serie";
+            this.serie.Name = "serie";
+            this.serie.ReadOnly = true;
+            // 
+            // formato3
+            // 
+            this.formato3.HeaderText = "Formato 3";
+            this.formato3.Name = "formato3";
+            this.formato3.ReadOnly = true;
+            // 
             // Elementos
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
@@ -377,12 +385,6 @@
 
         private System.Windows.Forms.DataGridView dgvDatos;
         private System.Windows.Forms.ToolTip toolTipEdit;
-        private System.Windows.Forms.DataGridViewTextBoxColumn id;
-        private System.Windows.Forms.DataGridViewTextBoxColumn identificacion_propietario;
-        private System.Windows.Forms.DataGridViewTextBoxColumn nombres_propietario;
-        private System.Windows.Forms.DataGridViewTextBoxColumn id_registro;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Marca;
-        private System.Windows.Forms.DataGridViewTextBoxColumn serie;
         private System.Windows.Forms.Button btnOptions;
         private System.Windows.Forms.Panel pButtonsContainer;
         private System.Windows.Forms.Button btnEdit;
@@ -396,5 +398,12 @@
         private System.Windows.Forms.Button btnListAll;
         private System.Windows.Forms.ToolTip toolTipListAll;
         private System.Windows.Forms.ToolTip toolTipOwnValue;
+        private System.Windows.Forms.DataGridViewTextBoxColumn id;
+        private System.Windows.Forms.DataGridViewTextBoxColumn identificacion_propietario;
+        private System.Windows.Forms.DataGridViewTextBoxColumn nombres_propietario;
+        private System.Windows.Forms.DataGridViewTextBoxColumn id_registro;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Marca;
+        private System.Windows.Forms.DataGridViewTextBoxColumn serie;
+        private System.Windows.Forms.DataGridViewTextBoxColumn formato3;
     }
 }

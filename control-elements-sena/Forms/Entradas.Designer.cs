@@ -40,8 +40,25 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
             this.pButtonsContainer = new System.Windows.Forms.Panel();
+            this.btnListAll = new System.Windows.Forms.Button();
+            this.btnAdd = new System.Windows.Forms.Button();
             this.toolTipNew = new System.Windows.Forms.ToolTip(this.components);
             this.dgvDatos = new System.Windows.Forms.DataGridView();
+            this.toolTipListAll = new System.Windows.Forms.ToolTip(this.components);
+            this.toolTipHelper = new System.Windows.Forms.ToolTip(this.components);
+            this.btnOptions = new System.Windows.Forms.Button();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.btnDateSearch = new System.Windows.Forms.Button();
+            this.dtpEndDate = new System.Windows.Forms.DateTimePicker();
+            this.label4 = new System.Windows.Forms.Label();
+            this.dtpInitialDate = new System.Windows.Forms.DateTimePicker();
+            this.label3 = new System.Windows.Forms.Label();
+            this.cmbType = new System.Windows.Forms.ComboBox();
+            this.btnSearch = new System.Windows.Forms.Button();
+            this.txtSearch = new System.Windows.Forms.TextBox();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
+            this.cmbValue = new System.Windows.Forms.ComboBox();
             this.id = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.id_usuario = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.registrador = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -50,25 +67,10 @@
             this.id_elemento = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.marca = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.serie = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.cargador_mouse = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.formato3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.hora_entrada = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.hora_salida = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.toolTipListAll = new System.Windows.Forms.ToolTip(this.components);
-            this.toolTipHelper = new System.Windows.Forms.ToolTip(this.components);
-            this.panel1 = new System.Windows.Forms.Panel();
-            this.btnDateSearch = new System.Windows.Forms.Button();
-            this.dtpEndDate = new System.Windows.Forms.DateTimePicker();
-            this.label4 = new System.Windows.Forms.Label();
-            this.dtpInitialDate = new System.Windows.Forms.DateTimePicker();
-            this.label3 = new System.Windows.Forms.Label();
-            this.cmbType = new System.Windows.Forms.ComboBox();
-            this.txtSearch = new System.Windows.Forms.TextBox();
-            this.label2 = new System.Windows.Forms.Label();
-            this.label1 = new System.Windows.Forms.Label();
-            this.cmbValue = new System.Windows.Forms.ComboBox();
-            this.btnSearch = new System.Windows.Forms.Button();
-            this.btnOptions = new System.Windows.Forms.Button();
-            this.btnListAll = new System.Windows.Forms.Button();
-            this.btnAdd = new System.Windows.Forms.Button();
             this.pButtonsContainer.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDatos)).BeginInit();
             this.panel1.SuspendLayout();
@@ -81,10 +83,40 @@
             this.pButtonsContainer.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(4)))), ((int)(((byte)(50)))), ((int)(((byte)(77)))));
             this.pButtonsContainer.Controls.Add(this.btnListAll);
             this.pButtonsContainer.Controls.Add(this.btnAdd);
-            this.pButtonsContainer.Location = new System.Drawing.Point(726, 98);
+            this.pButtonsContainer.Location = new System.Drawing.Point(732, 98);
             this.pButtonsContainer.Name = "pButtonsContainer";
             this.pButtonsContainer.Size = new System.Drawing.Size(44, 83);
             this.pButtonsContainer.TabIndex = 8;
+            // 
+            // btnListAll
+            // 
+            this.btnListAll.BackColor = System.Drawing.Color.Transparent;
+            this.btnListAll.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnListAll.FlatAppearance.BorderSize = 0;
+            this.btnListAll.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnListAll.Image = global::control_elements_sena.Properties.Resources.check_list;
+            this.btnListAll.Location = new System.Drawing.Point(3, 44);
+            this.btnListAll.Name = "btnListAll";
+            this.btnListAll.Size = new System.Drawing.Size(36, 36);
+            this.btnListAll.TabIndex = 2;
+            this.toolTipListAll.SetToolTip(this.btnListAll, "Listado completo de entradas");
+            this.btnListAll.UseVisualStyleBackColor = false;
+            this.btnListAll.Click += new System.EventHandler(this.btnListAll_Click);
+            // 
+            // btnAdd
+            // 
+            this.btnAdd.BackColor = System.Drawing.Color.Transparent;
+            this.btnAdd.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnAdd.FlatAppearance.BorderSize = 0;
+            this.btnAdd.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnAdd.Image = global::control_elements_sena.Properties.Resources.personal_data;
+            this.btnAdd.Location = new System.Drawing.Point(3, 3);
+            this.btnAdd.Name = "btnAdd";
+            this.btnAdd.Size = new System.Drawing.Size(36, 36);
+            this.btnAdd.TabIndex = 0;
+            this.toolTipNew.SetToolTip(this.btnAdd, "Registrar entrada");
+            this.btnAdd.UseVisualStyleBackColor = false;
+            this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
             // 
             // toolTipNew
             // 
@@ -129,6 +161,8 @@
             this.id_elemento,
             this.marca,
             this.serie,
+            this.cargador_mouse,
+            this.formato3,
             this.hora_entrada,
             this.hora_salida});
             dataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
@@ -151,83 +185,6 @@
             this.dgvDatos.TabIndex = 7;
             this.dgvDatos.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvDatos_CellDoubleClick);
             // 
-            // id
-            // 
-            this.id.HeaderText = "id";
-            this.id.Name = "id";
-            this.id.ReadOnly = true;
-            this.id.Visible = false;
-            // 
-            // id_usuario
-            // 
-            this.id_usuario.HeaderText = "Identificación registrador";
-            this.id_usuario.Name = "id_usuario";
-            this.id_usuario.ReadOnly = true;
-            // 
-            // registrador
-            // 
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.registrador.DefaultCellStyle = dataGridViewCellStyle3;
-            this.registrador.HeaderText = "Registrador";
-            this.registrador.Name = "registrador";
-            this.registrador.ReadOnly = true;
-            // 
-            // identificacion_propietario
-            // 
-            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.identificacion_propietario.DefaultCellStyle = dataGridViewCellStyle4;
-            this.identificacion_propietario.HeaderText = "Identificación propietario";
-            this.identificacion_propietario.Name = "identificacion_propietario";
-            this.identificacion_propietario.ReadOnly = true;
-            // 
-            // nombres_propietario
-            // 
-            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.nombres_propietario.DefaultCellStyle = dataGridViewCellStyle5;
-            this.nombres_propietario.HeaderText = "Nombres propietario";
-            this.nombres_propietario.Name = "nombres_propietario";
-            this.nombres_propietario.ReadOnly = true;
-            // 
-            // id_elemento
-            // 
-            this.id_elemento.HeaderText = "Id_elemento";
-            this.id_elemento.Name = "id_elemento";
-            this.id_elemento.ReadOnly = true;
-            this.id_elemento.Visible = false;
-            // 
-            // marca
-            // 
-            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.marca.DefaultCellStyle = dataGridViewCellStyle6;
-            this.marca.HeaderText = "Marca";
-            this.marca.Name = "marca";
-            this.marca.ReadOnly = true;
-            // 
-            // serie
-            // 
-            dataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.serie.DefaultCellStyle = dataGridViewCellStyle7;
-            this.serie.HeaderText = "Serie";
-            this.serie.Name = "serie";
-            this.serie.ReadOnly = true;
-            // 
-            // hora_entrada
-            // 
-            dataGridViewCellStyle8.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.hora_entrada.DefaultCellStyle = dataGridViewCellStyle8;
-            this.hora_entrada.HeaderText = "Hora de entrada";
-            this.hora_entrada.Name = "hora_entrada";
-            this.hora_entrada.ReadOnly = true;
-            // 
-            // hora_salida
-            // 
-            dataGridViewCellStyle9.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.hora_salida.DefaultCellStyle = dataGridViewCellStyle9;
-            this.hora_salida.HeaderText = "Hora de salida";
-            this.hora_salida.Name = "hora_salida";
-            this.hora_salida.ReadOnly = true;
-            this.hora_salida.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            // 
             // toolTipListAll
             // 
             this.toolTipListAll.AutomaticDelay = 0;
@@ -247,6 +204,22 @@
             this.toolTipHelper.ReshowDelay = 0;
             this.toolTipHelper.ToolTipIcon = System.Windows.Forms.ToolTipIcon.Info;
             this.toolTipHelper.ToolTipTitle = "Registrar salida";
+            // 
+            // btnOptions
+            // 
+            this.btnOptions.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnOptions.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(4)))), ((int)(((byte)(55)))), ((int)(((byte)(77)))));
+            this.btnOptions.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnOptions.FlatAppearance.BorderSize = 0;
+            this.btnOptions.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnOptions.Image = global::control_elements_sena.Properties.Resources.options;
+            this.btnOptions.Location = new System.Drawing.Point(775, 98);
+            this.btnOptions.Name = "btnOptions";
+            this.btnOptions.Size = new System.Drawing.Size(15, 38);
+            this.btnOptions.TabIndex = 3;
+            this.toolTipHelper.SetToolTip(this.btnOptions, "Doble click en cualquier celda para registrar salida");
+            this.btnOptions.UseVisualStyleBackColor = false;
+            this.btnOptions.Click += new System.EventHandler(this.btnOptions_Click);
             // 
             // panel1
             // 
@@ -341,6 +314,22 @@
             this.cmbType.SelectedIndexChanged += new System.EventHandler(this.cmbType_SelectedIndexChanged);
             this.cmbType.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.cmbType_KeyPress);
             // 
+            // btnSearch
+            // 
+            this.btnSearch.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnSearch.BackColor = System.Drawing.Color.Transparent;
+            this.btnSearch.BackgroundImage = global::control_elements_sena.Properties.Resources.loupe;
+            this.btnSearch.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnSearch.FlatAppearance.BorderSize = 0;
+            this.btnSearch.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnSearch.Location = new System.Drawing.Point(743, 12);
+            this.btnSearch.Name = "btnSearch";
+            this.btnSearch.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.btnSearch.Size = new System.Drawing.Size(22, 22);
+            this.btnSearch.TabIndex = 12;
+            this.btnSearch.UseVisualStyleBackColor = false;
+            this.btnSearch.Click += new System.EventHandler(this.btnSearch_Click);
+            // 
             // txtSearch
             // 
             this.txtSearch.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
@@ -393,67 +382,94 @@
             this.cmbValue.SelectedIndexChanged += new System.EventHandler(this.cmbValue_SelectedIndexChanged);
             this.cmbValue.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.cmbValue_KeyPress);
             // 
-            // btnSearch
+            // id
             // 
-            this.btnSearch.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnSearch.BackColor = System.Drawing.Color.Transparent;
-            this.btnSearch.BackgroundImage = global::control_elements_sena.Properties.Resources.loupe;
-            this.btnSearch.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.btnSearch.FlatAppearance.BorderSize = 0;
-            this.btnSearch.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnSearch.Location = new System.Drawing.Point(743, 12);
-            this.btnSearch.Name = "btnSearch";
-            this.btnSearch.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.btnSearch.Size = new System.Drawing.Size(22, 22);
-            this.btnSearch.TabIndex = 12;
-            this.btnSearch.UseVisualStyleBackColor = false;
-            this.btnSearch.Click += new System.EventHandler(this.btnSearch_Click);
+            this.id.HeaderText = "id";
+            this.id.Name = "id";
+            this.id.ReadOnly = true;
+            this.id.Visible = false;
             // 
-            // btnOptions
+            // id_usuario
             // 
-            this.btnOptions.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnOptions.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(4)))), ((int)(((byte)(55)))), ((int)(((byte)(77)))));
-            this.btnOptions.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnOptions.FlatAppearance.BorderSize = 0;
-            this.btnOptions.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnOptions.Image = global::control_elements_sena.Properties.Resources.options;
-            this.btnOptions.Location = new System.Drawing.Point(768, 98);
-            this.btnOptions.Name = "btnOptions";
-            this.btnOptions.Size = new System.Drawing.Size(23, 39);
-            this.btnOptions.TabIndex = 3;
-            this.toolTipHelper.SetToolTip(this.btnOptions, "Doble click en cualquier celda para registrar salida");
-            this.btnOptions.UseVisualStyleBackColor = false;
-            this.btnOptions.Click += new System.EventHandler(this.btnOptions_Click);
+            this.id_usuario.HeaderText = "Identificación registrador";
+            this.id_usuario.Name = "id_usuario";
+            this.id_usuario.ReadOnly = true;
             // 
-            // btnListAll
+            // registrador
             // 
-            this.btnListAll.BackColor = System.Drawing.Color.Transparent;
-            this.btnListAll.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnListAll.FlatAppearance.BorderSize = 0;
-            this.btnListAll.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnListAll.Image = global::control_elements_sena.Properties.Resources.check_list;
-            this.btnListAll.Location = new System.Drawing.Point(3, 44);
-            this.btnListAll.Name = "btnListAll";
-            this.btnListAll.Size = new System.Drawing.Size(36, 36);
-            this.btnListAll.TabIndex = 2;
-            this.toolTipListAll.SetToolTip(this.btnListAll, "Listado completo de entradas");
-            this.btnListAll.UseVisualStyleBackColor = false;
-            this.btnListAll.Click += new System.EventHandler(this.btnListAll_Click);
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.registrador.DefaultCellStyle = dataGridViewCellStyle3;
+            this.registrador.HeaderText = "Registrador";
+            this.registrador.Name = "registrador";
+            this.registrador.ReadOnly = true;
             // 
-            // btnAdd
+            // identificacion_propietario
             // 
-            this.btnAdd.BackColor = System.Drawing.Color.Transparent;
-            this.btnAdd.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnAdd.FlatAppearance.BorderSize = 0;
-            this.btnAdd.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnAdd.Image = global::control_elements_sena.Properties.Resources.personal_data;
-            this.btnAdd.Location = new System.Drawing.Point(3, 3);
-            this.btnAdd.Name = "btnAdd";
-            this.btnAdd.Size = new System.Drawing.Size(36, 36);
-            this.btnAdd.TabIndex = 0;
-            this.toolTipNew.SetToolTip(this.btnAdd, "Registrar entrada");
-            this.btnAdd.UseVisualStyleBackColor = false;
-            this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
+            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.identificacion_propietario.DefaultCellStyle = dataGridViewCellStyle4;
+            this.identificacion_propietario.HeaderText = "Identificación propietario";
+            this.identificacion_propietario.Name = "identificacion_propietario";
+            this.identificacion_propietario.ReadOnly = true;
+            // 
+            // nombres_propietario
+            // 
+            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.nombres_propietario.DefaultCellStyle = dataGridViewCellStyle5;
+            this.nombres_propietario.HeaderText = "Nombres propietario";
+            this.nombres_propietario.Name = "nombres_propietario";
+            this.nombres_propietario.ReadOnly = true;
+            // 
+            // id_elemento
+            // 
+            this.id_elemento.HeaderText = "Id_elemento";
+            this.id_elemento.Name = "id_elemento";
+            this.id_elemento.ReadOnly = true;
+            this.id_elemento.Visible = false;
+            // 
+            // marca
+            // 
+            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.marca.DefaultCellStyle = dataGridViewCellStyle6;
+            this.marca.HeaderText = "Marca";
+            this.marca.Name = "marca";
+            this.marca.ReadOnly = true;
+            // 
+            // serie
+            // 
+            dataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.serie.DefaultCellStyle = dataGridViewCellStyle7;
+            this.serie.HeaderText = "Serie";
+            this.serie.Name = "serie";
+            this.serie.ReadOnly = true;
+            // 
+            // cargador_mouse
+            // 
+            this.cargador_mouse.HeaderText = "Cargador y mouse";
+            this.cargador_mouse.Name = "cargador_mouse";
+            this.cargador_mouse.ReadOnly = true;
+            // 
+            // formato3
+            // 
+            this.formato3.HeaderText = "Formato 3";
+            this.formato3.Name = "formato3";
+            this.formato3.ReadOnly = true;
+            // 
+            // hora_entrada
+            // 
+            dataGridViewCellStyle8.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.hora_entrada.DefaultCellStyle = dataGridViewCellStyle8;
+            this.hora_entrada.HeaderText = "Hora de entrada";
+            this.hora_entrada.Name = "hora_entrada";
+            this.hora_entrada.ReadOnly = true;
+            // 
+            // hora_salida
+            // 
+            dataGridViewCellStyle9.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.hora_salida.DefaultCellStyle = dataGridViewCellStyle9;
+            this.hora_salida.HeaderText = "Hora de salida";
+            this.hora_salida.Name = "hora_salida";
+            this.hora_salida.ReadOnly = true;
+            this.hora_salida.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
             // 
             // Entradas
             // 
@@ -499,6 +515,11 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.ComboBox cmbValue;
         private System.Windows.Forms.ComboBox cmbType;
+        private System.Windows.Forms.DateTimePicker dtpInitialDate;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.DateTimePicker dtpEndDate;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Button btnDateSearch;
         private System.Windows.Forms.DataGridViewTextBoxColumn id;
         private System.Windows.Forms.DataGridViewTextBoxColumn id_usuario;
         private System.Windows.Forms.DataGridViewTextBoxColumn registrador;
@@ -507,12 +528,9 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn id_elemento;
         private System.Windows.Forms.DataGridViewTextBoxColumn marca;
         private System.Windows.Forms.DataGridViewTextBoxColumn serie;
+        private System.Windows.Forms.DataGridViewTextBoxColumn cargador_mouse;
+        private System.Windows.Forms.DataGridViewTextBoxColumn formato3;
         private System.Windows.Forms.DataGridViewTextBoxColumn hora_entrada;
         private System.Windows.Forms.DataGridViewTextBoxColumn hora_salida;
-        private System.Windows.Forms.DateTimePicker dtpInitialDate;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.DateTimePicker dtpEndDate;
-        private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.Button btnDateSearch;
     }
 }

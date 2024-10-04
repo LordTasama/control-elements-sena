@@ -54,10 +54,7 @@ namespace control_elements_sena.Controllers
                                 {
                                     errorMessage = "Su estado actual es inactivo, contacta con un administrador para activar tu cuenta";
                                     return false;
-                                }
-
-                             
-                                
+                                }     
                             }
                             else
                             {
@@ -168,7 +165,11 @@ namespace control_elements_sena.Controllers
                 string identificacion = claims.FirstOrDefault(c => c.Type == "UserIdentificacion")?.Value;
                 // Devolver los datos como un arreglo
                 validToken = true;
-                return new string[] { userId,identificacion,name,role,email };
+                DataTable dt = Usuarios.Usuarios.SeleccionarUsuario(Convert.ToInt64(userId)).Item1;
+
+                role = dt.Rows[0][5].ToString();
+                string estado = dt.Rows[0][7].ToString();
+                return new string[] { userId,identificacion,name,role,email,estado };
             }
             catch (Exception ex)
             {
@@ -221,5 +222,6 @@ namespace control_elements_sena.Controllers
                 return "";
             }
         }
+
     }
 }

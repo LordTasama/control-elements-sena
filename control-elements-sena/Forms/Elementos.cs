@@ -1,4 +1,5 @@
-﻿using control_elements_sena.Forms.Create;
+﻿using control_elements_sena.Controllers;
+using control_elements_sena.Forms.Create;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -26,7 +27,7 @@ namespace control_elements_sena
             if (selectedCellRow)
             {
                 int currentRow = dgvDatos.CurrentCell.RowIndex;
-                string[] data = new string[6];
+                string[] data = new string[7];
                 foreach (DataGridViewCell cell in dgvDatos.Rows[currentRow].Cells)
                 {
                     data[cell.ColumnIndex] = cell.Value.ToString();
@@ -106,8 +107,15 @@ namespace control_elements_sena
         }
 
         // Funciones personalizadas
-        private void CargarData(string all, string limit)
+        async private void CargarData(string all, string limit)
         {
+            Session session = new Session();
+            await session.DescifrarTokenAsync();
+            if (!session.validToken)
+            {
+                MessageBox.Show("Su sesión expiró, inicie sesión nuevamente", "Sesión", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                Application.Restart();
+            }
             pButtonsContainer.Visible = false;
             var response = Controllers.Elementos.Elementos.SeleccionarElementos(all, limit);
             DataTable elementData = response.Item1;
@@ -120,13 +128,13 @@ namespace control_elements_sena
             foreach (DataRow data in elementData.Rows)
             {
 
-                dgvDatos.Rows.Add(new object[] { data[0], data[1], data[2], data[3], data[4], data[5] });
+                dgvDatos.Rows.Add(new object[] { data[0], data[1], data[2], data[3], data[4], data[5], data[6] });
 
 
             }
             if (dgvDatos.Rows.Count == 0)
             {
-                dgvDatos.Rows.Add(new object[] { "", "", "", "", "SIN DATOS PARA MOSTRAR", "" });
+                dgvDatos.Rows.Add(new object[] { "", "", "", "", "SIN DATOS PARA MOSTRAR", "","" });
 
 
             }
@@ -183,15 +191,13 @@ namespace control_elements_sena
                 foreach (DataRow data in elementData.Rows)
                 {
 
-                    dgvDatos.Rows.Add(new object[] { data[0], data[1], data[2], data[3], data[4], data[5] });
+                    dgvDatos.Rows.Add(new object[] { data[0], data[1], data[2], data[3], data[4], data[5], data[6] });
 
 
                 }
                 if (dgvDatos.Rows.Count == 0)
                 {
-                    dgvDatos.Rows.Add(new object[] { "", "", "", "", "NO SE ENCONTRÓ NINGÚN DATO", "" });
-
-
+                    dgvDatos.Rows.Add(new object[] { "", "", "", "", "NO SE ENCONTRÓ NINGÚN DATO", "", ""});
                 }
             }
         }

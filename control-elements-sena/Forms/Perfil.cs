@@ -24,8 +24,8 @@ namespace control_elements_sena.Forms
             string[] data = await session.DescifrarTokenAsync();
             if (!session.validToken)
             {
-                MessageBox.Show("Token no válido o ya expiró, por favor inicia sesión nuevamente", "Error al validar ", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                Application.Exit();
+                MessageBox.Show("Su sesión expiró, inicie sesión nuevamente", "Sesión", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                Application.Restart();
             }
             lblRol.Text = data[3] == "1" ? "Administrador" : "Guardia";
             if (data[3] == "1") {

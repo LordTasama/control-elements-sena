@@ -4,6 +4,8 @@ using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Drawing;
+using System.Globalization;
+using System.Linq;
 using System.Windows.Forms;
 
 namespace control_elements_sena.Forms.Create
@@ -88,7 +90,12 @@ namespace control_elements_sena.Forms.Create
             // Enviar datos
             else
             {
-                bool response = Controllers.Entradas.Entradas.CrearEntrada(txtIdPropietario.Text,txtNombres.Text,cmbMarca.Text,txtSerie.Text);
+
+                string checkedCYM = chbxCargador_mouse.Checked ? "SI" : "NO";
+                string checkedFM3 = chxFormato3.Checked ? "SI" : "NO";
+                string nombres = CultureInfo.CurrentCulture.TextInfo.ToTitleCase(txtNombres.Text.ToLower());
+                string marca = CultureInfo.CurrentCulture.TextInfo.ToTitleCase(cmbMarca.Text.ToLower());
+                bool response = Controllers.Entradas.Entradas.CrearEntrada(txtIdPropietario.Text,nombres,marca,txtSerie.Text,checkedCYM,checkedFM3);
 
                 if (response)
                 {
@@ -105,10 +112,35 @@ namespace control_elements_sena.Forms.Create
 
         }
 
+
+
         private void txtIdPropietario_TextChanged(object sender, EventArgs e)
         {
-            CargarDatosRegistro();
+            // Guarda la posición actual del cursor
+            int cursorPosition = txtIdPropietario.SelectionStart;
+
+            // Verifica que el texto no esté vacío y que el cursor no esté en la primera posición
+            if (!string.IsNullOrEmpty(txtIdPropietario.Text) && cursorPosition > 0)
+            {
+                // Verifica si el carácter en la posición anterior no es un dígito
+                if (!char.IsDigit(txtIdPropietario.Text[cursorPosition - 1]))
+                {
+                    // Elimina el carácter no válido en la posición anterior del cursor
+                    txtIdPropietario.Text = txtIdPropietario.Text.Remove(cursorPosition - 1, 1);
+
+                    // Restablece la posición del cursor
+                    txtIdPropietario.SelectionStart = cursorPosition - 1;
+
+                    // Muestra un mensaje si lo deseas (opcional)
+         
+                }
+                else
+                {
+                    CargarDatosRegistro();
+                }
+            }
         }
+
 
         private void cmbMarca_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -186,6 +218,7 @@ namespace control_elements_sena.Forms.Create
 
             string nombres = null;
             string firstSerie = null;
+            bool formato3 = false;
             List<Elemento> datosElementos = new List<Elemento>();
             if (data.Item2)
             {
@@ -194,7 +227,7 @@ namespace control_elements_sena.Forms.Create
                     nombres = nombres ?? row["nombres"].ToString();
                     firstSerie = firstSerie ?? row["serie"].ToString();
                     datosElementos.Add(new Elemento { Id_Registro = row["id_registro"].ToString(), Id_Elemento = row["id_elemento"].ToString(), Marca = row["marca"].ToString(), Serie = row["serie"].ToString() });
-
+                    formato3 = row["formato3"].ToString() == "SI";
                 }
                 cmbMarca.Text = "";
                 cmbMarca.DataSource = datosElementos;
@@ -202,6 +235,7 @@ namespace control_elements_sena.Forms.Create
                 cmbMarca.ValueMember = "Serie";
                 txtNombres.Text = nombres;
                 txtSerie.Text = firstSerie;
+                chxFormato3.Checked = formato3;
 
             }
             else
@@ -219,5 +253,9 @@ namespace control_elements_sena.Forms.Create
                 Controllers.Entradas.Entradas.idElemento = data.Item1.Rows[0]["id_elemento"].ToString();
             }
         }
+
+      
+          
+       
     }
 }

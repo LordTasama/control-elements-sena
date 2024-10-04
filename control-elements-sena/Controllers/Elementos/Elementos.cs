@@ -76,7 +76,7 @@ namespace control_elements_sena.Controllers.Elementos
                 return (elementsTable, false);
             }
         }
-        public static bool EditarElemento(string id, string marca,string serie)
+        public static bool EditarElemento(string id, string marca,string serie,string formato3)
         {
 
             try
@@ -90,6 +90,7 @@ namespace control_elements_sena.Controllers.Elementos
                         command.Parameters.AddWithValue("@ide", id);
                         command.Parameters.AddWithValue("@mar", marca);
                         command.Parameters.AddWithValue("@ser", serie);
+                        command.Parameters.AddWithValue("@fm3", formato3);
 
                         command.ExecuteNonQuery();
 

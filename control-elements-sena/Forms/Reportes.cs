@@ -1,12 +1,14 @@
 ﻿using control_elements_sena.Forms.Create;
-using OfficeOpenXml;
-using OfficeOpenXml.Table;
 using System;
 using System.Data;
-using System.Drawing;
 using System.IO;
+using OfficeOpenXml;
+using OfficeOpenXml.Table;
+using System.Drawing;
 using System.Windows.Forms;
 using System.Windows.Forms.DataVisualization.Charting;
+using control_elements_sena.Controllers;
+
 
 namespace control_elements_sena
 {
@@ -19,9 +21,17 @@ namespace control_elements_sena
             InitializeComponent();
         }
 
-        private void Reportes_Load(object sender, EventArgs e)
+        async private void Reportes_Load(object sender, EventArgs e)
         {
+            Session session = new Session();
+            await session.DescifrarTokenAsync();
+            if (!session.validToken)
+            {
+                MessageBox.Show("Su sesión expiró, inicie sesión nuevamente", "Sesión", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                Application.Restart();
+            }
             LoadChartData();
+          
         }
 
         private void LoadChartData()
@@ -43,7 +53,7 @@ namespace control_elements_sena
                     Name = "Cantidad",
                     IsVisibleInLegend = true,
                     ChartType = SeriesChartType.Column,
-                    Color = Color.FromArgb(4, 50, 77) // Color especificado para las barras
+                    Color = System.Drawing.Color.FromArgb(4, 50, 77) // Color especificado para las barras
                 };
                 chart.Series.Add(series);
 
@@ -184,6 +194,7 @@ namespace control_elements_sena
                 }
                 if (condition)
                 {
+
                     // Definir la ruta completa del archivo
                     string filePath = Path.Combine(directoryPath, $"{cmbType.Text}.xlsx");
 
@@ -241,6 +252,31 @@ namespace control_elements_sena
                         MessageBox.Show($"Error al generar el archivo Excel: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
                 }
+            }
+            else if (cmbFormat.Text == "PDF")
+            {
+
+                if (File.Exists(Path.Combine(directoryPath, $"{cmbType.Text}.pdf")))
+                {
+                    if (MessageBox.Show("Si generas este reporte, reemplazará el que ya existe. ¿Estás seguro?", "Reportes", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes)
+                    {
+                        condition = true;
+                    }
+                    else
+                    {
+                        condition = false;
+                    }
+                }
+                if (condition)
+                {
+
+                    string filePath = Path.Combine(directoryPath, $"{cmbType.Text}.pdf");
+
+                }
+            }
+            else
+            {
+                MessageBox.Show("Elige un formato", "Reportes", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
             }
 
         }

@@ -38,6 +38,7 @@
             this.label2 = new System.Windows.Forms.Label();
             this.txtSerie = new System.Windows.Forms.TextBox();
             this.btnSend = new System.Windows.Forms.Button();
+            this.chxFormato3 = new System.Windows.Forms.CheckBox();
             this.pControlBox.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
@@ -149,13 +150,26 @@
             this.btnSend.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnSend.Font = new System.Drawing.Font("Segoe UI Semibold", 11F, System.Drawing.FontStyle.Bold);
             this.btnSend.ForeColor = System.Drawing.Color.White;
-            this.btnSend.Location = new System.Drawing.Point(73, 150);
+            this.btnSend.Location = new System.Drawing.Point(73, 188);
             this.btnSend.Name = "btnSend";
             this.btnSend.Size = new System.Drawing.Size(75, 33);
-            this.btnSend.TabIndex = 13;
+            this.btnSend.TabIndex = 7;
             this.btnSend.Text = "Guardar";
             this.btnSend.UseVisualStyleBackColor = false;
             this.btnSend.Click += new System.EventHandler(this.btnSend_Click);
+            // 
+            // chxFormato3
+            // 
+            this.chxFormato3.AutoSize = true;
+            this.chxFormato3.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.chxFormato3.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold);
+            this.chxFormato3.Location = new System.Drawing.Point(8, 149);
+            this.chxFormato3.Name = "chxFormato3";
+            this.chxFormato3.Size = new System.Drawing.Size(90, 21);
+            this.chxFormato3.TabIndex = 6;
+            this.chxFormato3.Text = "Formato 3";
+            this.chxFormato3.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.chxFormato3.UseVisualStyleBackColor = true;
             // 
             // EditarElemento
             // 
@@ -164,8 +178,9 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(236)))), ((int)(((byte)(237)))), ((int)(((byte)(240)))));
             this.CancelButton = this.btnCloseWindow;
-            this.ClientSize = new System.Drawing.Size(222, 207);
+            this.ClientSize = new System.Drawing.Size(222, 239);
             this.ControlBox = false;
+            this.Controls.Add(this.chxFormato3);
             this.Controls.Add(this.btnSend);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.txtSerie);
@@ -197,5 +212,6 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TextBox txtSerie;
         private System.Windows.Forms.Button btnSend;
+        private System.Windows.Forms.CheckBox chxFormato3;
     }
 }

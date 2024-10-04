@@ -91,7 +91,7 @@ namespace control_elements_sena.Forms.Create
             // Enviar datos
             else
             {
-                bool response = Controllers.Elementos.Elementos.EditarElemento(_data[0], txtMarca.Text, txtSerie.Text);
+                bool response = Controllers.Elementos.Elementos.EditarElemento(_data[0], txtMarca.Text, txtSerie.Text,chxFormato3.Checked ? "SI" : "NO");
 
                 if (response)
                 {
@@ -114,6 +114,7 @@ namespace control_elements_sena.Forms.Create
         {
             txtMarca.Text = _data[4];
             txtSerie.Text = _data[5];
+            chxFormato3.Checked = _data[6] == "SI";
         }
     }
 }
