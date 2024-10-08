@@ -624,6 +624,8 @@
     <None Include="Resources\denuncia-create.png" />
     <None Include="Resources\loupe.png" />
     <None Include="Resources\formato-3.png" />
+    <None Include="Resources\logo-sena-icon.ico" />
+    <None Include="Resources\sena-logo.ico" />
     <Content Include="Resources\sena-logo.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

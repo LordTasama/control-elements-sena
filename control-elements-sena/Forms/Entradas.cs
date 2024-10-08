@@ -64,35 +64,15 @@ namespace control_elements_sena
             }
             else if (data.Cells["hora_salida"].Value.ToString() == "PENDIENTE" && data.Cells["formato3"].Value.ToString() == "NO")
             {
-                DialogResult dr = MessageBox.Show($"Selecciona 'OK' o 'Aceptar' para confirmar la hora de salida de este elemento.\n\nInformación del elemento:\n- Propietario: {data.Cells["nombres_propietario"].Value}\n- Marca: {data.Cells["marca"].Value}\n- Serie: {data.Cells["serie"].Value}", "Registrar salida", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
+                DialogResult dr = MessageBox.Show($"Selecciona 'OK' o 'Aceptar' para confirmar la hora de salida de este elemento.\n\nInformación del elemento:\n- Propietario: {data.Cells["nombres_propietario"].Value}\n- Marca: {data.Cells["marca"].Value}\n- Serie: {data.Cells["serie"].Value}\n- Formato 3: {data.Cells["formato3"].Value}\n- Observaciones: {data.Cells["observaciones"].Value}", "Registrar salida", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
                 if(dr == DialogResult.OK)
                 {
-                    if (Controllers.Entradas.Entradas.RegistrarSalida(data.Cells["id"].Value.ToString(), data.Cells["formato3"].Value.ToString()))
+                    if (Controllers.Entradas.Entradas.RegistrarSalida(data.Cells["id"].Value.ToString()))
                     {
                         MessageBox.Show("Operación exitosa", "Respuesta", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         CargarData("0");
                     }
                     else {
-                        MessageBox.Show(Controllers.Entradas.Entradas.errorMessage, "Respuesta", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    }
-                }
-            }
-            else if (data.Cells["hora_entrada"].Value.ToString() != "PENDIENTE" && data.Cells["formato3"].Value.ToString() == "SI")
-            {
-                MessageBox.Show("Seleccione una entrada de formato 3 con hora de entrada 'PENDIENTE'", "Registrar entrada de formato 3", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-            }
-            else if (data.Cells["hora_entrada"].Value.ToString() == "PENDIENTE" && data.Cells["formato3"].Value.ToString() == "SI")
-            {
-                DialogResult dr = MessageBox.Show($"Selecciona 'OK' o 'Aceptar' para confirmar la hora de entrada de este elemento con formato 3.\n\nInformación del elemento:\n- Propietario: {data.Cells["nombres_propietario"].Value}\n- Marca: {data.Cells["marca"].Value}\n- Serie: {data.Cells["serie"].Value}\n- Formato 3: SI", "Registrar entrada de formato 3", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
-                if (dr == DialogResult.OK)
-                {
-                    if (Controllers.Entradas.Entradas.RegistrarSalida(data.Cells["id"].Value.ToString(), data.Cells["formato3"].Value.ToString()))
-                    {
-                        MessageBox.Show("Operación exitosa", "Respuesta", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                        CargarData("0");
-                    }
-                    else
-                    {
                         MessageBox.Show(Controllers.Entradas.Entradas.errorMessage, "Respuesta", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
                 }
@@ -130,7 +110,7 @@ namespace control_elements_sena
         }
         private void btnListAll_Click(object sender, EventArgs e)
         {
-            if(MessageBox.Show("¿Estás seguro que quieres listar todo?\nEste proceso podría tardar unos minutos en completarse", "Listar todo", MessageBoxButtons.YesNo,MessageBoxIcon.Question) == DialogResult.Yes)
+            if(MessageBox.Show("¿Estás seguro que quieres listar todas las entradas?\nEste proceso podría tardar unos minutos en completarse", "Listar todo", MessageBoxButtons.YesNo,MessageBoxIcon.Question) == DialogResult.Yes)
             {
                 CargarData("1");
             }
@@ -223,9 +203,9 @@ namespace control_elements_sena
             foreach (DataRow data in entranceData.Rows)
             {
                 var horaSalida = data[11].ToString() == "" && data[9].ToString() == "NO" ? "PENDIENTE" : data[11];
-                var horaEntrada = data[10].ToString() == "" && data[9].ToString() == "SI" ? "PENDIENTE" : data[10];
 
-                dgvDatos.Rows.Add(new object[] { data[0], data[1], data[2], data[3], data[4], data[5], data[6], data[7], data[8], data[9], horaEntrada, horaSalida });
+
+                dgvDatos.Rows.Add(new object[] { data[0], data[1], data[2], data[3], data[4], data[5], data[6], data[7], data[8], data[9], data[10], horaSalida });
 
 
             }
@@ -235,11 +215,6 @@ namespace control_elements_sena
                 {
                     data.Cells["hora_salida"].Style.BackColor = Color.FromArgb(57, 169, 0);
                     data.Cells["hora_salida"].ToolTipText = "Doble click para fijar hora de salida";
-                }
-                else if (data.Cells["hora_entrada"].Value.ToString() == "PENDIENTE" && data.Cells["formato3"].Value.ToString() == "SI")
-                {
-                    data.Cells["hora_entrada"].Style.BackColor = Color.FromArgb(57, 169, 0);
-                    data.Cells["hora_entrada"].ToolTipText = "Doble click para fijar hora de entrada";
                 }
             }
             if (dgvDatos.Rows.Count == 0)

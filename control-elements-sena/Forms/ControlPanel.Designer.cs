@@ -541,6 +541,8 @@
             // 
             // pContainer
             // 
+            this.pContainer.BackgroundImage = global::control_elements_sena.Properties.Resources.background_login;
+            this.pContainer.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.pContainer.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pContainer.Location = new System.Drawing.Point(0, 68);
             this.pContainer.Margin = new System.Windows.Forms.Padding(0);
@@ -797,6 +799,7 @@
             this.Name = "ControlPanel";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Panel de Control";
+            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.ControlPanel_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pictureReload)).EndInit();
             this.dropMenuContainer.ResumeLayout(false);

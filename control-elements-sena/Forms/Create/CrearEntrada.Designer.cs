@@ -42,8 +42,9 @@
             this.btnSend = new System.Windows.Forms.Button();
             this.cmbMarca = new System.Windows.Forms.ComboBox();
             this.label3 = new System.Windows.Forms.Label();
-            this.chbxCargador_mouse = new System.Windows.Forms.CheckBox();
             this.chxFormato3 = new System.Windows.Forms.CheckBox();
+            this.txtObservaciones = new System.Windows.Forms.TextBox();
+            this.label1 = new System.Windows.Forms.Label();
             this.pControlBox.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
@@ -178,7 +179,7 @@
             this.btnSend.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnSend.Font = new System.Drawing.Font("Segoe UI Semibold", 11F, System.Drawing.FontStyle.Bold);
             this.btnSend.ForeColor = System.Drawing.Color.White;
-            this.btnSend.Location = new System.Drawing.Point(66, 306);
+            this.btnSend.Location = new System.Drawing.Point(66, 386);
             this.btnSend.Name = "btnSend";
             this.btnSend.Size = new System.Drawing.Size(89, 33);
             this.btnSend.TabIndex = 12;
@@ -209,31 +210,42 @@
             this.label3.TabIndex = 6;
             this.label3.Text = "Marca del elemento";
             // 
-            // chbxCargador_mouse
-            // 
-            this.chbxCargador_mouse.AutoSize = true;
-            this.chbxCargador_mouse.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.chbxCargador_mouse.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold);
-            this.chbxCargador_mouse.Location = new System.Drawing.Point(8, 243);
-            this.chbxCargador_mouse.Name = "chbxCargador_mouse";
-            this.chbxCargador_mouse.Size = new System.Drawing.Size(139, 21);
-            this.chbxCargador_mouse.TabIndex = 10;
-            this.chbxCargador_mouse.Text = "Cargador y mouse";
-            this.chbxCargador_mouse.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.chbxCargador_mouse.UseVisualStyleBackColor = true;
-            // 
             // chxFormato3
             // 
             this.chxFormato3.AutoSize = true;
             this.chxFormato3.Cursor = System.Windows.Forms.Cursors.Hand;
             this.chxFormato3.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold);
-            this.chxFormato3.Location = new System.Drawing.Point(8, 270);
+            this.chxFormato3.Location = new System.Drawing.Point(10, 353);
             this.chxFormato3.Name = "chxFormato3";
             this.chxFormato3.Size = new System.Drawing.Size(90, 21);
             this.chxFormato3.TabIndex = 11;
             this.chxFormato3.Text = "Formato 3";
             this.chxFormato3.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.chxFormato3.UseVisualStyleBackColor = true;
+            // 
+            // txtObservaciones
+            // 
+            this.txtObservaciones.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtObservaciones.ForeColor = System.Drawing.SystemColors.GrayText;
+            this.txtObservaciones.Location = new System.Drawing.Point(8, 255);
+            this.txtObservaciones.MaxLength = 255;
+            this.txtObservaciones.Multiline = true;
+            this.txtObservaciones.Name = "txtObservaciones";
+            this.txtObservaciones.Size = new System.Drawing.Size(206, 89);
+            this.txtObservaciones.TabIndex = 13;
+            this.txtObservaciones.Text = "SIN OBSERVACIONES";
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.BackColor = System.Drawing.Color.Transparent;
+            this.label1.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.ForeColor = System.Drawing.Color.Black;
+            this.label1.Location = new System.Drawing.Point(5, 235);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(97, 17);
+            this.label1.TabIndex = 14;
+            this.label1.Text = "Observaciones";
             // 
             // CrearEntrada
             // 
@@ -242,10 +254,11 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(236)))), ((int)(((byte)(237)))), ((int)(((byte)(240)))));
             this.CancelButton = this.btnCloseWindow;
-            this.ClientSize = new System.Drawing.Size(222, 353);
+            this.ClientSize = new System.Drawing.Size(222, 433);
             this.ControlBox = false;
+            this.Controls.Add(this.label1);
+            this.Controls.Add(this.txtObservaciones);
             this.Controls.Add(this.chxFormato3);
-            this.Controls.Add(this.chbxCargador_mouse);
             this.Controls.Add(this.cmbMarca);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.btnSend);
@@ -285,7 +298,8 @@
         private System.Windows.Forms.Button btnSend;
         private System.Windows.Forms.ComboBox cmbMarca;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.CheckBox chbxCargador_mouse;
         private System.Windows.Forms.CheckBox chxFormato3;
+        private System.Windows.Forms.TextBox txtObservaciones;
+        private System.Windows.Forms.Label label1;
     }
 }

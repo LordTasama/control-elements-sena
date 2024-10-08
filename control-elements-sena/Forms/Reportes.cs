@@ -112,27 +112,27 @@ namespace control_elements_sena
         {
             DataTable dataTable = new DataTable();
             bool condition = true;
-            if (cmbType.Text == "Lista de Registros" && cmbFormat.Text == "Excel")
+            if (cmbType.Text == "Lista de Registros")
             {
 
                 dataTable = Controllers.Registros.Registros.SeleccionarRegistros("1", "0").Item1;
 
             }
-            else if (cmbType.Text == "Lista de Elementos" && cmbFormat.Text == "Excel")
+            else if (cmbType.Text == "Lista de Elementos")
             {
                 dataTable = Controllers.Elementos.Elementos.SeleccionarElementos("1", "0").Item1;
             }
-            else if (cmbType.Text == "Lista de Denuncias" && cmbFormat.Text == "Excel")
+            else if (cmbType.Text == "Lista de Denuncias")
             {
                 dataTable = Controllers.Denuncias.Denuncias.SeleccionarDenuncias("1").Item1;
             }
-            else if (cmbType.Text == "Entradas Totales" && cmbFormat.Text == "Excel")
+            else if (cmbType.Text == "Entradas Totales")
             {
 
                 dataTable = Controllers.Entradas.Entradas.SeleccionarEntradas("1").Item1;
 
             }
-            else if (cmbType.Text == "Entradas del Mes" && cmbFormat.Text == "Excel")
+            else if (cmbType.Text == "Entradas del Mes")
             {
                 // Obtener la fecha actual
                 DateTime now = DateTime.Now;
@@ -147,7 +147,7 @@ namespace control_elements_sena
                 dataTable = Controllers.Entradas.Entradas.SeleccionarEntradasFecha("SIN LIMITE", "3", firstDayOfMonth.ToString("yyyy-MM-dd"), lastDayOfMonth.ToString("yyyy-MM-dd")).Item1;
 
             }
-            else if (cmbType.Text == "Entradas por Fecha" && cmbFormat.Text == "Excel")
+            else if (cmbType.Text == "Entradas por Fecha")
             {
                 if (fechaInicial != null && fechaFinal != null)
                 {
@@ -161,11 +161,11 @@ namespace control_elements_sena
                     return;
                 }
             }
-            else if (cmbType.Text == "Entradas de Hoy o Activas" && cmbFormat.Text == "Excel")
+            else if (cmbType.Text == "Entradas de Hoy o Activas")
             {
                 dataTable = Controllers.Entradas.Entradas.SeleccionarEntradas("0").Item1;
             }
-            else if (cmbType.Text == "Denuncias Activas" && cmbFormat.Text == "Excel")
+            else if (cmbType.Text == "Denuncias Activas")
             {
                 dataTable = Controllers.Denuncias.Denuncias.SeleccionarDenuncias("0").Item1;
             }
@@ -219,12 +219,20 @@ namespace control_elements_sena
                             worksheet.Cells["A1"].Style.HorizontalAlignment = OfficeOpenXml.Style.ExcelHorizontalAlignment.Center;
                             worksheet.Cells["A1"].Style.VerticalAlignment = OfficeOpenXml.Style.ExcelVerticalAlignment.Center;
 
-                            // Colocar los nombres de las columnas y capitalizar la primera letra
                             for (int i = 0; i < dataTable.Columns.Count; i++)
                             {
                                 string columnName = dataTable.Columns[i].ColumnName;
+                                // Capitaliza la primera letra del nombre de la columna
                                 worksheet.Cells[2, i + 1].Value = char.ToUpper(columnName[0]) + columnName.Substring(1);
+
+                                // Si es una columna de fecha, formatea la celda en Excel
+                                if (dataTable.Columns[i].DataType == typeof(DateTime))
+                                {
+                                    // Establece el formato de la celda como fecha
+                                    worksheet.Column(i + 1).Style.Numberformat.Format = "dd/MM/yyyy HH:mm:ss";
+                                }
                             }
+
 
                             // Cargar los datos en la hoja de cálculo, comenzando desde la fila 3
                             worksheet.Cells["A3"].LoadFromDataTable(dataTable, false);

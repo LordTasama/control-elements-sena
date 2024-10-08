@@ -1,6 +1,7 @@
 ﻿using control_elements_sena.Controllers;
 using control_elements_sena.Forms;
 using System;
+using System.ComponentModel;
 using System.Drawing;
 using System.Linq;
 using System.Threading.Tasks;
@@ -21,7 +22,6 @@ namespace control_elements_sena
         public ControlPanel()
         {
             InitializeComponent();
-
         }
 
         // Controles de la ventana
@@ -235,7 +235,8 @@ namespace control_elements_sena
 
         private void btnCloseForm_Click_1(object sender, EventArgs e)
         {
-            currentForm.Close();
+            pContainer.Controls.Clear();
+            pContainer.Tag = null;
             btnCloseForm.Visible = false;
             SidebarSelect();
             lblPage.Text = "";
@@ -353,6 +354,7 @@ namespace control_elements_sena
 
         private async void ControlPanel_Load(object sender, EventArgs e)
         {
+
             string[] data = await DatosToken();
 
             idSessionUser = data[0];
@@ -490,7 +492,6 @@ namespace control_elements_sena
             SidebarSelect();
         }
 
-        
 
         // Fin
     }

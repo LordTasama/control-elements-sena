@@ -15,7 +15,7 @@ namespace control_elements_sena.Controllers.Entradas
         public static string errorMessage = "";
         public static string idRegistro = null;
         public static string idElemento = null;
-        public static bool CrearEntrada(string id_propietario, string nombres_propietario, string marca_elemento, string serie_elemento, string cargador_mouse, string formato3)
+        public static bool CrearEntrada(string id_propietario, string nombres_propietario, string marca_elemento, string serie_elemento, string observaciones, string formato3)
         {
 
             using (SqlConnection connection = DatabaseConnect.GetConnection())
@@ -69,27 +69,46 @@ namespace control_elements_sena.Controllers.Entradas
                             {
                                 idElemento = command2.ExecuteScalar().ToString();
                             }
+                            using (SqlCommand denunciaExists = new SqlCommand("BuscarDenuncia", connection))
+                            {
+                                denunciaExists.Transaction = transaction;
+                                denunciaExists.CommandType = CommandType.StoredProcedure;
+                                denunciaExists.Parameters.AddWithValue("@ide", idElemento);
+                                using (SqlDataReader readerDenuncias = denunciaExists.ExecuteReader())
+                                {
+                                    if (readerDenuncias.HasRows)
+                                    {
+                                        readerDenuncias.Close();
+                                        transaction.Rollback();
+                                        errorMessage = "Este elemento ha sido denunciado, por lo tanto no se puede crear una entrada, revisa en la tabla de Denuncias los detalles.";
+                                        return false;
+                                    }
+                                }
+                            }
                             using (SqlCommand command3 = new SqlCommand("CrearEntrada", connection))
                             {
                                 command3.Transaction = transaction;
                                 command3.CommandType = CommandType.StoredProcedure;
                                 command3.Parameters.AddWithValue("@idu", ControlPanel.idSessionUser);
                                 command3.Parameters.AddWithValue("@ide", idElemento);
-                                command3.Parameters.AddWithValue("@cym", cargador_mouse);
+                                command3.Parameters.AddWithValue("@obs", observaciones.ToUpper());
                                 command3.Parameters.AddWithValue("@fm3", formato3);
                                 if (formato3 == "SI")
                                 {
-                                    command3.Parameters.AddWithValue("@hoe", DBNull.Value);
+                                    command3.Parameters.AddWithValue("@hoe", DateTime.Now);
                                     command3.Parameters.AddWithValue("@hos", DateTime.Now);
+                                    command3.Parameters.AddWithValue("@est", 0);
                                 }
                                 else
                                 {
                                     command3.Parameters.AddWithValue("@hoe", DateTime.Now);
                                     command3.Parameters.AddWithValue("@hos", DBNull.Value);
+                                    command3.Parameters.AddWithValue("@est", 1);
                                 }
 
                                 command3.ExecuteNonQuery();
                             }
+
                         }
                     }
 
@@ -287,7 +306,7 @@ namespace control_elements_sena.Controllers.Entradas
                 return (data, false);
             }
         }
-        public static bool RegistrarSalida(string id, string formato3)
+        public static bool RegistrarSalida(string id)
         {
 
             try
@@ -300,7 +319,6 @@ namespace control_elements_sena.Controllers.Entradas
                         command.CommandType = CommandType.StoredProcedure;
                         command.Parameters.AddWithValue("@ids", id);
                         command.Parameters.AddWithValue("@hos", DateTime.Now);
-                        command.Parameters.AddWithValue("@fm3", formato3);
 
 
                         command.ExecuteNonQuery();

@@ -135,15 +135,16 @@
             // 
             // cmbFormat
             // 
+            this.cmbFormat.DisplayMember = "mk";
             this.cmbFormat.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cmbFormat.FormattingEnabled = true;
             this.cmbFormat.Items.AddRange(new object[] {
-            "Excel",
-            "PDF"});
+            "Excel"});
             this.cmbFormat.Location = new System.Drawing.Point(446, 8);
             this.cmbFormat.Name = "cmbFormat";
             this.cmbFormat.Size = new System.Drawing.Size(92, 23);
             this.cmbFormat.TabIndex = 4;
+            this.cmbFormat.Text = "Excel";
             this.cmbFormat.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.comboBox2_KeyPress);
             // 
             // panel1

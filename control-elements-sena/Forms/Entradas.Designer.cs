@@ -31,7 +31,7 @@
             this.components = new System.ComponentModel.Container();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle11 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
@@ -39,6 +39,7 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
             this.pButtonsContainer = new System.Windows.Forms.Panel();
             this.btnListAll = new System.Windows.Forms.Button();
             this.btnAdd = new System.Windows.Forms.Button();
@@ -67,7 +68,7 @@
             this.id_elemento = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.marca = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.serie = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.cargador_mouse = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.observaciones = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.formato3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.hora_entrada = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.hora_salida = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -161,18 +162,18 @@
             this.id_elemento,
             this.marca,
             this.serie,
-            this.cargador_mouse,
+            this.observaciones,
             this.formato3,
             this.hora_entrada,
             this.hora_salida});
-            dataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle10.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle10.Font = new System.Drawing.Font("Segoe UI Semibold", 10.25F, System.Drawing.FontStyle.Bold);
-            dataGridViewCellStyle10.ForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle10.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(4)))), ((int)(((byte)(50)))), ((int)(((byte)(77)))));
-            dataGridViewCellStyle10.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle10.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgvDatos.DefaultCellStyle = dataGridViewCellStyle10;
+            dataGridViewCellStyle11.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle11.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle11.Font = new System.Drawing.Font("Segoe UI Semibold", 10.25F, System.Drawing.FontStyle.Bold);
+            dataGridViewCellStyle11.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle11.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(4)))), ((int)(((byte)(50)))), ((int)(((byte)(77)))));
+            dataGridViewCellStyle11.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle11.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvDatos.DefaultCellStyle = dataGridViewCellStyle11;
             this.dgvDatos.EnableHeadersVisualStyles = false;
             this.dgvDatos.Location = new System.Drawing.Point(9, 98);
             this.dgvDatos.Margin = new System.Windows.Forms.Padding(0);
@@ -442,11 +443,13 @@
             this.serie.Name = "serie";
             this.serie.ReadOnly = true;
             // 
-            // cargador_mouse
+            // observaciones
             // 
-            this.cargador_mouse.HeaderText = "Cargador y mouse";
-            this.cargador_mouse.Name = "cargador_mouse";
-            this.cargador_mouse.ReadOnly = true;
+            dataGridViewCellStyle8.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.observaciones.DefaultCellStyle = dataGridViewCellStyle8;
+            this.observaciones.HeaderText = "Observaciones";
+            this.observaciones.Name = "observaciones";
+            this.observaciones.ReadOnly = true;
             // 
             // formato3
             // 
@@ -456,16 +459,16 @@
             // 
             // hora_entrada
             // 
-            dataGridViewCellStyle8.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.hora_entrada.DefaultCellStyle = dataGridViewCellStyle8;
+            dataGridViewCellStyle9.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.hora_entrada.DefaultCellStyle = dataGridViewCellStyle9;
             this.hora_entrada.HeaderText = "Hora de entrada";
             this.hora_entrada.Name = "hora_entrada";
             this.hora_entrada.ReadOnly = true;
             // 
             // hora_salida
             // 
-            dataGridViewCellStyle9.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.hora_salida.DefaultCellStyle = dataGridViewCellStyle9;
+            dataGridViewCellStyle10.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.hora_salida.DefaultCellStyle = dataGridViewCellStyle10;
             this.hora_salida.HeaderText = "Hora de salida";
             this.hora_salida.Name = "hora_salida";
             this.hora_salida.ReadOnly = true;
@@ -528,7 +531,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn id_elemento;
         private System.Windows.Forms.DataGridViewTextBoxColumn marca;
         private System.Windows.Forms.DataGridViewTextBoxColumn serie;
-        private System.Windows.Forms.DataGridViewTextBoxColumn cargador_mouse;
+        private System.Windows.Forms.DataGridViewTextBoxColumn observaciones;
         private System.Windows.Forms.DataGridViewTextBoxColumn formato3;
         private System.Windows.Forms.DataGridViewTextBoxColumn hora_entrada;
         private System.Windows.Forms.DataGridViewTextBoxColumn hora_salida;

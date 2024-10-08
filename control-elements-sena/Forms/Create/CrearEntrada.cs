@@ -91,11 +91,10 @@ namespace control_elements_sena.Forms.Create
             else
             {
 
-                string checkedCYM = chbxCargador_mouse.Checked ? "SI" : "NO";
                 string checkedFM3 = chxFormato3.Checked ? "SI" : "NO";
                 string nombres = CultureInfo.CurrentCulture.TextInfo.ToTitleCase(txtNombres.Text.ToLower());
                 string marca = CultureInfo.CurrentCulture.TextInfo.ToTitleCase(cmbMarca.Text.ToLower());
-                bool response = Controllers.Entradas.Entradas.CrearEntrada(txtIdPropietario.Text,nombres,marca,txtSerie.Text,checkedCYM,checkedFM3);
+                bool response = Controllers.Entradas.Entradas.CrearEntrada(txtIdPropietario.Text,nombres,marca,txtSerie.Text,txtObservaciones.Text,checkedFM3);
 
                 if (response)
                 {
@@ -155,6 +154,7 @@ namespace control_elements_sena.Forms.Create
         {
             Controllers.Entradas.Entradas.idRegistro = null;
             Controllers.Entradas.Entradas.idElemento = null;
+            SetPlaceholder(txtObservaciones, "SIN OBSERVACIONES");
         }
 
         private void txtSerie_TextChanged(object sender, EventArgs e)
@@ -254,8 +254,36 @@ namespace control_elements_sena.Forms.Create
             }
         }
 
-      
-          
-       
+        private void SetPlaceholder(TextBox textBox, string placeholder)
+        {
+            // Si el TextBox está vacío, muestra el placeholder en color gris
+            if (string.IsNullOrWhiteSpace(textBox.Text))
+            {
+                textBox.Text = placeholder;
+                textBox.ForeColor = Color.Gray;
+            }
+
+            // Evento Enter para eliminar el placeholder cuando el usuario hace clic
+            textBox.Enter += (sender, e) =>
+            {
+                if (textBox.Text == placeholder)
+                {
+                    textBox.Text = "";
+                    textBox.ForeColor = Color.Black;
+                }
+            };
+
+            // Evento Leave para volver a mostrar el placeholder si el usuario no escribe nada
+            textBox.Leave += (sender, e) =>
+            {
+                if (string.IsNullOrWhiteSpace(textBox.Text))
+                {
+                    textBox.Text = placeholder;
+                    textBox.ForeColor = Color.Gray;
+                }
+            };
+        }
+
+
     }
 }
