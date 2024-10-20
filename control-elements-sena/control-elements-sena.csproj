@@ -36,6 +36,9 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>sena-logo.ico</ApplicationIcon>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="BCrypt.Net-Next, Version=4.0.3.0, Culture=neutral, PublicKeyToken=1e11be04b6288443, processorArchitecture=MSIL">
       <HintPath>..\packages\BCrypt.Net-Next.4.0.3\lib\net48\BCrypt.Net-Next.dll</HintPath>
@@ -576,6 +579,7 @@
     <None Include="Resources\minus.png" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="sena-logo.ico" />
     <None Include="Resources\solucion-denuncia.png" />
     <None Include="Resources\status-user.png" />
     <None Include="Resources\trabajo-en-equipo.png" />

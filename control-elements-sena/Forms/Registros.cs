@@ -19,7 +19,7 @@ namespace control_elements_sena
         private void Registros_Load(object sender, EventArgs e)
         {
             CargarData("0", "10");
-            SetPlaceholder(txtSearch,"Buscar por Identificación o Nombres");
+            SetPlaceholder(txtSearch,"Buscar por Identificación, Nombres o Tipo de usuario");
 
            
         }
@@ -29,7 +29,7 @@ namespace control_elements_sena
             if (selectedCellRow)
             {
             int currentRow = dgvDatos.CurrentCell.RowIndex;
-            string[] data = new string[3];
+            string[] data = new string[5];
             foreach (DataGridViewCell cell in dgvDatos.Rows[currentRow].Cells)
             {
                 data[cell.ColumnIndex] = cell.Value.ToString();
@@ -131,20 +131,20 @@ namespace control_elements_sena
             foreach (DataRow data in recordData.Rows)
             {
 
-                dgvDatos.Rows.Add(new object[] { data[0], data[2], data[1] });
+                dgvDatos.Rows.Add(new object[] { data[0], data[2], data[3], data[1], data[4] });
 
 
             }
             if (dgvDatos.Rows.Count == 0)
             {
-                dgvDatos.Rows.Add(new object[] { "", "", "SIN DATOS PARA MOSTRAR" });
+                dgvDatos.Rows.Add(new object[] { "", "", "SIN DATOS PARA MOSTRAR", "", "" });
 
 
             }
         }
         private void BuscarParametro()
         {
-            if (txtSearch.Text.Length == 0 || txtSearch.Text == "Buscar por Identificación o Nombres")
+            if (txtSearch.Text.Length == 0 || txtSearch.Text == "Buscar por Identificación, Nombres o Tipo de usuario")
             {
                 MessageBox.Show("Digita por lo menos un parámetro de búsqueda", "Buscar registro", MessageBoxButtons.OK, MessageBoxIcon.Warning);
 
@@ -163,13 +163,13 @@ namespace control_elements_sena
                 foreach (DataRow data in elementData.Rows)
                 {
 
-                    dgvDatos.Rows.Add(new object[] { data[0], data[2], data[1] });
+                    dgvDatos.Rows.Add(new object[] { data[0], data[2], data[3], data[1], data[4] });
 
 
                 }
                 if (dgvDatos.Rows.Count == 0)
                 {
-                    dgvDatos.Rows.Add(new object[] { "", "", "NO SE ENCONTRÓ NINGÚN DATO" });
+                    dgvDatos.Rows.Add(new object[] { "", "", "", "NO SE ENCONTRÓ NINGÚN DATO", "" });
 
 
                 }

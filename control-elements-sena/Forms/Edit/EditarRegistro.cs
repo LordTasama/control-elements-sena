@@ -91,7 +91,7 @@ namespace control_elements_sena.Forms.Create
             // Enviar datos
             else
             {
-                bool response = Controllers.Registros.Registros.EditarRegistro(_data[0], txtIdentificacion.Text, txtNombres.Text);
+                bool response = Controllers.Registros.Registros.EditarRegistro(_data[0], txtIdentificacion.Text,txtNIS.Text, txtNombres.Text,cmbTipoUsuario.Text);
 
                 if (response)
                 {
@@ -111,7 +111,14 @@ namespace control_elements_sena.Forms.Create
         private void EditarUsuario_Load(object sender, EventArgs e)
         {
             txtIdentificacion.Text = _data[1];
-            txtNombres.Text = _data[2];
+            txtNIS.Text = _data[2];
+            txtNombres.Text = _data[3];
+            cmbTipoUsuario.Text = _data[4];
+        }
+
+        private void cmbTipoUsuario_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            e.Handled = true;
         }
     }
 }

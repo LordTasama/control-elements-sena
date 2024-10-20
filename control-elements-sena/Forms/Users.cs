@@ -2,6 +2,8 @@
 using control_elements_sena.Controllers.Usuarios;
 using control_elements_sena.Forms.Create;
 using OfficeOpenXml.FormulaParsing.Ranges;
+using SixLabors.ImageSharp.ColorSpaces;
+using SixLabors.ImageSharp.PixelFormats;
 using System;
 using System.Data;
 using System.Drawing;
@@ -106,7 +108,8 @@ namespace control_elements_sena
                 {
                     foreach(DataGridViewCell cell in dgvDatos.Rows[dgvDatos.Rows.Count - 1].Cells)
                     {
-                        cell.Style.BackColor = Color.Green;
+                        cell.Style.BackColor = Color.FromArgb(4, 85, 77);
+                        cell.Style.ForeColor = Color.White;
                     }
                     
                 }

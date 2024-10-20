@@ -78,7 +78,7 @@ namespace control_elements_sena.Controllers.Registros
                 return (elementsTable, false);
             }
         }
-        public static bool EditarRegistro(string id, string identificacion, string nombres)
+        public static bool EditarRegistro(string id, string identificacion, string nis, string nombres,string tipo_usuario)
         {
 
             try
@@ -91,8 +91,9 @@ namespace control_elements_sena.Controllers.Registros
                         command.CommandType = CommandType.StoredProcedure;
                         command.Parameters.AddWithValue("@idr", id);
                         command.Parameters.AddWithValue("@ide", identificacion);
+                        command.Parameters.AddWithValue("@nis", nis);
                         command.Parameters.AddWithValue("@nom", nombres);
-
+                        command.Parameters.AddWithValue("@tiu", tipo_usuario);
                         command.ExecuteNonQuery();
 
                         return true;

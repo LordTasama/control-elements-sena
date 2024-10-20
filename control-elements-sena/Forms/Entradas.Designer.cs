@@ -29,22 +29,36 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle11 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle13 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle14 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle24 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle15 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle16 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle17 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle18 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle19 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle20 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle21 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle22 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle23 = new System.Windows.Forms.DataGridViewCellStyle();
             this.pButtonsContainer = new System.Windows.Forms.Panel();
             this.btnListAll = new System.Windows.Forms.Button();
             this.btnAdd = new System.Windows.Forms.Button();
             this.toolTipNew = new System.Windows.Forms.ToolTip(this.components);
             this.dgvDatos = new System.Windows.Forms.DataGridView();
+            this.id = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.id_usuario = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.registrador = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.identificacion_propietario = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.nombres_propietario = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.id_elemento = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.marca = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.serie = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.observaciones = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.formato3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.tipo_usuario = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.hora_entrada = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.hora_salida = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.toolTipListAll = new System.Windows.Forms.ToolTip(this.components);
             this.toolTipHelper = new System.Windows.Forms.ToolTip(this.components);
             this.btnOptions = new System.Windows.Forms.Button();
@@ -60,18 +74,6 @@
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.cmbValue = new System.Windows.Forms.ComboBox();
-            this.id = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.id_usuario = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.registrador = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.identificacion_propietario = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.nombres_propietario = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.id_elemento = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.marca = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.serie = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.observaciones = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.formato3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.hora_entrada = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.hora_salida = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.pButtonsContainer.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDatos)).BeginInit();
             this.panel1.SuspendLayout();
@@ -133,8 +135,8 @@
             // 
             this.dgvDatos.AllowUserToAddRows = false;
             this.dgvDatos.AllowUserToDeleteRows = false;
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.dgvDatos.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle13.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.dgvDatos.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle13;
             this.dgvDatos.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
@@ -144,13 +146,13 @@
             this.dgvDatos.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dgvDatos.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.RaisedHorizontal;
             this.dgvDatos.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(4)))), ((int)(((byte)(50)))), ((int)(((byte)(77)))));
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI Black", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(4)))), ((int)(((byte)(50)))), ((int)(((byte)(77)))));
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.Transparent;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvDatos.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle14.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(4)))), ((int)(((byte)(50)))), ((int)(((byte)(77)))));
+            dataGridViewCellStyle14.Font = new System.Drawing.Font("Segoe UI Black", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle14.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle14.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(4)))), ((int)(((byte)(50)))), ((int)(((byte)(77)))));
+            dataGridViewCellStyle14.SelectionForeColor = System.Drawing.Color.Transparent;
+            dataGridViewCellStyle14.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvDatos.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle14;
             this.dgvDatos.ColumnHeadersHeight = 38;
             this.dgvDatos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             this.dgvDatos.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
@@ -164,16 +166,17 @@
             this.serie,
             this.observaciones,
             this.formato3,
+            this.tipo_usuario,
             this.hora_entrada,
             this.hora_salida});
-            dataGridViewCellStyle11.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle11.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle11.Font = new System.Drawing.Font("Segoe UI Semibold", 10.25F, System.Drawing.FontStyle.Bold);
-            dataGridViewCellStyle11.ForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle11.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(4)))), ((int)(((byte)(50)))), ((int)(((byte)(77)))));
-            dataGridViewCellStyle11.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle11.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgvDatos.DefaultCellStyle = dataGridViewCellStyle11;
+            dataGridViewCellStyle24.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle24.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle24.Font = new System.Drawing.Font("Segoe UI Semibold", 10.25F, System.Drawing.FontStyle.Bold);
+            dataGridViewCellStyle24.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle24.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(4)))), ((int)(((byte)(50)))), ((int)(((byte)(77)))));
+            dataGridViewCellStyle24.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle24.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvDatos.DefaultCellStyle = dataGridViewCellStyle24;
             this.dgvDatos.EnableHeadersVisualStyles = false;
             this.dgvDatos.Location = new System.Drawing.Point(9, 98);
             this.dgvDatos.Margin = new System.Windows.Forms.Padding(0);
@@ -185,6 +188,106 @@
             this.dgvDatos.Size = new System.Drawing.Size(782, 343);
             this.dgvDatos.TabIndex = 7;
             this.dgvDatos.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvDatos_CellDoubleClick);
+            // 
+            // id
+            // 
+            this.id.HeaderText = "id";
+            this.id.Name = "id";
+            this.id.ReadOnly = true;
+            this.id.Visible = false;
+            // 
+            // id_usuario
+            // 
+            this.id_usuario.HeaderText = "Identificación registrador";
+            this.id_usuario.Name = "id_usuario";
+            this.id_usuario.ReadOnly = true;
+            // 
+            // registrador
+            // 
+            dataGridViewCellStyle15.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.registrador.DefaultCellStyle = dataGridViewCellStyle15;
+            this.registrador.HeaderText = "Registrador";
+            this.registrador.Name = "registrador";
+            this.registrador.ReadOnly = true;
+            // 
+            // identificacion_propietario
+            // 
+            dataGridViewCellStyle16.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.identificacion_propietario.DefaultCellStyle = dataGridViewCellStyle16;
+            this.identificacion_propietario.HeaderText = "Identificación propietario";
+            this.identificacion_propietario.Name = "identificacion_propietario";
+            this.identificacion_propietario.ReadOnly = true;
+            // 
+            // nombres_propietario
+            // 
+            dataGridViewCellStyle17.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.nombres_propietario.DefaultCellStyle = dataGridViewCellStyle17;
+            this.nombres_propietario.HeaderText = "Nombres propietario";
+            this.nombres_propietario.Name = "nombres_propietario";
+            this.nombres_propietario.ReadOnly = true;
+            // 
+            // id_elemento
+            // 
+            this.id_elemento.HeaderText = "Id_elemento";
+            this.id_elemento.Name = "id_elemento";
+            this.id_elemento.ReadOnly = true;
+            this.id_elemento.Visible = false;
+            // 
+            // marca
+            // 
+            dataGridViewCellStyle18.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.marca.DefaultCellStyle = dataGridViewCellStyle18;
+            this.marca.HeaderText = "Marca";
+            this.marca.Name = "marca";
+            this.marca.ReadOnly = true;
+            // 
+            // serie
+            // 
+            dataGridViewCellStyle19.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.serie.DefaultCellStyle = dataGridViewCellStyle19;
+            this.serie.HeaderText = "Serie";
+            this.serie.Name = "serie";
+            this.serie.ReadOnly = true;
+            // 
+            // observaciones
+            // 
+            dataGridViewCellStyle20.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.observaciones.DefaultCellStyle = dataGridViewCellStyle20;
+            this.observaciones.HeaderText = "Observaciones";
+            this.observaciones.Name = "observaciones";
+            this.observaciones.ReadOnly = true;
+            // 
+            // formato3
+            // 
+            this.formato3.HeaderText = "Formato 3";
+            this.formato3.Name = "formato3";
+            this.formato3.ReadOnly = true;
+            // 
+            // tipo_usuario
+            // 
+            dataGridViewCellStyle21.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.tipo_usuario.DefaultCellStyle = dataGridViewCellStyle21;
+            this.tipo_usuario.HeaderText = "Tipo de usuario";
+            this.tipo_usuario.MaxInputLength = 11;
+            this.tipo_usuario.Name = "tipo_usuario";
+            this.tipo_usuario.ReadOnly = true;
+            // 
+            // hora_entrada
+            // 
+            dataGridViewCellStyle22.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.hora_entrada.DefaultCellStyle = dataGridViewCellStyle22;
+            this.hora_entrada.HeaderText = "Hora de entrada";
+            this.hora_entrada.Name = "hora_entrada";
+            this.hora_entrada.ReadOnly = true;
+            // 
+            // hora_salida
+            // 
+            dataGridViewCellStyle23.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.hora_salida.DefaultCellStyle = dataGridViewCellStyle23;
+            this.hora_salida.HeaderText = "Hora de salida";
+            this.hora_salida.Name = "hora_salida";
+            this.hora_salida.ReadOnly = true;
+            this.hora_salida.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
             // 
             // toolTipListAll
             // 
@@ -335,10 +438,10 @@
             // 
             this.txtSearch.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.txtSearch.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtSearch.Location = new System.Drawing.Point(395, 10);
+            this.txtSearch.Location = new System.Drawing.Point(309, 10);
             this.txtSearch.MaxLength = 60;
             this.txtSearch.Name = "txtSearch";
-            this.txtSearch.Size = new System.Drawing.Size(342, 25);
+            this.txtSearch.Size = new System.Drawing.Size(428, 25);
             this.txtSearch.TabIndex = 11;
             this.txtSearch.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtSearch_KeyPress);
             // 
@@ -382,97 +485,6 @@
             this.cmbValue.Text = "5";
             this.cmbValue.SelectedIndexChanged += new System.EventHandler(this.cmbValue_SelectedIndexChanged);
             this.cmbValue.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.cmbValue_KeyPress);
-            // 
-            // id
-            // 
-            this.id.HeaderText = "id";
-            this.id.Name = "id";
-            this.id.ReadOnly = true;
-            this.id.Visible = false;
-            // 
-            // id_usuario
-            // 
-            this.id_usuario.HeaderText = "Identificación registrador";
-            this.id_usuario.Name = "id_usuario";
-            this.id_usuario.ReadOnly = true;
-            // 
-            // registrador
-            // 
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.registrador.DefaultCellStyle = dataGridViewCellStyle3;
-            this.registrador.HeaderText = "Registrador";
-            this.registrador.Name = "registrador";
-            this.registrador.ReadOnly = true;
-            // 
-            // identificacion_propietario
-            // 
-            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.identificacion_propietario.DefaultCellStyle = dataGridViewCellStyle4;
-            this.identificacion_propietario.HeaderText = "Identificación propietario";
-            this.identificacion_propietario.Name = "identificacion_propietario";
-            this.identificacion_propietario.ReadOnly = true;
-            // 
-            // nombres_propietario
-            // 
-            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.nombres_propietario.DefaultCellStyle = dataGridViewCellStyle5;
-            this.nombres_propietario.HeaderText = "Nombres propietario";
-            this.nombres_propietario.Name = "nombres_propietario";
-            this.nombres_propietario.ReadOnly = true;
-            // 
-            // id_elemento
-            // 
-            this.id_elemento.HeaderText = "Id_elemento";
-            this.id_elemento.Name = "id_elemento";
-            this.id_elemento.ReadOnly = true;
-            this.id_elemento.Visible = false;
-            // 
-            // marca
-            // 
-            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.marca.DefaultCellStyle = dataGridViewCellStyle6;
-            this.marca.HeaderText = "Marca";
-            this.marca.Name = "marca";
-            this.marca.ReadOnly = true;
-            // 
-            // serie
-            // 
-            dataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.serie.DefaultCellStyle = dataGridViewCellStyle7;
-            this.serie.HeaderText = "Serie";
-            this.serie.Name = "serie";
-            this.serie.ReadOnly = true;
-            // 
-            // observaciones
-            // 
-            dataGridViewCellStyle8.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.observaciones.DefaultCellStyle = dataGridViewCellStyle8;
-            this.observaciones.HeaderText = "Observaciones";
-            this.observaciones.Name = "observaciones";
-            this.observaciones.ReadOnly = true;
-            // 
-            // formato3
-            // 
-            this.formato3.HeaderText = "Formato 3";
-            this.formato3.Name = "formato3";
-            this.formato3.ReadOnly = true;
-            // 
-            // hora_entrada
-            // 
-            dataGridViewCellStyle9.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.hora_entrada.DefaultCellStyle = dataGridViewCellStyle9;
-            this.hora_entrada.HeaderText = "Hora de entrada";
-            this.hora_entrada.Name = "hora_entrada";
-            this.hora_entrada.ReadOnly = true;
-            // 
-            // hora_salida
-            // 
-            dataGridViewCellStyle10.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.hora_salida.DefaultCellStyle = dataGridViewCellStyle10;
-            this.hora_salida.HeaderText = "Hora de salida";
-            this.hora_salida.Name = "hora_salida";
-            this.hora_salida.ReadOnly = true;
-            this.hora_salida.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
             // 
             // Entradas
             // 
@@ -533,6 +545,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn serie;
         private System.Windows.Forms.DataGridViewTextBoxColumn observaciones;
         private System.Windows.Forms.DataGridViewTextBoxColumn formato3;
+        private System.Windows.Forms.DataGridViewTextBoxColumn tipo_usuario;
         private System.Windows.Forms.DataGridViewTextBoxColumn hora_entrada;
         private System.Windows.Forms.DataGridViewTextBoxColumn hora_salida;
     }

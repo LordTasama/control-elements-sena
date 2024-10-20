@@ -15,7 +15,7 @@ namespace control_elements_sena.Controllers.Entradas
         public static string errorMessage = "";
         public static string idRegistro = null;
         public static string idElemento = null;
-        public static bool CrearEntrada(string id_propietario, string nombres_propietario, string marca_elemento, string serie_elemento, string observaciones, string formato3)
+        public static bool CrearEntrada(string identificacion,string nis,string nombres_propietario, string marca_elemento, string serie_elemento, string observaciones, string formato3,string tipo_usuario)
         {
 
             using (SqlConnection connection = DatabaseConnect.GetConnection())
@@ -51,8 +51,23 @@ namespace control_elements_sena.Controllers.Entradas
                     {
                         command1.Transaction = transaction;
                         command1.CommandType = CommandType.StoredProcedure;
-                        command1.Parameters.AddWithValue("@ide", id_propietario);
+                        command1.Parameters.AddWithValue("@ide", identificacion);
+                        // SEGÚN TIPO DE USUARIO ASIGNAR EL NIS
+                        if(tipo_usuario == "EMPLEADO")
+                        {
+                            nis = identificacion;
+                        }
+                        else if(tipo_usuario == "APRENDIZ" && nis == "")
+                        {
+                            nis = null;
+                        }
+                        else if(tipo_usuario == "VISITANTE")
+                        {
+                            nis = null;
+                        }
+                        command1.Parameters.AddWithValue("@nis", nis);
                         command1.Parameters.AddWithValue("@nom", nombres_propietario);
+                        command1.Parameters.AddWithValue("@tiu", tipo_usuario);
                         if (idRegistro == null)
                         {
                             idRegistro = command1.ExecuteScalar().ToString();
@@ -65,6 +80,7 @@ namespace control_elements_sena.Controllers.Entradas
                             command2.Parameters.AddWithValue("@mar", marca_elemento);
                             command2.Parameters.AddWithValue("@ser", serie_elemento);
                             command2.Parameters.AddWithValue("@fm3", formato3);
+
                             if (idElemento == null)
                             {
                                 idElemento = command2.ExecuteScalar().ToString();
@@ -209,6 +225,7 @@ namespace control_elements_sena.Controllers.Entradas
         }
         public static (DataTable, bool) SeleccionarEntradasParametro(string lim, string estado, string parametro)
         {
+
             DataTable entrancesTable = new DataTable();
             try
             {
@@ -275,7 +292,7 @@ namespace control_elements_sena.Controllers.Entradas
                 return (entrancesTable, false);
             }
         }
-        public static (DataTable, bool) SeleccionarDatosRegistro(string id_registro)
+        public static (DataTable, bool) SeleccionarDatosRegistro(string parametro)
         {
             DataTable data = new DataTable();
             try
@@ -285,11 +302,28 @@ namespace control_elements_sena.Controllers.Entradas
                     using (SqlCommand command = new SqlCommand("SeleccionarDatosRegistro", connection))
                     {
                         command.CommandType = CommandType.StoredProcedure;
-                        command.Parameters.AddWithValue("@idr", id_registro);
+                        command.Parameters.AddWithValue("@par", parametro);
                         SqlDataAdapter adapter = new SqlDataAdapter(command);
 
                         connection.Open();
                         adapter.Fill(data);
+                        // VALIDAR QUE NO SEAN 2 REGISTROS DIFERENTES
+                        string id_registro = "0";
+                        if(data.Rows.Count > 0)
+                        {
+                            id_registro = data.Rows[0][0].ToString();
+                        }
+                       
+                        foreach (DataRow row in data.Rows)
+                        {
+                            if(id_registro != row["id_registro"].ToString())
+                            {
+                                errorMessage = "Error al traer los datos, hay más de un registro asociado, esto sucede porque NIS e identificación son iguales en 2 registros diferentes, es un error casi imposible de pasar, felicidades por encontrarlo :). Contacta a soporte o mi a número: +57 3234407488, me llamo Jhon Anderson Tasama Pérez :D";
+                                data.Clear();
+                                return (data, false);
+                            }
+
+                        }
 
                         return (data, true);
                     }

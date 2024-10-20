@@ -109,9 +109,9 @@
             this.lbUser.ForeColor = System.Drawing.Color.Black;
             this.lbUser.Location = new System.Drawing.Point(5, 39);
             this.lbUser.Name = "lbUser";
-            this.lbUser.Size = new System.Drawing.Size(181, 17);
+            this.lbUser.Size = new System.Drawing.Size(125, 17);
             this.lbUser.TabIndex = 2;
-            this.lbUser.Text = "Identificación del propietario";
+            this.lbUser.Text = "Identificación o NIS";
             // 
             // txtIdPropietario
             // 

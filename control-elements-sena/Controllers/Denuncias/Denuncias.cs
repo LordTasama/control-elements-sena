@@ -48,7 +48,7 @@ namespace control_elements_sena.Controllers.Denuncias
             {
                 using (SqlConnection connection = DatabaseConnect.GetConnection())
                 {
-                    using (SqlCommand commandExists = new SqlCommand("SeleccionarRegistroIdentificacion", connection))
+                    using (SqlCommand commandExists = new SqlCommand("SeleccionarRegistroIdentificacionNIS", connection))
                     {
                         connection.Open();
                         commandExists.CommandType = CommandType.StoredProcedure;
@@ -59,6 +59,22 @@ namespace control_elements_sena.Controllers.Denuncias
                             {
                                 errorMessage = "El propietario no existe en la base de datos";
                                 return false;
+                            }
+                            else {
+
+                                int rowCount = 0;
+
+                                while (reader.Read())
+                                {
+                                    // Aquí puedes procesar cada fila
+                                    rowCount++;
+                                }
+
+                                if(rowCount > 1)
+                                {
+                                 errorMessage = "Error al traer los datos, hay más de un registro asociado, esto sucede porque NIS e identificación son iguales en 2 registros diferentes, es un error casi imposible de pasar, felicidades por encontrarlo :). Contacta a soporte o mi a número: +57 3234407488, me llamo Jhon Anderson Tasama Pérez :D";
+                                 return false;
+                                }
                             }
                         }
                         using (SqlCommand command = new SqlCommand("CrearDenuncia", connection))

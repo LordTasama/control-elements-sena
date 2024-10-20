@@ -29,7 +29,7 @@ namespace control_elements_sena
         private void Entradas_Load(object sender, EventArgs e)
         {
             CargarData("0");
-            SetPlaceholder(txtSearch, "Buscar por Identificación, Nombres, Serie o Marca");
+            SetPlaceholder(txtSearch, "Buscar por Identificación, Nombres, Serie, Marca, Tipo de usuario o NIS");
         }
 
         private void btnAdd_Click(object sender, EventArgs e)
@@ -179,7 +179,7 @@ namespace control_elements_sena
         }
         private void BuscarParametro()
         {
-            if (txtSearch.Text.Length == 0 || txtSearch.Text == "Buscar por Identificación o Nombres")
+            if (txtSearch.Text.Length == 0 || txtSearch.Text == "Buscar por Identificación, Nombres, Serie, Marca, Tipo de usuario o NIS")
             {
                 MessageBox.Show("Digita por lo menos un parámetro de búsqueda", "Buscar registro", MessageBoxButtons.OK, MessageBoxIcon.Warning);
 
@@ -202,10 +202,10 @@ namespace control_elements_sena
         private void RecargarData(DataTable entranceData) {
             foreach (DataRow data in entranceData.Rows)
             {
-                var horaSalida = data[11].ToString() == "" && data[9].ToString() == "NO" ? "PENDIENTE" : data[11];
+                var horaSalida = data[12].ToString() == "" && data[9].ToString() == "NO" ? "PENDIENTE" : data[12];
 
 
-                dgvDatos.Rows.Add(new object[] { data[0], data[1], data[2], data[3], data[4], data[5], data[6], data[7], data[8], data[9], data[10], horaSalida });
+                dgvDatos.Rows.Add(new object[] { data[0], data[1], data[2], data[3], data[4], data[5], data[6], data[7], data[8], data[9], data[10], data[11], horaSalida });
 
 
             }
@@ -219,7 +219,7 @@ namespace control_elements_sena
             }
             if (dgvDatos.Rows.Count == 0)
             {
-                dgvDatos.Rows.Add(new object[] { "", "", "", "", "", "", "SIN DATOS PARA MOSTRAR", "", "", "", "", "" });
+                dgvDatos.Rows.Add(new object[] { "", "", "", "", "", "", "SIN DATOS PARA MOSTRAR", "", "", "", "", "", "" });
             }
             dgvDatos.ClearSelection();
 
