@@ -176,6 +176,7 @@ namespace control_elements_sena
         // Funcionalidad general de la aplicación
         private void btnUsers_Click(object sender, EventArgs e)
         {
+            lblTitle.Text = " - Usuarios";
             lblPage.Text = "Usuarios ";
             this.Text = "Panel de Control - Usuarios";
             loadForm("Usuarios ");
@@ -183,6 +184,7 @@ namespace control_elements_sena
 
         private void btnRecords_Click(object sender, EventArgs e)
         {
+            lblTitle.Text = " - Registros";
             lblPage.Text = "Registros";
             this.Text = "Panel de Control - Registros";
             loadForm("Registros");
@@ -190,12 +192,14 @@ namespace control_elements_sena
 
         private void btnElements_Click(object sender, EventArgs e)
         {
+            lblTitle.Text = " - Elementos";
             lblPage.Text = "Elementos";
             this.Text = "Panel de Control - Elementos";
             loadForm("Elementos");
         }
         private void btnEntrances_Click(object sender, EventArgs e)
         {
+            lblTitle.Text = " - Entradas";
             lblPage.Text = "Entradas";
             this.Text = "Panel de Control - Entradas";
             loadForm("Entradas"); 
@@ -203,6 +207,7 @@ namespace control_elements_sena
 
         private void btnReports_Click(object sender, EventArgs e)
         {
+            lblTitle.Text = " - Reportes";
             lblPage.Text = "Reportes "; 
             this.Text = "Panel de Control - Reportes";
             loadForm("Reportes");
@@ -210,7 +215,7 @@ namespace control_elements_sena
 
         private void btnInforms_Click(object sender, EventArgs e)
         {
-            
+            lblTitle.Text = " - Denuncias";
             lblPage.Text = "Denuncias";
             this.Text = "Panel de Control - Denuncias";
             loadForm("Denuncias");
@@ -218,6 +223,7 @@ namespace control_elements_sena
 
         private void btnPerfil_Click(object sender, EventArgs e)
         {
+            lblTitle.Text = " - Mi perfil";
             lblPage.Text = "Mi perfil";
             this.Text = "Panel de Control - Mi perfil";
             loadForm("Mi perfil");
@@ -239,6 +245,7 @@ namespace control_elements_sena
             pContainer.Tag = null;
             btnCloseForm.Visible = false;
             SidebarSelect();
+            lblTitle.Text = " - Panel de Control";
             lblPage.Text = "";
             this.Text = "Panel de Control";
         }

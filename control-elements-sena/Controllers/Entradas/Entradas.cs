@@ -57,14 +57,6 @@ namespace control_elements_sena.Controllers.Entradas
                         {
                             nis = identificacion;
                         }
-                        else if(tipo_usuario == "APRENDIZ" && nis == "")
-                        {
-                            nis = null;
-                        }
-                        else if(tipo_usuario == "VISITANTE")
-                        {
-                            nis = null;
-                        }
                         command1.Parameters.AddWithValue("@nis", nis);
                         command1.Parameters.AddWithValue("@nom", nombres_propietario);
                         command1.Parameters.AddWithValue("@tiu", tipo_usuario);
