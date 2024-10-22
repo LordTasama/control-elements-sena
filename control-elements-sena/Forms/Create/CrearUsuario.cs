@@ -150,7 +150,7 @@ namespace control_elements_sena.Forms.Create
                 cmbRol.DataSource = datosRol;
                 cmbRol.DisplayMember = "nombre";
                 cmbRol.ValueMember = "id";
-
+                cmbRol.SelectedIndex = 1;
             }
             else
             {
